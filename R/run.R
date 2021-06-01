@@ -32,6 +32,13 @@ new('oecd') %>%
   download.ts%>%
   write.ts
 
+new('igrea') %>%
+  ticker('igrea') %>%
+  observation.start %>%
+  url %>%
+  download.ts%>%
+  write.ts
+
 
 
 

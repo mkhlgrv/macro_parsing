@@ -1,13 +1,13 @@
 
+
 setClass('moex',
-         slots = list(ticker = 'character',
-                      observation_start = 'Date',
-                      previous_date_till='Date',
-                      date_from = 'Date',
+         slots = list(previous_date_till='Date',
                       date_till = 'Date',
-                      url = 'character',
-                      ts = 'data.frame'
-                      ))
+                      url = 'character'
+                      ),
+         contains = 'parsed_ts')
+
+
 
 setMethod("initialize", "moex",
           function(.Object,
@@ -26,50 +26,17 @@ setMethod("initialize", "moex",
             .Object@date_till <- lubridate::ymd()
             .Object@url <- character()
             .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                 value = numeric(), 
-                                 update_date = lubridate::ymd())
+                                         value = numeric(), 
+                                         update_date = lubridate::ymd())
             validObject(.Object)
             return(.Object)
           }
 )
 
-setMethod("ticker", "moex",
-          function(object, ticker
-          ) {
-            object@ticker <- ticker
-            validObject(object)
-            return(object)
-          }
-)
-
-
-setMethod("observation.start", "moex",
-          function(object
-          ) {
-            object@observation_start <- data.table::fread('data/info/var_list.csv',
-                                              select = c('ticker', 'observation_start')) %>%
-              .[which(.$ticker==object@ticker),] %>%
-              .$observation_start %>% 
-              lubridate::ymd()
-            validObject(object)
-            return(object)
-          }
-)
 
 
 
-setMethod("previous.date.till", "moex",
-          function(object) {
-            object@previous_date_till <- data.table::fread(paste0('data/raw/',object@ticker,'.csv'),
-                                               select = 'date') %>%
-              .[nrow(.),] %>%
-              .$date %>%
-              lubridate::ymd()
-              
-            validObject(object)
-            return(object)
-          }
-)
+
 
 
 setMethod("date.from", "moex",
@@ -105,7 +72,7 @@ setMethod("date.till", "moex",
           ) {
             
               date_till <-  lubridate::today()
-              if(lubridate::difftime(date_till,
+              if(difftime(date_till,
                           object@date_from,
                           units = 'days') > 100){
                 date_till <- object@date_from+100
@@ -144,7 +111,7 @@ setMethod("download.ts.chunk", "moex",
                        value = close) %>%
                 dplyr::group_by(date) %>%
                 dplyr::summarise(value = first(value)) %>%
-                dplyr::ungroup %>%
+                dplyr::ungroup() %>%
                 dplyr::mutate(date = as.Date(date),
                        update_date = as.Date(Sys.Date())) %>%
                 dplyr::bind_rows(object@ts) %>%
@@ -163,14 +130,16 @@ setMethod("download.ts", "moex",
           ) {
             date_from <- object@date_from
             if(date_from < lubridate::today()){
-              object %<>% 
+              
+              object <- object %>%
                 date.till %>%
                 url %>%
                 download.ts.chunk %>%
                   
                 date.from
               if(object@date_from != date_from){
-                object %<>%
+                
+                object <- object %>%
                   download.ts
               }
                 
@@ -184,21 +153,6 @@ setMethod("download.ts", "moex",
           }
           
 )
-
-
-
-
-
-
-setMethod("write.ts", "moex",
-          function(object
-          ) {
-            data.table::fwrite(parsed@ts,file = paste0('data/raw/',object@ticker,'.csv'),append=TRUE)
-            validObject(object)
-            return(object)
-          }
-)
-
 
 
 

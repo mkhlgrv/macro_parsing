@@ -2,3 +2,4 @@ source, url, description
 moex, htps://moex.com,Moscow Exchange
 fred,https://fred.stlouisfed.org,Federal Reserve Economic Data
 oecd,https://data.oecd.org/,OECD Data
+dallasfed,https://www.dallasfed.org/research/igrea,Federal Reserve Bank of Dallas

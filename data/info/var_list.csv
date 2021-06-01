@@ -40,3 +40,4 @@ cgi_OECD,oecd,m,Consumer confidence index OECD,Consumer confidence index OECD,19
 cgi_OECDE,oecd,m,Consumer confidence index OECDE,Consumer confidence index OECDE,1974-01-01
 cgi_RUS,oecd,m,Consumer confidence index Russia,Consumer confidence index Russia,1998-11-01
 cgi_USA,oecd,m,Consumer confidence index USA,Consumer confidence index USA,1960-01-01
+igrea,dallasfed,m,Index of Global Real Economic Activity,Index of Global Real Economic Activity,1968-01-01

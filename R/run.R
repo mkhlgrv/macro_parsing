@@ -25,6 +25,13 @@ new('fred') %>%
 
 
 new('oecd') %>%
+  ticker('cli_RUS') %>%
+  observation.start %>%
+  oecd.ticker %>%
+  url %>%
+  download.ts%>%
+  write.ts
+
 
 
 

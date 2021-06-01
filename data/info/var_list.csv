@@ -1,7 +1,21 @@
-ticker, source, name_eng, name_rus, observation_start
-IMOEX, moex, MOEX Russia Index,Индекс МосБиржи, 1997-09-22
-MOEX10, moex, MOEX 10 Index,Индекс МосБиржи 10, 1998-01-06
-RTSI, moex, RTS Index,Индекс РТС, 1995-09-01
-RTSOG, moex, RTS Oil & Gas Index,Индекс РТС нефти и газа, 1999-12-31
-RGBI, moex, MOEX Government Bond Index Clean Price,Индекс Мосбиржи государственных облигаций ценовой, 2003-01-01
-RGBITR, moex, MOEX Government Bond Index,Индекс Мосбиржи государственных облигаций, 2003-01-01
+ticker,source,freq,name_eng,name_rus,observation_start
+IMOEX,moex,d,MOEX Russia Index,Индекс МосБиржи,1997-09-22
+MOEX10,moex,d,MOEX 10 Index,Индекс МосБиржи 10,1998-01-06
+RTSI,moex,d,RTS Index,Индекс РТС,1995-09-01
+RTSOG,moex,d,RTS Oil & Gas Index,Индекс РТС нефти и газа,1999-12-31
+RGBI,moex,d,MOEX Government Bond Index Clean Price,Индекс Мосбиржи государственных облигаций ценовой,2003-01-01
+RGBITR,moex,d,MOEX Government Bond Index,Индекс Мосбиржи государственных облигаций,2003-01-01
+SP500,fred,d,S&P 500,S&P 500,2011-05-31
+DCOILBRENTEU,fred,d,Crude Oil Prices: Brent - Europe,Crude Oil Prices: Brent - Europe,1987-05-20
+NBRUBIS,fred,m,Russia Nominal Effecive Exchange Rate ,Russia Nominal Effecive Exchange Rate,1997-05-20
+PALLFNFINDEXM,fred,m,Global Price Index of All Commodities,Global Price Index of All Commodities,1992-01-01
+PALUMUSDM,fred,m,Global price of Aluminum,Global price of Aluminum,1990-01-01
+PINDUINDEXM,fred,m,Global price of Industrial Materials index,Global price of Industrial Materials indexs,1992-01-01
+PMETAINDEXM,fred,m,Global price of Metal index,Global price of Metal index,1992-01-01
+PNICKUSDM,fred,m,Global price of Nickel,Global price of Nickel,1990-01-01
+PWHEAMTUSDM,fred,m,Global price of Wheat,Global price of Wheat,1990-01-01
+PZINCUSDM,fred,m,Global price of Zinc,Global price of Zinc,1990-01-01
+RBRUBIS,fred,m,Russia Real Effective Exchange Rate Broad,Russia Real Effective Exchange Rate Broad,1994-01-01
+STLFSI2,fred,w,St. Louis Fed Financial Stress Index,St. Louis Fed Financial Stress Index,1993-12-31
+PFOODINDEXM,fred,m,Global price of Food index,Global price of Food index,1992-01-01
+PNRGINDEXM,fred,m,Global price of Energy index,Global price of Energy index,1992-01-01

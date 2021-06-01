@@ -1,2 +1,3 @@
 source, url, description
 moex, htps://moex.com, Moscow Exchange
+fred,https://fred.stlouisfed.org,Federal Reserve Economic Data

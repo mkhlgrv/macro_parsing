@@ -1,7 +1,4 @@
-library(lubridate)
-library(dplyr)
-library(data.table)
-library(magrittr)
+
 setClass('moex',
          slots = list(ticker = 'character',
                       observation_start = 'Date',
@@ -23,37 +20,19 @@ setMethod("initialize", "moex",
                    ts
           ) {             
             .Object@ticker <- character()
-            .Object@observation_start <- ymd()
-            .Object@previous_date_till <- ymd()
-            .Object@date_from <- ymd()
-            .Object@date_till <- ymd()
+            .Object@observation_start <- lubridate::ymd()
+            .Object@previous_date_till <- lubridate::ymd()
+            .Object@date_from <- lubridate::ymd()
+            .Object@date_till <- lubridate::ymd()
             .Object@url <- character()
-            .Object@ts <- tibble(date = ymd(),
+            .Object@ts <- tibble::tibble(date = lubridate::ymd(),
                                  value = numeric(), 
-                                 update_date = ymd())
+                                 update_date = lubridate::ymd())
             validObject(.Object)
             return(.Object)
           }
 )
-observation.start <- function(object){
-  object@observation_start
-}
-setMethod("observation.start", "moex",
-          function(object
-          ) {
-            object@observation_start <- fread('data/info/var_list.csv',
-                                              select = c('ticker', 'observation_start')) %>%
-              .[which(.$ticker==object@ticker),] %>%
-              .$observation_start %>% 
-              ymd
-            validObject(object)
-            return(object)
-          }
-)
 
-ticker <- function(object, ticker){
-  object@ticker
-}
 setMethod("ticker", "moex",
           function(object, ticker
           ) {
@@ -62,28 +41,36 @@ setMethod("ticker", "moex",
             return(object)
           }
 )
-date.from <- function(object){
-  object@date_from
-}
 
-previous.date.till <- function(object){
-  object@previous_date_till
-}
+
+setMethod("observation.start", "moex",
+          function(object
+          ) {
+            object@observation_start <- data.table::fread('data/info/var_list.csv',
+                                              select = c('ticker', 'observation_start')) %>%
+              .[which(.$ticker==object@ticker),] %>%
+              .$observation_start %>% 
+              lubridate::ymd()
+            validObject(object)
+            return(object)
+          }
+)
+
+
+
 setMethod("previous.date.till", "moex",
           function(object) {
-            object@previous_date_till <- fread(paste0('data/raw/',object@ticker,'.csv'),
+            object@previous_date_till <- data.table::fread(paste0('data/raw/',object@ticker,'.csv'),
                                                select = 'date') %>%
               .[nrow(.),] %>%
               .$date %>%
-              ymd
+              lubridate::ymd()
               
             validObject(object)
             return(object)
           }
 )
-date.from <- function(object){
-  object@date_from
-}
+
 
 setMethod("date.from", "moex",
           function(object
@@ -100,25 +87,25 @@ setMethod("date.from", "moex",
             }
             
             if(length(date_from)==0){
-              object@date_from <- object@observation_start %>% ymd
+              object@date_from <- object@observation_start %>%
+                lubridate::ymd()
             } else {
-              object@date_from <- date_from %>% ymd
+              object@date_from <- date_from %>%
+                lubridate::ymd()
             }
             validObject(object)
             return(object)
           }
 )
 
-date.till <- function(object){
-  object@date_till
-}
+
 
 setMethod("date.till", "moex",
           function(object
           ) {
             
-              date_till <-  today()
-              if(difftime(date_till,
+              date_till <-  lubridate::today()
+              if(lubridate::difftime(date_till,
                           object@date_from,
                           units = 'days') > 100){
                 date_till <- object@date_from+100
@@ -128,10 +115,6 @@ setMethod("date.till", "moex",
             return(object)
           }
 )
-
-url <- function(object){
-    object@url
-  }
 
 setMethod("url", "moex",
           function(object
@@ -150,24 +133,22 @@ setMethod("url", "moex",
 )
 
 
-download.ts.chunk <- function(object){
-  object@ts
-}
+
 
 setMethod("download.ts.chunk", "moex",
           function(object
           ) {
-              object@ts <- fread(object@url,
+              object@ts <- data.table::fread(object@url,
                                 select = c('end' = 'POSIXct', 'close'='numeric')) %>%
-                rename(date = end,
+                dplyr::rename(date = end,
                        value = close) %>%
-                group_by(date) %>%
-                summarise(value = first(value)) %>%
-                ungroup %>%
-                mutate(date = as.Date(date),
+                dplyr::group_by(date) %>%
+                dplyr::summarise(value = first(value)) %>%
+                dplyr::ungroup %>%
+                dplyr::mutate(date = as.Date(date),
                        update_date = as.Date(Sys.Date())) %>%
-                bind_rows(object@ts) %>%
-                arrange(date, update_date)
+                dplyr::bind_rows(object@ts) %>%
+                dplyr::arrange(date, update_date)
               
               
               validObject(object)
@@ -176,15 +157,12 @@ setMethod("download.ts.chunk", "moex",
             
 )
 
-download.ts <- function(object){
-  object@ts
-}
 
 setMethod("download.ts", "moex",
           function(object
           ) {
             date_from <- object@date_from
-            if(date_from < today()){
+            if(date_from < lubridate::today()){
               object %<>% 
                 date.till %>%
                 url %>%
@@ -211,14 +189,11 @@ setMethod("download.ts", "moex",
 
 
 
-write.ts <- function(object){
-  object@ts
-}
 
 setMethod("write.ts", "moex",
           function(object
           ) {
-            fwrite(parsed@ts,file = paste0('data/raw/',object@ticker,'.csv'),append=TRUE)
+            data.table::fwrite(parsed@ts,file = paste0('data/raw/',object@ticker,'.csv'),append=TRUE)
             validObject(object)
             return(object)
           }

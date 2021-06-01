@@ -19,3 +19,24 @@ RBRUBIS,fred,m,Russia Real Effective Exchange Rate Broad,Russia Real Effective E
 STLFSI2,fred,w,St. Louis Fed Financial Stress Index,St. Louis Fed Financial Stress Index,1993-12-31
 PFOODINDEXM,fred,m,Global price of Food index,Global price of Food index,1992-01-01
 PNRGINDEXM,fred,m,Global price of Energy index,Global price of Energy index,1992-01-01
+cli_CHN,oecd,m,Composite leading indicator China,Composite leading indicator China,1992-05-01
+cli_EA19,oecd,m,Composite leading indicator Euro area,Composite leading indicator Euro area,1965-12-01
+cli_G7,oecd,m,Composite leading indicator G7,Composite leading indicator G7,1959-01-01
+cli_OECD,oecd,m,Composite leading indicator OECD,Composite leading indicator OECD,1961-06-01
+cli_OECDE,oecd,m,Composite leading indicator OECDE,Composite leading indicator OECDE,1966-11-01
+cli_RUS,oecd,m,Composite leading indicator Russia,Composite leading indicator Russia,1992-09-01
+cli_USA,oecd,m,Composite leading indicator USA,Composite leading indicator USA,1955-01-01
+bci_CHN,oecd,m,Business confidence index China,Business confidence index China,2000-02-01
+bci_EA19,oecd,m,Business confidence index Euro area,Business confidence index Euro area,1985-01-01
+bci_G7,oecd,m,Business confidence index G7,Business confidence index G7,1962-12-01
+bci_OECD,oecd,m,Business confidence index OECD,Business confidence index OECD,1974-07-01
+bci_OECDE,oecd,m,Business confidence index OECDE,Business confidence index OECDE,1975-12-01
+bci_RUS,oecd,m,Business confidence index Russia,Business confidence index Russia,1992-09-01
+bci_USA,oecd,m,Business confidence index USA,Business confidence index USA,1950-01-01
+cgi_CHN,oecd,m,Consumer confidence index China,Consumer confidence index China,1990-01-01
+cgi_EA19,oecd,m,Consumer confidence index EA19,Consumer confidence index EA19,1973-01-01
+cgi_G7,oecd,m,Consumer confidence index G7,Consumer confidence index G7,1973-01-01
+cgi_OECD,oecd,m,Consumer confidence index OECD,Consumer confidence index OECD,1974-01-01
+cgi_OECDE,oecd,m,Consumer confidence index OECDE,Consumer confidence index OECDE,1974-01-01
+cgi_RUS,oecd,m,Consumer confidence index Russia,Consumer confidence index Russia,1998-11-01
+cgi_USA,oecd,m,Consumer confidence index USA,Consumer confidence index USA,1960-01-01

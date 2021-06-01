@@ -33,6 +33,9 @@ write.ts <- function(object){
 freq <- function(object){
   UseMethod('freq')
 }
+oecd.ticker <- function(object){
+  UseMethod('oecd_ticker')
+}
 
 
 setClass('parsed_ts',

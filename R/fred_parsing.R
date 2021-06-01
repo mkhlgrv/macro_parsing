@@ -3,12 +3,13 @@ setClass('fred',
          slots = list(freq = 'factor'),
          contains = 'parsed_ts')
 
-setMethod("initialize", "parsed_ts",
+setMethod("initialize", "fred",
           function(.Object,
                    ticker,
                    observation_start,
                    date_from,
-                   ts
+                   ts,
+                   freq
           ) {             
             .Object@ticker <- character()
             .Object@observation_start <- lubridate::ymd()

@@ -41,3 +41,14 @@ cgi_OECDE,oecd,m,Consumer confidence index OECDE,Consumer confidence index OECDE
 cgi_RUS,oecd,m,Consumer confidence index Russia,Consumer confidence index Russia,1998-11-01
 cgi_USA,oecd,m,Consumer confidence index USA,Consumer confidence index USA,1960-01-01
 igrea,dallasfed,m,Index of Global Real Economic Activity,Index of Global Real Economic Activity,1968-01-01
+mosprime,cbr,d,,MosPrime Rate (1 мес),2005-04-18
+money_base,cbr,m,,Денежная база (в узком определении),2002-01-01
+m2,cbr,m,,Денежная масса (М2),1992-12-01
+import_usd,cbr,q,,Импорт в долларах,1994-01-01
+usd,cbr,d,,Курс рубля к доллару,2001-04-01
+fer,cbr,w,,Международные резервы Российской Федерации,1998-05-29
+miacr,cbr,d,,"Показатели ставок межбанковского кредитного рынка группы MIACR: Средневзвешенные фактические ставки по кредитам в рублях, предоставленным московскими банками (1 день)",2000-08-01
+saldo,cbr,d,,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности,2003-10-01
+repo,cbr,d,,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01
+export_usd,cbr,q,,Экспорт в долларах,1994-01-01
+money_base_weekly,cbr,w,,Денежная база (в узком определении),2014-10-01

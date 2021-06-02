@@ -39,6 +39,17 @@ new('igrea') %>%
   download.ts%>%
   write.ts
 
+  
+new('cbr') %>%
+  ticker('export_usd') %>%
+  freq %>%
+  observation.start %>%
+  previous.date.till %>%
+  date.from %>% 
+  cbr.ticker %>%
+  url %>%
+  download.ts %>%
+  write.ts()
 
 
 

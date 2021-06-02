@@ -1,4 +1,4 @@
-
+#' @include common.R
 setClass('fred',
          slots = list(freq = 'factor'),
          contains = 'parsed_ts')
@@ -10,13 +10,13 @@ setMethod("initialize", "fred",
                    date_from,
                    ts,
                    freq
-          ) {             
+          ) {
             .Object@ticker <- character()
             .Object@observation_start <- lubridate::ymd()
             .Object@previous_date_till <- lubridate::ymd()
             .Object@date_from <- lubridate::ymd()
             .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(), 
+                                         value = numeric(),
                                          update_date = lubridate::ymd())
             .Object@freq <- factor(levels = c('d', 'w', 'm'))
             validObject(.Object)
@@ -40,8 +40,8 @@ setMethod("freq", "fred",
 setMethod("date.from", "fred",
           function(object
           ) {
-            
-            
+
+
             if(length(object@previous_date_till)==0){
               object@date_from <- object@observation_start %>%
                 lubridate::ymd()
@@ -67,7 +67,7 @@ setMethod("download.ts", "fred",
           function(object
           ) {
             fredr::fredr_set_key(Sys.getenv('fredr_api_key'))
-            
+
             object@ts <- fredr::fredr(object@ticker,
             frequency = object@freq %>% as.character,
             observation_start = object@date_from) %>%
@@ -75,7 +75,7 @@ setMethod("download.ts", "fred",
               dplyr::mutate(date = as.Date(date),
                      update_date = as.Date(Sys.Date())) %>%
               dplyr::arrange(date, update_date)
-            
+
             validObject(object)
             return(object)
           }

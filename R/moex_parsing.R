@@ -1,5 +1,4 @@
-
-
+#' @include common.R
 setClass('moex',
          slots = list(previous_date_till='Date',
                       date_till = 'Date',
@@ -18,7 +17,7 @@ setMethod("initialize", "moex",
                    date_till,
                    url,
                    ts
-          ) {             
+          ) {
             .Object@ticker <- character()
             .Object@observation_start <- lubridate::ymd()
             .Object@previous_date_till <- lubridate::ymd()
@@ -26,7 +25,7 @@ setMethod("initialize", "moex",
             .Object@date_till <- lubridate::ymd()
             .Object@url <- character()
             .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(), 
+                                         value = numeric(),
                                          update_date = lubridate::ymd())
             validObject(.Object)
             return(.Object)
@@ -45,14 +44,14 @@ setMethod("date.from", "moex",
 
             if(nrow(object@ts)==0){
               date_from <- object@previous_date_till
-              
-              
+
+
             } else {
               date_from <- object@ts %>%
                 .[nrow(.),] %>%
                 .$date
             }
-            
+
             if(length(date_from)==0){
               object@date_from <- object@observation_start %>%
                 lubridate::ymd()
@@ -70,7 +69,7 @@ setMethod("date.from", "moex",
 setMethod("date.till", "moex",
           function(object
           ) {
-            
+
               date_till <-  lubridate::today()
               if(difftime(date_till,
                           object@date_from,
@@ -93,7 +92,7 @@ setMethod("url", "moex",
                    '&till=',
                    format(object@date_till),
                    '&iss.dp=point&iss.delimiter=,')
-            
+
             validObject(object)
             return(object)
           }
@@ -116,12 +115,12 @@ setMethod("download.ts.chunk", "moex",
                        update_date = as.Date(Sys.Date())) %>%
                 dplyr::bind_rows(object@ts) %>%
                 dplyr::arrange(date, update_date)
-              
-              
+
+
               validObject(object)
               return(object)
             }
-            
+
 )
 
 
@@ -130,28 +129,28 @@ setMethod("download.ts", "moex",
           ) {
             date_from <- object@date_from
             if(date_from < lubridate::today()){
-              
+
               object <- object %>%
                 date.till %>%
                 url %>%
                 download.ts.chunk %>%
-                  
+
                 date.from
               if(object@date_from != date_from){
-                
+
                 object <- object %>%
                   download.ts
               }
-                
+
             }
             validObject(object)
             return(object)
-            
-            
-            
-            
+
+
+
+
           }
-          
+
 )
 
 

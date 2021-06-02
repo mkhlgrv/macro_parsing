@@ -43,6 +43,18 @@ oecd.ticker <- function(object){
 }
 
 
+#' Title
+#'
+#' @slot ticker character.
+#' @slot observation_start Date.
+#' @slot previous_date_till Date.
+#' @slot date_from Date.
+#' @slot ts data.frame.
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setClass('parsed_ts',
          slots = list(ticker = 'character',
                       observation_start = 'Date',
@@ -57,13 +69,13 @@ setMethod("initialize", "parsed_ts",
                    observation_start,
                    date_from,
                    ts
-          ) {             
+          ) {
             .Object@ticker <- character()
             .Object@observation_start <- lubridate::ymd()
             .Object@previous_date_till <- lubridate::ymd()
             .Object@date_from <- lubridate::ymd()
             .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(), 
+                                         value = numeric(),
                                          update_date = lubridate::ymd())
             validObject(.Object)
             return(.Object)
@@ -86,7 +98,7 @@ setMethod("observation.start", "parsed_ts",
             object@observation_start <- data.table::fread('data/info/var_list.csv',
                                                           select = c('ticker', 'observation_start')) %>%
               .[which(.$ticker==object@ticker),] %>%
-              .$observation_start %>% 
+              .$observation_start %>%
               lubridate::ymd()
             validObject(object)
             return(object)
@@ -100,7 +112,7 @@ setMethod("previous.date.till", 'parsed_ts',
               .[nrow(.),] %>%
               .$date %>%
               lubridate::ymd()
-            
+
             validObject(object)
             return(object)
           }

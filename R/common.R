@@ -19,6 +19,11 @@ url <- function(object){
   UseMethod('url')
 }
 
+cbr.ticker <- function(object){
+  UseMethod('cbr.ticker')
+}
+
+
 download.ts.chunk <- function(object){
   UseMethod('download.ts.chunk')
 }

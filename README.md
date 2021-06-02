@@ -4,6 +4,7 @@
  Источники:
  1. [Росстат](https://rosstat.gov.ru/): опросы, макроэкономческая статистика;
  2. [Московская биржа](https://moex.com/): биржевые индексы;
- 3. [FRED](https://fred.stlouisfed.org/): индексы цен на товары, биржевые индексы;
- 4. [Federal Reserve Bank of Dallas](https://www.dallasfed.org/research/igrea): индекс глобальной экономической активности;
- 5. [Банк России](http://cbr.ru/): показатели денежного рынка. 
+ 3. [FRED](https://fred.stlouisfed.org/): индексы цен на товары, S&P 500, эффективный курс;
+ 4. [Federal Reserve Bank of Dallas](https://www.dallasfed.org/research/igrea): Index of Global Real Economic Activity;
+ 5. [Банк России](http://cbr.ru/): показатели денежного рынка, внешняя торговля в долларах, курсы валют;
+ 6. [OECD](https://data.oecd.org/): Composite leading indicator, Business confidence index, Consumer confidence index.

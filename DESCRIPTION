@@ -1,16 +1,19 @@
 Package: macroparsing
-Title: What the Package Does (One Line, Title Case)
+Title: Real-time parsing mixed frequency data for russian economy
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Author: Mikhail Gareev
+Description: Real-time parsing mixed frequency data for russian economy.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Collate: 
+    'common.R'
+    'cbr_parsing.R'
+    'fred_parsing.R'
+    'igrea_parsing.R'
+    'moex_parsing.R'
+    'oecd_parsing.R'
+    'run.R'
+    'utility.R'

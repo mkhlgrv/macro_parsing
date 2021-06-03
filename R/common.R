@@ -1,45 +1,45 @@
 
-ticker <- function(object, ticker){
-  UseMethod('ticker')
+ticker <- function(object, ticker) {
+  UseMethod("ticker")
 }
-observation.start <- function(object){
-  UseMethod('observation.start')
+observation.start <- function(object) {
+  UseMethod("observation.start")
 }
-date.from <- function(object){
-  UseMethod('date.from')
+date.from <- function(object) {
+  UseMethod("date.from")
 }
-previous.date.till <- function(object){
-  UseMethod('previous.date.till')
+previous.date.till <- function(object) {
+  UseMethod("previous.date.till")
 }
-date.till <- function(object){
-  UseMethod('date.till')
-}
-
-url <- function(object){
-  UseMethod('url')
+date.till <- function(object) {
+  UseMethod("date.till")
 }
 
-cbr.ticker <- function(object){
-  UseMethod('cbr.ticker')
+url <- function(object) {
+  UseMethod("url")
+}
+
+cbr.ticker <- function(object) {
+  UseMethod("cbr.ticker")
 }
 
 
-download.ts.chunk <- function(object){
-  UseMethod('download.ts.chunk')
+download.ts.chunk <- function(object) {
+  UseMethod("download.ts.chunk")
 }
-download.ts <- function(object){
-  UseMethod('download.ts')
-}
-
-write.ts <- function(object){
-  UseMethod('write.ts')
+download.ts <- function(object) {
+  UseMethod("download.ts")
 }
 
-freq <- function(object){
-  UseMethod('freq')
+write.ts <- function(object) {
+  UseMethod("write.ts")
 }
-oecd.ticker <- function(object){
-  UseMethod('oecd_ticker')
+
+freq <- function(object) {
+  UseMethod("freq")
+}
+oecd.ticker <- function(object) {
+  UseMethod("oecd_ticker")
 }
 
 
@@ -55,75 +55,81 @@ oecd.ticker <- function(object){
 #' @export
 #'
 #' @examples
-setClass('parsed_ts',
-         slots = list(ticker = 'character',
-                      observation_start = 'Date',
-                      previous_date_till = 'Date',
-                      date_from = 'Date',
-                      ts = 'data.frame'
-         ))
-
-setMethod("initialize", "parsed_ts",
-          function(.Object,
-                   ticker,
-                   observation_start,
-                   date_from,
-                   ts
-          ) {
-            .Object@ticker <- character()
-            .Object@observation_start <- lubridate::ymd()
-            .Object@previous_date_till <- lubridate::ymd()
-            .Object@date_from <- lubridate::ymd()
-            .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(),
-                                         update_date = lubridate::ymd())
-            validObject(.Object)
-            return(.Object)
-          }
+setClass("parsed_ts",
+  slots = list(
+    ticker = "character",
+    observation_start = "Date",
+    previous_date_till = "Date",
+    date_from = "Date",
+    ts = "data.frame"
+  )
 )
 
-setMethod("ticker", "parsed_ts",
-          function(object, ticker
-          ) {
-            object@ticker <- ticker
-            validObject(object)
-            return(object)
-          }
+setMethod(
+  "initialize", "parsed_ts",
+  function(.Object,
+           ticker,
+           observation_start,
+           date_from,
+           ts) {
+    .Object@ticker <- character()
+    .Object@observation_start <- lubridate::ymd()
+    .Object@previous_date_till <- lubridate::ymd()
+    .Object@date_from <- lubridate::ymd()
+    .Object@ts <- tibble::tibble(
+      date = lubridate::ymd(),
+      value = numeric(),
+      update_date = lubridate::ymd()
+    )
+    validObject(.Object)
+    return(.Object)
+  }
+)
+
+setMethod(
+  "ticker", "parsed_ts",
+  function(object, ticker) {
+    object@ticker <- ticker
+    validObject(object)
+    return(object)
+  }
 )
 
 
-setMethod("observation.start", "parsed_ts",
-          function(object
-          ) {
-            object@observation_start <- data.table::fread('data/info/var_list.csv',
-                                                          select = c('ticker', 'observation_start')) %>%
-              .[which(.$ticker==object@ticker),] %>%
-              .$observation_start %>%
-              lubridate::ymd()
-            validObject(object)
-            return(object)
-          }
+setMethod(
+  "observation.start", "parsed_ts",
+  function(object) {
+    object@observation_start <- data.table::fread("inst/extdata/info/var_list.csv",
+      select = c("ticker", "observation_start")
+    ) %>%
+      .[which(.$ticker == object@ticker), ] %>%
+      .$observation_start %>%
+      lubridate::ymd()
+    validObject(object)
+    return(object)
+  }
 )
 
-setMethod("previous.date.till", 'parsed_ts',
-          function(object) {
-            object@previous_date_till <- data.table::fread(paste0('data/raw/',object@ticker,'.csv'),
-                                                           select = 'date') %>%
-              .[nrow(.),] %>%
-              .$date %>%
-              lubridate::ymd()
+setMethod(
+  "previous.date.till", "parsed_ts",
+  function(object) {
+    object@previous_date_till <- data.table::fread(paste0("inst/extdata/raw/", object@ticker, ".csv"),
+      select = "date"
+    ) %>%
+      .$date %>%
+      .[nrow(.)] %>%
+      lubridate::ymd()
 
-            validObject(object)
-            return(object)
-          }
+    validObject(object)
+    return(object)
+  }
 )
 
-setMethod("write.ts", "parsed_ts",
-          function(object
-          ) {
-            data.table::fwrite(object@ts,file = paste0('data/raw/',object@ticker,'.csv'),append=TRUE)
-            validObject(object)
-            return(object)
-          }
+setMethod(
+  "write.ts", "parsed_ts",
+  function(object) {
+    data.table::fwrite(object@ts, file = paste0("inst/extdata/raw/", object@ticker, ".csv"), append = TRUE)
+    validObject(object)
+    return(object)
+  }
 )
-

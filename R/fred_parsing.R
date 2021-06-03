@@ -27,7 +27,7 @@ setMethod("initialize", "fred",
 setMethod("freq", "fred",
           function(object
           ) {
-            object@freq <- data.table::fread('data/info/var_list.csv',
+            object@freq <- data.table::fread('inst/extdata/info/var_list.csv',
                                                           select = c('ticker', 'freq')) %>%
               .[which(.$ticker==object@ticker),] %>%
               .$freq %>%

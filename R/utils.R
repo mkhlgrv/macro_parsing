@@ -47,3 +47,30 @@ check.raw.files <- function(actual_directory=NULL){
                          )
     })
 }
+
+#' Title
+#'
+#' @param path character.
+#' @param fredr_api_key character.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+set.environment <- function(path = "C:/Users/Mikhail Gareev/Documents/macroparsing_usage",
+                            fredr_api_key='aaa'){
+  # create directories ----
+  dir.create(path = path, showWarnings = FALSE, recursive = TRUE)
+  dir.create(path = paste0(path, '/data'), showWarnings = FALSE)
+  dir.create(path = paste0(path, '/data/raw_excel'), showWarnings = FALSE)
+  dir.create(path = paste0(path, '/data/raw'), showWarnings = FALSE)
+  dir.create(path = paste0(path, '/data/out'), showWarnings = FALSE)
+
+  # create .Renviron file ----
+  text <- paste0("fredr_api_key=",fredr_api_key,
+  "\ndirectory=",path)
+  file.create(paste0(path, '/.Renviron'))
+  write(text,file=paste0(path, '/.Renviron'))
+
+}
+

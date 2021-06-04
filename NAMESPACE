@@ -3,6 +3,7 @@
 export("%>%")
 export(check.directory)
 export(check.raw.files)
+export(set.environment)
 exportClasses(parsed_ts)
 exportMethods(initialize)
 importFrom(magrittr,"%>%")

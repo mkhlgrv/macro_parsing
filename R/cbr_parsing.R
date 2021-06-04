@@ -41,7 +41,7 @@ setMethod("initialize", "cbr",
 setMethod("freq", "cbr",
           function(object
           ) {
-            object@freq <- data.table::fread('inst/extdata/info/var_list.csv',
+            object@freq <- data.table::fread(system.file("inst/extdata/info/var_list.csv", package = "macroparsing"),
                                              select = c('ticker', 'freq')) %>%
               .[which(.$ticker==object@ticker),] %>%
               .$freq %>%
@@ -82,7 +82,8 @@ setMethod("date.from", "cbr",
 setMethod("cbr.ticker", "cbr",
           function(object
           ) {
-            object@cbr_ticker <- data.table::fread('inst/extdata/info/cbr_name_list.csv',
+            object@cbr_ticker <- data.table::fread(system.file("inst/extdata/info/cbr_name_list.csv",
+                                                               package = "macroparsing"),
                                              select = c('ticker', 'cbr_ticker')) %>%
               .[which(.$ticker==object@ticker),] %>%
               .$cbr_ticker

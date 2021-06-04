@@ -99,7 +99,7 @@ setMethod(
 setMethod(
   "observation.start", "parsed_ts",
   function(object) {
-    object@observation_start <- data.table::fread("inst/extdata/info/var_list.csv",
+    object@observation_start <- data.table::fread(system.file("inst/extdata/info/var_list.csv", package="macroparsing"),
       select = c("ticker", "observation_start")
     ) %>%
       .[which(.$ticker == object@ticker), ] %>%
@@ -113,7 +113,12 @@ setMethod(
 setMethod(
   "previous.date.till", "parsed_ts",
   function(object) {
-    object@previous_date_till <- data.table::fread(paste0("inst/extdata/raw/", object@ticker, ".csv"),
+    object@previous_date_till <-
+      data.table::fread(system.file(paste0("inst/extdata/raw/",
+
+                                                                      object@ticker,
+                                                                      ".csv"),
+                                    package="macroparsing"),
       select = "date"
     ) %>%
       .$date %>%
@@ -128,7 +133,11 @@ setMethod(
 setMethod(
   "write.ts", "parsed_ts",
   function(object) {
-    data.table::fwrite(object@ts, file = paste0("inst/extdata/raw/", object@ticker, ".csv"), append = TRUE)
+    data.table::fwrite(object@ts,
+                       file = system.file(paste0("inst/extdata/raw/",
+                                                 object@ticker,
+                                                 ".csv"),
+                                                 package="macroparsing"), append = TRUE)
     validObject(object)
     return(object)
   }

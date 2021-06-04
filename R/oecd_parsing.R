@@ -32,7 +32,7 @@ setMethod("oecd.ticker", "oecd",
           ) {
             object@oecd_ticker <- macroparsing::oecd_names %>%
               .[which(.$ticker==object@ticker),] %>%
-              mutate(oecd_ticker = paste0(index_name, '.', country_name)) %>%
+              dplyr::mutate(oecd_ticker = paste0(index_name, '.', country_name)) %>%
               .$oecd_ticker
 
             validObject(object)

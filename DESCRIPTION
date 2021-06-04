@@ -16,4 +16,7 @@ Collate:
     'moex_parsing.R'
     'oecd_parsing.R'
     'run.R'
-    'utility.R'
+    'utils-pipe.R'
+    'utils.R'
+Imports: 
+    magrittr

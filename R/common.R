@@ -1,4 +1,3 @@
-
 ticker <- function(object, ticker) {
   UseMethod("ticker")
 }

@@ -1,3 +1,5 @@
 ^macroparsing\.Rproj$
 ^\.Rproj\.user$
+.Rprofile
 ^LICENSE\.md$
+LICENSE

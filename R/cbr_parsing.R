@@ -9,6 +9,14 @@ setClass('cbr',
 
 
 
+#' Title
+#'
+#' @param cbr
+#'
+#' @return
+#' @export
+#'
+#' @examples
 setMethod("initialize", "cbr",
           function(.Object,
                    ticker,

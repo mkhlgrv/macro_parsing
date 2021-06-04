@@ -76,38 +76,3 @@ setMethod("download.ts", "oecd",
             return(object)
           }
 )
-
-
-download.oecd <- function(x){
-  name <- x$name
-  cname <- name
-  if(cname=='G-7'){
-    cname <- 'G7'
-  }
-  index <- x$index
-
-
-  url <- get.url.oecd(index = index, country_name = name)
-
-  res <- fromJSON(url,flatten=TRUE)[['dataSets']]
-  sapply(res, function(x) x[[1]][1])[-c(1)] %>% as.numeric %>%
-    as_tibble() %>%
-    set_colnames(paste0(index,'_',cname)) %>%
-    add_column(date = seq.Date(from = as.Date('2006-01-01'),
-                               by = '1 month',
-                               length.out = nrow(.)),
-               .before = 1)
-}
-get.oecd.data <- function(){
-
-
-  res <- expand.grid(name = c('OECDE', 'OECD', 'G-7', 'EA19','USA','CHN', 'RUS'),
-                     index = c('cli', 'bci', 'cgi'), stringsAsFactors = FALSE) %>%
-    split(1:nrow(.)) %>%
-    map(download.oecd)
-  res %<>% plyr::join_all(type='full', by='date') %>%
-    arrange(date)
-  export(res,
-         'raw/oecd monthly.xlsx')
-
-}

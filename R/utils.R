@@ -57,7 +57,7 @@ check.raw.files <- function(actual_directory=NULL){
 #' @export
 #'
 #' @examples
-set.environment <- function(path = "C:/Users/Mikhail Gareev/Documents/macroparsing_usage",
+set.environment <- function(path = "C:/Users/mkhlgrv/Documents/macroparsing_usage",
                             fredr_api_key='aaa'){
   # create directories ----
   dir.create(path = path, showWarnings = FALSE, recursive = TRUE)

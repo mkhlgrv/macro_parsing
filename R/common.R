@@ -98,9 +98,7 @@ setMethod(
 setMethod(
   "observation.start", "parsed_ts",
   function(object) {
-    object@observation_start <- data.table::fread(system.file("inst/extdata/info/var_list.csv", package="macroparsing"),
-      select = c("ticker", "observation_start")
-    ) %>%
+    object@observation_start <- macroparsing::variables %>%
       .[which(.$ticker == object@ticker), ] %>%
       .$observation_start %>%
       lubridate::ymd()

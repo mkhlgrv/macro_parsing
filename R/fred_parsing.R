@@ -27,8 +27,7 @@ setMethod("initialize", "fred",
 setMethod("freq", "fred",
           function(object
           ) {
-            object@freq <- data.table::fread('inst/extdata/info/var_list.csv',
-                                                          select = c('ticker', 'freq')) %>%
+            object@freq <- macroparsing::variables %>%
               .[which(.$ticker==object@ticker),] %>%
               .$freq %>%
               factor(levels = c('d', 'w', 'm'))

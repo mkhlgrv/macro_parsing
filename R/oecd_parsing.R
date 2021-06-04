@@ -30,10 +30,7 @@ setMethod("initialize", "oecd",
 setMethod("oecd.ticker", "oecd",
           function(object
           ) {
-            object@oecd_ticker <- data.table::fread(system.file("data/info/oecd_name_list.csv", package = "macroparsing"),
-                                             select = c('ticker',
-                                                        'index_name',
-                                                        'country_name')) %>%
+            object@oecd_ticker <- macroparsing::oecd_names %>%
               .[which(.$ticker==object@ticker),] %>%
               mutate(oecd_ticker = paste0(index_name, '.', country_name)) %>%
               .$oecd_ticker

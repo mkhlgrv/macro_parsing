@@ -54,11 +54,11 @@
 
 
 # save info data ----
-
-# variables <- data.table::fread('inst/extdata/info/var_list.csv', encoding = 'UTF-8')
-# cbr_names <- data.table::fread('inst/extdata/info/cbr_name_list.csv', encoding = 'UTF-8')
-# sources <- data.table::fread('inst/extdata/info/source_list.csv', encoding = 'UTF-8')
-# oecd_names <- data.table::fread('inst/extdata/info/oecd_name_list.csv', encoding = 'UTF-8')
+#
+# variables <- data.table::fread('info/var_list.csv', encoding = 'UTF-8')
+# cbr_names <- data.table::fread('info/cbr_name_list.csv', encoding = 'UTF-8')
+# sources <- data.table::fread('info/source_list.csv', encoding = 'UTF-8')
+# oecd_names <- data.table::fread('info/oecd_name_list.csv', encoding = 'UTF-8')
 #
 # usethis::use_data(variables, variables)
 # usethis::use_data(cbr_names, cbr_names)

@@ -111,11 +111,10 @@ setMethod(
   "previous.date.till", "parsed_ts",
   function(object) {
     object@previous_date_till <-
-      data.table::fread(system.file(paste0("inst/extdata/raw/",
-
-                                                                      object@ticker,
-                                                                      ".csv"),
-                                    package="macroparsing"),
+      data.table::fread(paste0(Sys.getenv('directory'),
+                                           "/data/raw/",
+                                           object@ticker,
+                                           ".csv"),
       select = "date"
     ) %>%
       .$date %>%

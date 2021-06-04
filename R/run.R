@@ -65,3 +65,6 @@
 # usethis::use_data(sources, sources)
 # usethis::use_data(oecd_names, oecd_names)
 
+# test ----
+# testthat::test_local()
+

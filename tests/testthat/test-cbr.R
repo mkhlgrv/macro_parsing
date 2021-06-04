@@ -9,8 +9,8 @@ test_that("Test cbr methods", {
     cbr.ticker %>%
     url %>%
     download.ts()
-  expect_equal(cbr_ts@url,
-               'https://www.cbr.ru/eng/hd_base/mrrf/mrrf_7d/?UniDbQuery.Posted=True&UniDbQuery.From=05/1998&UniDbQuery.To=06/2021')
+  expect_match(cbr_ts@url,
+               'https://www.cbr.ru/eng/hd_base/mrrf/mrrf_7d/')
   expect_s4_class(cbr_ts, 'cbr')
   expect_equal(cbr_ts@ticker,"fer")
   expect_equal(cbr_ts@cbr_ticker,"mrrf/mrrf_7d")

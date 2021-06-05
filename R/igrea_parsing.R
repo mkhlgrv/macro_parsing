@@ -12,6 +12,7 @@ setMethod("initialize", "igrea",
           ) {
             .Object@ticker <- character()
             .Object@observation_start <- lubridate::ymd()
+            .Object@use_archive <- logical()
             .Object@previous_date_till <- lubridate::ymd()
             .Object@date_from <- lubridate::ymd()
             .Object@ts <- tibble::tibble(date = lubridate::ymd(),

@@ -32,6 +32,7 @@ setMethod("initialize", "cbr",
             .Object@ticker <- character()
             .Object@observation_start <- lubridate::ymd()
             .Object@previous_date_till <- lubridate::ymd()
+            .Object@use_archive <- logical()
             .Object@date_from <- lubridate::ymd()
             .Object@ts <- tibble::tibble(date = lubridate::ymd(),
                                          value = numeric(),

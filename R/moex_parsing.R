@@ -21,6 +21,7 @@ setMethod("initialize", "moex",
             .Object@ticker <- character()
             .Object@observation_start <- lubridate::ymd()
             .Object@previous_date_till <- lubridate::ymd()
+            .Object@use_archive <- logical()
             .Object@date_from <- lubridate::ymd()
             .Object@date_till <- lubridate::ymd()
             .Object@url <- character()

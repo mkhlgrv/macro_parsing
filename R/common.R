@@ -29,6 +29,9 @@ download.ts.chunk <- function(object) {
 download.ts <- function(object) {
   UseMethod("download.ts")
 }
+use.archive <- function(object) {
+  UseMethod("use.archive")
+}
 
 write.ts <- function(object) {
   UseMethod("write.ts")
@@ -58,6 +61,7 @@ setClass("parsed_ts",
   slots = list(
     ticker = "character",
     observation_start = "Date",
+    use_archive = 'logical',
     previous_date_till = "Date",
     date_from = "Date",
     ts = "data.frame"
@@ -69,10 +73,12 @@ setMethod(
   function(.Object,
            ticker,
            observation_start,
+           use_archive,
            date_from,
            ts) {
     .Object@ticker <- character()
     .Object@observation_start <- lubridate::ymd()
+    .Object@use_archive <- logical()
     .Object@previous_date_till <- lubridate::ymd()
     .Object@date_from <- lubridate::ymd()
     .Object@ts <- tibble::tibble(
@@ -108,6 +114,17 @@ setMethod(
 )
 
 setMethod(
+  "use.archive", "parsed_ts",
+  function(object) {
+    object@use_archive <- macroparsing::variables %>%
+      .[which(.$ticker == object@ticker), ] %>%
+      .$use_archive
+    validObject(object)
+    return(object)
+  }
+)
+
+setMethod(
   "previous.date.till", "parsed_ts",
   function(object) {
     object@previous_date_till <-
@@ -129,6 +146,15 @@ setMethod(
 setMethod(
   "write.ts", "parsed_ts",
   function(object) {
+    if(object@use_archive&object@observation_start==object@date_from){
+      object@ts <- data.table::rbindlist(list(
+        eval(parse(text = paste0('macroparsing:::archive_',object@ticker))),
+        object@ts
+      )) %>%
+        dplyr::arrange(
+          date, update_date
+        )
+    }
     data.table::fwrite(object@ts,
                        file = system.file(paste0("inst/extdata/raw/",
                                                  object@ticker,

@@ -23,6 +23,7 @@ test_that("Test fred methods", {
       ticker('NBRUBIS') %>%
       freq %>%
       observation.start %>%
+      use.archive %>%
       previous.date.till %>%
       date.from %>%
       download.ts
@@ -31,6 +32,7 @@ test_that("Test fred methods", {
   expect_equal(fred_ts@ticker,"NBRUBIS")
   expect_equal(fred_ts@observation_start,as.Date('1997-05-20'))
   expect_equal(ncol(fred_ts@ts),3)
+  expect_equal(fred_ts@use_archive,FALSE)
   expect_equal(fred_ts@ts$date %>% class,'Date')
   expect_equal(fred_ts@ts$value %>% class,'numeric')
   expect_equal(fred_ts@ts$update_date %>% class,'Date')
@@ -38,7 +40,8 @@ test_that("Test fred methods", {
 })
 
 
-test_that("Test fred methods", {
+
+test_that("Test oecd methods", {
   oecd_ts <- new('oecd') %>%
     ticker('cli_RUS') %>%
     observation.start %>%
@@ -57,24 +60,6 @@ test_that("Test fred methods", {
 
 })
 
-test_that("Test OECD methods", {
-  oecd_ts <- new('oecd') %>%
-    ticker('cli_RUS') %>%
-    observation.start %>%
-    oecd.ticker %>%
-    url %>%
-    download.ts
-
-  expect_s4_class(oecd_ts, 'oecd')
-  expect_equal(oecd_ts@ticker,"cli_RUS")
-  expect_match(oecd_ts@url, 'org/sdmx-json/data/MEI_CLI/LOLITOAA')
-  expect_equal(oecd_ts@observation_start,as.Date('1992-09-01'))
-  expect_equal(ncol(oecd_ts@ts),3)
-  expect_equal(oecd_ts@ts$date %>% class,'Date')
-  expect_equal(oecd_ts@ts$value %>% class,'numeric')
-  expect_equal(oecd_ts@ts$update_date %>% class,'Date')
-
-})
 
 test_that("Test IGREA methods", {
   igrea_ts <- new('igrea') %>%
@@ -94,26 +79,19 @@ test_that("Test IGREA methods", {
 
 })
 
+test_that("Test moex methods", {
 
-test_that("Test CBR methods", {
-  cbr_ts <- new('cbr') %>%
-      ticker('export_usd') %>%
-      freq %>%
-      observation.start %>%
-      previous.date.till %>%
-      date.from %>%
-      cbr.ticker %>%
-      url %>%
-      download.ts
-
-  expect_s4_class(cbr_ts, 'cbr')
-  expect_equal(cbr_ts@ticker,"export_usd")
-  expect_match(cbr_ts@url, 'vfs/eng/statistics/credit_statistics/bop/bal_of_payments_standart_e')
-  expect_equal(cbr_ts@observation_start,as.Date('1994-01-01'))
-  expect_equal(ncol(cbr_ts@ts),3)
-  expect_equal(cbr_ts@ts$date %>% class,'Date')
-  expect_equal(cbr_ts@ts$value %>% class,'numeric')
-  expect_equal(cbr_ts@ts$update_date %>% class,'Date')
+  moex_ts <- new('moex') %>%
+    ticker('IMOEX') %>%
+    observation.start %>%
+    use.archive %>%
+    previous.date.till %>%
+    date.from %>%
+    download.ts
+  expect_s4_class(moex_ts, 'moex')
+  expect_equal(moex_ts@ticker,"IMOEX")
+  expect_equal(moex_ts@observation_start,
+               as.Date('1997-09-22'))
+  expect_equal(ncol(moex_ts@ts),3)
 
 })
-

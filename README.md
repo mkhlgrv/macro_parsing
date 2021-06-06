@@ -11,7 +11,7 @@
 
 ## Установка
 ### Установка из архива
-Cкачайте репозиторий и выполните установите его. В аргументе `path` укажите путь к скачанному файлу:
+Cкачайте репозиторий и установите его. В аргументе `path` укажите путь к скачанному файлу:
 ```r
 devtools::install_local(path = "C:/PATH/TO/REPO")
 ```
@@ -20,6 +20,25 @@ devtools::install_local(path = "C:/PATH/TO/REPO")
 Для скачивания данных c [FRED](https://fred.stlouisfed.org/) необходимо [получить](https://research.stlouisfed.org/docs/api/api_key.html) ключ API.
 Более подробно об этом можно прочесть в [документации](https://cran.r-project.org/web/packages/fredr/vignettes/fredr.html#authentication) библиотеки `fredr`.
 
+## Использование
+Показать список доступных переменных:
+```r
+macroparsing::variables
+```
+Скачать данные:
+```r
+macroparsing::download() # все доступные временные ряды
+macroparsing::download(ticker = c("RTSI", "SP500")) # по тикеру
+macroparsing::download(source = "cbr")) # по источнику
+macroparsing::download(ticker = "cli_RUS",source = "dallasfed")) # объединение источника и тикера
+```
+
+Использовать параллелизацию процессов с пакетом `future`:
+```r
+macroparsing::download(use_future=TRUE) # все доступные временные ряды
+```
+
+## Рабочая директория и ключ API
 После установки пакета и получению ключа выполните команду, указав адрес рабочей директории `path` (в ней будут сохраняться все скачанные файлы) и ключ `fredr_api_key`:
 ```r
 macroparsing::set.enviroment(path = "C:/PATH/TO/WORKING/DIR", fredr_api_key = "YourFredrAPIKey")

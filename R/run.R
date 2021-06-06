@@ -6,57 +6,16 @@
 # # MOEX
 #
 # check.raw.files()
-# new('moex') %>%
-#   ticker('IMOEX') %>%
-#   observation.start %>%
-#   use.archive %>%
-#   previous.date.till %>%
-#   date.from %>%
-#   download.ts %>%
-#   write.ts
 #
-new('fred') %>%
-  ticker('SP500') %>%
-  freq %>%
-  observation.start %>%
-  use.archive %>%
-  previous.date.till %>%
-  date.from %>%
-  download.ts%>%
-  write.ts
+# new('moex') %>%download.by.ticker('IMOEX')
 #
+# new('fred') %>%download.by.ticker('SP500')
 #
-# new('oecd') %>%
-#   ticker('cli_RUS') %>%
-#   observation.start %>%
-#   use.archive %>%
-#   oecd.ticker %>%
-#   url %>%
-#   download.ts%>%
-#   write.ts
+# new('oecd') %>%download.by.ticker('cli_RUS')
 #
-# new('igrea') %>%
-#   ticker('igrea') %>%
-#   observation.start %>%
-#   use.archive %>%
-#   url %>%
-#   download.ts%>%
-#   write.ts
+# new('dallasfed') %>%download.by.ticker('igrea')
 #
-#
-# new('cbr') %>%
-#   ticker('export_usd') %>%
-#   freq %>%
-#   observation.start %>%
-#   use.archive %>%
-#   previous.date.till %>%
-#   date.from %>%
-#   cbr.ticker %>%
-#   url %>%
-#   download.ts %>%
-#   write.ts()
-#
-
+# new('cbr') %>%download.by.ticker('export_usd')
 
 # save info data ----
 #
@@ -81,3 +40,21 @@ new('fred') %>%
 #   rename(value = sp500)
 # usethis::use_data(archive_SP500, internal = TRUE, overwrite = TRUE)
 # eval(parse(text = 'macroparsing:::archive_SP500'))
+
+
+# # download all data ----
+# library(macroparsing)
+# check.raw.files()
+# st <- Sys.time()
+# download(use_future = F)
+# Sys.time() - st
+# do.call(file.remove,
+#         list(list.files("C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw/",
+#                         full.names = TRUE)))
+# check.raw.files()
+# st <- Sys.time()
+# download(use_future = TRUE)
+# Sys.time() - st
+# download(sources = 'moex')
+# download(sources = 'fred', ticker ='IMOEX')
+# download(ticker='SP500')

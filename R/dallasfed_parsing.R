@@ -1,8 +1,8 @@
 #' @include common.R
-setClass('igrea',slots = list(url='character'),
+setClass('dallasfed',slots = list(url='character'),
          contains = 'parsed_ts')
 
-setMethod("initialize", "igrea",
+setMethod("initialize", "dallasfed",
           function(.Object,
                    ticker,
                    observation_start,
@@ -27,7 +27,7 @@ setMethod("initialize", "igrea",
 
 
 
-setMethod("url", "igrea",
+setMethod("url", "dallasfed",
           function(object
           ) {
             object@url <- 'https://www.dallasfed.org/-/media/Documents/research/igrea/igrea.xlsx'
@@ -37,7 +37,7 @@ setMethod("url", "igrea",
           }
 )
 
-setMethod("download.ts", "igrea",
+setMethod("download.ts", "dallasfed",
           function(object
           ) {
             try({
@@ -58,5 +58,20 @@ setMethod("download.ts", "igrea",
             return(object)
 
           }
+)
+
+
+
+setMethod(
+  "write.ts", "dallasfed",
+  function(object) {
+
+    data.table::fwrite(object@ts,
+                       file = paste0(Sys.getenv('directory'), '/data/raw/',object@ticker,
+                                     ".csv"),
+                       append = TRUE)
+    validObject(object)
+    return(object)
+  }
 )
 

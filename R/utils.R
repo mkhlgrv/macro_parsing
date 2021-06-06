@@ -30,11 +30,8 @@ check.raw.files <- function(actual_directory=NULL){
   if(is.null(actual_directory)){
     actual_directory <- Sys.getenv('directory')
   }
-  list_files <- list.files(actual_directory)
-  data.table::fread(system.file("extdata/info/var_list.csv",
-                                package = "macroparsing"),
-                    encoding = 'UTF-8',
-                    select = 'ticker') %>%
+  list_files <- list.files(paste0(actual_directory, '/data/raw/'))
+  macroparsing::variables %>%
     .$ticker %>%
     paste0(".csv") %>%
     .[which(!.%in% list_files)] %>%

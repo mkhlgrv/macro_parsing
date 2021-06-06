@@ -42,7 +42,7 @@ cgi_RUS,oecd,m,Consumer confidence index Russia,Consumer confidence index Russia
 cgi_USA,oecd,m,Consumer confidence index USA,Consumer confidence index USA,1960-01-01,FALSE,CGI USA
 igrea,dallasfed,m,Index of Global Real Economic Activity,Index of Global Real Economic Activity,1968-01-01,FALSE,Index of Global Real Economic Activity
 mosprime,cbr,d,MosPrime Rate (1 month),MosPrime Rate (1 мес),2005-04-18,FALSE,MosPrime Rate (1 мес)
-money_base,cbr,m,Monetary Base (Narrow Definition),Денежная база (в узком определении),2002-01-01,FALSE,M0
+monetary_base,cbr,m,Monetary Base (Narrow Definition),Денежная база (в узком определении),2002-01-01,FALSE,M0
 m2,cbr,m,Money Supply,Денежная масса (М2),1992-12-01,FALSE,M2
 import_usd,cbr,q,Imports in USD,Импорт в долларах,1994-01-01,FALSE,Импорт в долларах
 usd,cbr,d,USDRUB: Official exchange rate,Курс рубля к доллару,2001-04-01,FALSE,Курс рубля к доллару
@@ -51,4 +51,4 @@ miacr,cbr,d,Moscow InterBank Actual Credit Rate: Weighted Average Actual Rates o
 saldo,cbr,d,The Bank of Russia transactions balance for liquidity supply/withdrawal,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности,2003-10-01,FALSE,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности
 repo,cbr,d,Repo transactions amount outstanding,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01,FALSE,Требования Банка России к кредитным организациям по операциям репо в рублях
 export_usd,cbr,q,Exports in USD,Экспорт в долларах,1994-01-01,FALSE,Экспорт в долларах
-money_base_weekly,cbr,w,Monetary Base (Narrow Definition),Денежная база (в узком определении),2014-10-01,FALSE,MO (недельная)
+monetary_base_weekly,cbr,w,Monetary Base (Narrow Definition),Денежная база (в узком определении),2014-10-01,FALSE,MO (недельная)

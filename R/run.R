@@ -46,15 +46,15 @@
 # library(macroparsing)
 # check.raw.files()
 # st <- Sys.time()
-# download(use_future = F)
+# download(source='cbr', use_future = F)
 # Sys.time() - st
 # do.call(file.remove,
 #         list(list.files("C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw/",
 #                         full.names = TRUE)))
 # check.raw.files()
 # st <- Sys.time()
-# download(use_future = TRUE)
+# download(source='cbr', use_future = TRUE)
 # Sys.time() - st
 # download(sources = 'moex')
-# download(sources = 'fred', ticker ='IMOEX')
+# macroparsing::download(ticker ='cli_RUS')
 # download(ticker='SP500')

@@ -4,10 +4,7 @@
 \alias{set.environment}
 \title{Title}
 \usage{
-set.environment(
-  path = "C:/Users/Mikhail Gareev/Documents/macroparsing_usage",
-  fredr_api_key = "aaa"
-)
+set.environment(path, fredr_api_key)
 }
 \arguments{
 \item{path}{character.}

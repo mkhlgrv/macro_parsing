@@ -11,12 +11,14 @@ RoxygenNote: 7.1.1
 Collate: 
     'common.R'
     'cbr_parsing.R'
+    'dallasfed_parsing.R'
     'dataset_doc.R'
     'fred_parsing.R'
-    'igrea_parsing.R'
     'moex_parsing.R'
     'oecd_parsing.R'
     'run.R'
+    'util-download_by_ticker.R'
+    'utils-download.R'
     'utils-pipe.R'
     'utils.R'
 Imports: 

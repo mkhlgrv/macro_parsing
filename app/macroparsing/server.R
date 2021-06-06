@@ -7,19 +7,31 @@
 #    http://shiny.rstudio.com/
 #
 
-library(shiny)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
+  get.data.from.csv <- function(tickers){
+    tickers %>%
+    purrr::map_dfr(function(ticker){
+      data.table::fread(paste0(Sys.getenv('directory'),"/data/raw/",
+                               ticker, '.csv'),
+                        select = c('date', 'value')) %>%
+        dplyr::mutate(ticker = ticker)
+    })
+
+
+  }
     output$plot <- renderPlot({
 
-        data.table::fread(paste0("C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw/",
-                                 input$ticker, '.csv'),
-                          select = c('date', 'value')) %>%
+
+      get.data.from.csv(input$ticker) %>%
             ggplot(aes(x=date, y =value))+
             geom_line()+
-            theme_minimal()
+            theme_minimal()+
+        facet_wrap(vars(ticker), scales = 'free_y')
+
+
 
     })
 

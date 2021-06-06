@@ -21,12 +21,13 @@ shinyUI(fluidPage(
     # Sidebar with a slider input for number of bins
     fluidRow(
         column(4,
-               selectInput("ticker",
-                           "Переменные:",
-                           choices = macroparsing::variables$ticker,
-                           selected = 'usd',
-                           multiple = FALSE
-                            )
+               selectizeInput(
+                   "ticker",
+                   "Переменные:",
+                   choices = macroparsing::variables$ticker,
+                   selected = 'usd',
+                   multiple = TRUE,
+                   options = list(maxItems = 9))
         ),
 
         # Show a plot of the generated distribution

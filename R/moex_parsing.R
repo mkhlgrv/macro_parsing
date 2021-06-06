@@ -106,11 +106,12 @@ setMethod("download.ts.chunk", "moex",
           function(object
           ) {
               object@ts <- data.table::fread(object@url,
-                                select = c('end' = 'POSIXct', 'close'='numeric')) %>%
+                                select = c('end' = 'POSIXct', 'close'='numeric'),
+                                verbose = FALSE) %>%
                 dplyr::rename(date = end,
                        value = close) %>%
                 dplyr::group_by(date) %>%
-                dplyr::summarise(value = first(value)) %>%
+                dplyr::summarise(value = value[1]) %>%
                 dplyr::ungroup() %>%
                 dplyr::mutate(date = as.Date(date),
                        update_date = as.Date(Sys.Date())) %>%
@@ -135,7 +136,6 @@ setMethod("download.ts", "moex",
                 date.till %>%
                 url %>%
                 download.ts.chunk %>%
-
                 date.from
               if(object@date_from != date_from){
 

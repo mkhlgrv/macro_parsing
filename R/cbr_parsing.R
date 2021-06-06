@@ -133,14 +133,14 @@ setMethod("url", "cbr",
                                     'saldo',
                                     'repo',
                                     'fer',
-                                    'money_base_weekly',
-                                    'money_base')){
+                                    'monetary_base_weekly',
+                                    'monetary_base')){
               object@url <-
                 paste0('https://www.cbr.ru/eng/hd_base/',
                        object@cbr_ticker,
                        '/')
 
-              if(object@ticker %in% c('fer', 'money_base_weekly', 'money_base')){
+              if(object@ticker %in% c('fer', 'monetary_base_weekly', 'monetary_base')){
                 object@url <-
                   paste0(object@url,
                          '?UniDbQuery.Posted=True',
@@ -201,8 +201,8 @@ format.date.value.xml <- function(x, ticker){
       dplyr::mutate(value = gsub(",", "", value) %>%
                       gsub(pattern = "—",replacement =  NA,x = .) %>%
                       as.numeric())
-  } else if(ticker %in% c('money_base_weekly',
-                                'money_base')){
+  } else if(ticker %in% c('monetary_base_weekly',
+                                'monetary_base')){
     x %>%
       dplyr::mutate(date = as.Date(date, format = '%d.%m.%Y')) %>%
       dplyr::mutate(value = gsub(",", "", value) %>%
@@ -234,8 +234,8 @@ setMethod("download.ts", "cbr",
                                            'saldo',
                                            'repo',
                                            'fer',
-                                           'money_base_weekly',
-                                           'money_base')){
+                                           'monetary_base_weekly',
+                                           'monetary_base')){
 
 
               if(object@ticker %in% c('mosprime', 'saldo', 'repo')){
@@ -250,8 +250,8 @@ setMethod("download.ts", "cbr",
                                                  format = "%d/%m/%Y"),
                                         'UniDbQuery.Posted'= 'True'))
               } else if(object@ticker %in% c('miacr', 'fer',
-                                       'money_base_weekly',
-                                       'money_base')){
+                                       'monetary_base_weekly',
+                                       'monetary_base')){
                 x <- httr::GET(object@url)
               }
               if(object@ticker == 'mosprime'){
@@ -260,7 +260,7 @@ setMethod("download.ts", "cbr",
                 col_index <- c(1,2)
               }
               n_skip <- integer()
-              if(object@ticker == 'money_base'){
+              if(object@ticker == 'monetary_base'){
                 n_skip <- 1L
               }
 

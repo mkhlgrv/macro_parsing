@@ -1,6 +1,6 @@
 ticker,cbr_ticker
 mosprime,mosprime
-money_base,mb_nd/mb_nd_month
+monetary_base,mb_nd/mb_nd_month
 m2,ms/mse_m21
 import_usd,credit_statistics/bop/bal_of_payments_standart_e
 usd,R01235
@@ -9,4 +9,4 @@ miacr,mkr
 saldo,saldo
 repo,repo_debt
 export_usd,credit_statistics/bop/bal_of_payments_standart_e
-money_base_weekly,mb_nd/mb_nd_weekly
+monetary_base_weekly,mb_nd/mb_nd_weekly

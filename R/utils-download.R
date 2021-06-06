@@ -38,7 +38,7 @@ download <- function(tickers  = NULL, sources=NULL, use_future=FALSE){
   }
 
   if(use_future){
-    # future::plan(future::multisession())
+    future::plan(future::multisession())
     iwalk_fun <- furrr::future_iwalk
     walk_fun <- furrr::future_walk
   } else{

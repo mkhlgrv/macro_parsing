@@ -62,6 +62,8 @@ setMethod(
       ticker(.ticker) %>%
       observation.start %>%
         use.archive %>%
+        previous.date.till %>%
+        date.from %>%
         oecd.ticker %>%
         url %>%
         download.ts%>%
@@ -77,6 +79,8 @@ setMethod(
       ticker(.ticker) %>%
         observation.start %>%
         use.archive %>%
+        previous.date.till %>%
+        date.from %>%
         url %>%
         download.ts%>%
         write.ts

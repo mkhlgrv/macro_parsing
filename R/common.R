@@ -164,3 +164,30 @@ setMethod(
     return(object)
   }
 )
+
+setMethod("date.from", "parsed_ts",
+          function(object
+          ) {
+
+            if(nrow(object@ts)==0){
+              date_from <- object@previous_date_till
+
+
+            } else {
+              date_from <- object@ts %>%
+                .[nrow(.),] %>%
+                .$date
+            }
+
+            if(length(date_from)==0){
+              object@date_from <- object@observation_start %>%
+                lubridate::ymd()
+            } else {
+              object@date_from <- date_from %>%
+                lubridate::ymd()
+            }
+            validObject(object)
+            return(object)
+          }
+)
+

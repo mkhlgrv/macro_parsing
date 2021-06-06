@@ -135,7 +135,7 @@ setMethod(
       select = "date"
     ) %>%
       .$date %>%
-      .[nrow(.)] %>%
+      .[length(.)] %>%
       lubridate::ymd()
 
     validObject(object)
@@ -155,11 +155,11 @@ setMethod(
           date, update_date
         )
     }
+
     data.table::fwrite(object@ts,
-                       file = system.file(paste0("inst/extdata/raw/",
-                                                 object@ticker,
-                                                 ".csv"),
-                                                 package="macroparsing"), append = TRUE)
+                       file = paste0(Sys.getenv('directory'), '/data/raw/',object@ticker,
+                                     ".csv"),
+                       append = TRUE)
     validObject(object)
     return(object)
   }

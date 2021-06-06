@@ -61,17 +61,3 @@ setMethod("download.ts", "dallasfed",
 )
 
 
-
-setMethod(
-  "write.ts", "dallasfed",
-  function(object) {
-
-    data.table::fwrite(object@ts,
-                       file = paste0(Sys.getenv('directory'), '/data/raw/',object@ticker,
-                                     ".csv"),
-                       append = TRUE)
-    validObject(object)
-    return(object)
-  }
-)
-

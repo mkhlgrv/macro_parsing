@@ -48,7 +48,9 @@ import_usd,cbr,q,Imports in USD,Импорт в долларах,1994-01-01,FALS
 usd,cbr,d,USDRUB: Official exchange rate,Курс рубля к доллару,2001-04-01,FALSE,Курс рубля к доллару
 fer,cbr,w,International Reserves of the Russian Federation (End of period),Международные резервы Российской Федерации (к концу периода),1998-05-29,FALSE,Международные резервы
 miacr,cbr,d,Moscow InterBank Actual Credit Rate: Weighted Average Actual Rates on Moscow banks’ credits in rubles (1 day),"Показатели ставок межбанковского кредитного рынка группы MIACR: Средневзвешенные фактические ставки по кредитам в рублях, предоставленным московскими банками (1 день)",2000-08-01,FALSE,MIACR (1 день)
-saldo,cbr,d,The Bank of Russia transactions balance for liquidity supply/withdrawal,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности,2003-10-01,FALSE,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности
-repo,cbr,d,Repo transactions amount outstanding,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01,FALSE,Требования Банка России к кредитным организациям по операциям репо в рублях
+saldo,cbr,d,The Bank of Russia transactions balance for liquidity supply/withdrawal,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности,2003-10-01,FALSE,Сальдо операций ЦБ по предоставлению / абсорбированию ликвидности
+repo,cbr,d,Repo transactions amount outstanding,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01,FALSE,Требования ЦБ к кредитным организациям по операциям репо в рублях
 export_usd,cbr,q,Exports in USD,Экспорт в долларах,1994-01-01,FALSE,Экспорт в долларах
 monetary_base_weekly,cbr,w,Monetary Base (Narrow Definition),Денежная база (в узком определении),2014-10-01,FALSE,MO (недельная)
+depo,cbr,d,Deposit Standing Facility Interest Rates,Ставки по депозитам постоянного действия,1997-11-26,FALSE,Ставки по депозитам постоянного действия
+ostat,cbr,d,Correspondent account balances of credit institutions with the Bank of Russia,Денежные средства кредитных организаций на корреспондентских счетах в Банке России,1997-11-04,FALSE,Денежные средства кредитных организаций на коррсчетах в ЦБ

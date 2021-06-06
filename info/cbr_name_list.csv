@@ -10,3 +10,5 @@ saldo,saldo
 repo,repo_debt
 export_usd,credit_statistics/bop/bal_of_payments_standart_e
 monetary_base_weekly,mb_nd/mb_nd_weekly
+depo,depo
+ostat,ostat

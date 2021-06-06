@@ -168,15 +168,14 @@ setMethod("url", "cbr",
 
 
 rename.in.xml <- function(x, ticker){
-
-  ticker <- match.arg(ticker, choices = c('usd', 'miacr'))
-  value_name <- switch(ticker,
-                       usd = 'Value',
-                       miacr = 'C1')
-  x %>% .[,c('.attrs', value_name)] %>%
-    dplyr::rename(date = .attrs,
-                  value = {{value_name}} )
-
+  ticker <- match.arg(ticker, choices = c("usd", "miacr"))
+  value_name <- switch(ticker, usd = "Value", miacr = "C1")
+  x %>% .[, c(".attrs", value_name)] %>% dplyr::rename(date = .attrs,
+                                                       value = {
+                                                         {
+                                                           value_name
+                                                         }
+                                                       })
 }
 
 format.date.value.xml <- function(x, ticker){
@@ -189,9 +188,10 @@ format.date.value.xml <- function(x, ticker){
       dplyr::mutate(date = as.Date(date, format = '%d.%m.%Y'))
   } else if(ticker %in% c('miacr')){
     x %>%
-      .[grep(pattern = '\\d{2}(/)\\d{2}(/)\\d{4}',
-             x = .$date),]  %>%
-      dplyr::mutate(date = as.Date(date, format = '%d/%m/%Y'))
+      .[which(.$date=='3')-1,]  %>%
+      dplyr::mutate(date = as.Date(date, format = '%d/%m/%Y'))%>%
+      dplyr::mutate(value = gsub("-", NA, value) %>%
+                    as.numeric())
   } else if(ticker %in% c('mosprime',
                           'saldo',
                           'repo',
@@ -287,12 +287,13 @@ setMethod("download.ts", "cbr",
               object@ts <- readxl::read_xlsx(temp_file,
                                 sheet = 1,
                                 skip = 5,
-                                range = 'A6:B10000',
+                                range = 'A6:B1000',
                                 col_names = c('date', 'value')) %>%
                 dplyr::mutate(date = seq.Date(from = object@observation_start,
                                        by = as.character(object@freq),
                                        length.out = nrow(.))) %>%
                 dplyr::mutate(update_date = as.Date(Sys.Date())) %>%
+                na.omit() %>%
                 dplyr::arrange(date, update_date)
             } else if(object@ticker %in% c('export_usd', 'import_usd')){
               n_col <- readxl::read_xlsx(temp_file,
@@ -318,6 +319,7 @@ setMethod("download.ts", "cbr",
                                               by = as.character(object@freq),
                                               length.out = nrow(.))) %>%
                 dplyr::mutate(update_date = as.Date(Sys.Date())) %>%
+                na.omit() %>%
                 dplyr::arrange(date, update_date)
             }
 

@@ -10,6 +10,8 @@
 #' @examples
 download <- function(tickers  = NULL, sources=NULL, use_future=FALSE){
 
+  check.raw.files()
+
   if(is.null(tickers)&is.null(sources)){
     variables_df <- macroparsing::variables
   } else if(!is.null(tickers)&is.null(sources)){

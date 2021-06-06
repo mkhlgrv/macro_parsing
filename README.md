@@ -25,6 +25,11 @@ devtools::install_local(path = "C:/PATH/TO/REPO")
 ```r
 macroparsing::variables
 ```
+
+Показать список источников:
+```r
+macroparsing::sources
+```
 Скачать данные:
 ```r
 macroparsing::download() # все доступные временные ряды

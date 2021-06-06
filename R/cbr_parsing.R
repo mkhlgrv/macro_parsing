@@ -119,7 +119,7 @@ setMethod("url", "cbr",
                      ,'&VAL_NM_RQ=',
                      object@cbr_ticker)
             }
-            else if(object@ticker %in% c('miacr')){ # also: depo, swap, ostat
+            else if(object@ticker %in% c('miacr', 'depo')){ # also: depo, swap, ostat
 
               object@url <- paste0('http://www.cbr.ru/scripts/xml_',
                      object@cbr_ticker
@@ -128,6 +128,16 @@ setMethod("url", "cbr",
                      ,'&date_req2=',
                      format(lubridate::today(), format = "%d/%m/%Y")
                      )
+            }
+            else if(object@ticker %in% c('ostat')){ # also: depo, swap, ostat
+
+              object@url <- paste0('http://www.cbr.ru/scripts/XML_',
+                                   object@cbr_ticker
+                                   ,'.asp?date_req1=',
+                                   format(object@date_from, format = "%d/%m/%Y")
+                                   ,'&date_req2=',
+                                   format(lubridate::today(), format = "%d/%m/%Y")
+              )
             }
             else if(object@ticker %in% c('mosprime',
                                     'saldo',
@@ -169,8 +179,12 @@ setMethod("url", "cbr",
 
 rename.in.xml <- function(x, ticker){
   ticker <- match.arg(ticker, choices = c("usd", "miacr"))
-  value_name <- switch(ticker, usd = "Value", miacr = "C1")
-  x %>% .[, c(".attrs", value_name)] %>% dplyr::rename(date = .attrs,
+  value_name <- switch(ticker,
+                       usd = "Value",
+                       miacr = "C1"
+                       )
+  x %>% .[, c(".attrs", value_name)] %>%
+    dplyr::rename(date = .attrs,
                                                        value = {
                                                          {
                                                            value_name
@@ -229,7 +243,34 @@ setMethod("download.ts", "cbr",
                               update_date = as.Date(Sys.Date())) %>%
                 dplyr::arrange(date, update_date)
 
+            }else if(object@ticker %in% c('depo', 'ostat')){
+              if(object@ticker == 'depo'){
+                valuename <- 'Overnight'
+              } else{
+                valuename <- "InRussia"
+              }
+              object@ts <- XML::xmlToList(object@url)%>%
+                purrr::map_dfr(function(x){
+                  x <- x %>%
+                    plyr::compact()
+
+                  if(valuename %in% names(x)){
+
+                    tibble::tibble(date = x$.attrs %>% as.Date(format = '%d.%m.%Y'),
+                                   value = gsub(',','.', x[valuename]) %>%
+                                     as.numeric())}
+                  else{
+                    tibble::tibble(date = lubridate::ymd(),
+                                   value = numeric())
+                  }
+                }) %>%
+                dplyr::mutate(date = as.Date(date),
+                              update_date = as.Date(Sys.Date())) %>%
+                dplyr::arrange(date, update_date)
             }
+
+
+
             else if(object@ticker %in% c('mosprime',
                                            'saldo',
                                            'repo',

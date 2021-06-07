@@ -18,15 +18,18 @@ shinyServer(function(input, output) {
   }
     output$plot <- renderPlot({
 
+      if(length(input$ticker)>0){
+        get.data.from.csv(input$ticker) %>%
+          filter(date >= input$daterange[1],
+                 date <= input$daterange[2],) %>%
+          ggplot(aes(x=date, y =value))+
+          geom_line()+
+          theme_minimal()+
+          labs(x='Дата', y ='Значение')+
+          facet_wrap(vars(name_rus_short), scales = 'free_y')
+      }
 
-      get.data.from.csv(input$ticker) %>%
-        filter(date >= input$daterange[1],
-               date <= input$daterange[2],) %>%
-            ggplot(aes(x=date, y =value))+
-            geom_line()+
-            theme_minimal()+
-        labs(x='Дата', y ='Значение')+
-        facet_wrap(vars(name_rus_short), scales = 'free_y')
+
 
 
 

@@ -23,8 +23,10 @@ shinyUI(fluidPage(
                    multiple = TRUE,
                    options = list(maxItems = 9)
                    ),
-               dateRangeInput("daterange", "Date range:",
+               dateRangeInput("daterange", "Дата",
                               min = "1960-01-01",
+                              separator = " - ",
+                              language = "ru",
                               start = "2000-01-01",
                               end   = lubridate::today() %>%
                                   as.character())

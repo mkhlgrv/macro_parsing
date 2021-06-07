@@ -1,25 +1,37 @@
-#
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 
-library(shiny)
 
-# Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
+  get.data.from.csv <- function(tickers){
+    tickers %>%
+    purrr::map_dfr(function(ticker){
+      data.table::fread(paste0(Sys.getenv('directory'),"/data/raw/",
+                               ticker, '.csv'),
+                        select = c('date', 'value')) %>%
+        dplyr::mutate(ticker = ticker)
+    }) %>%
+      inner_join(macroparsing::variables[,
+                                         c('ticker', 'name_rus_short')],
+                 by ='ticker')
+
+
+  }
     output$plot <- renderPlot({
 
-        data.table::fread(paste0("C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw/",
-                                 input$ticker, '.csv'),
-                          select = c('date', 'value')) %>%
-            ggplot(aes(x=date, y =value))+
-            geom_line()+
-            theme_minimal()
+      if(length(input$ticker)>0){
+        get.data.from.csv(input$ticker) %>%
+          filter(date >= input$daterange[1],
+                 date <= input$daterange[2],) %>%
+          ggplot(aes(x=date, y =value))+
+          geom_line()+
+          theme_minimal()+
+          labs(x='Дата', y ='Значение')+
+          facet_wrap(vars(name_rus_short), scales = 'free_y')
+      }
+
+
+
+
 
     })
 

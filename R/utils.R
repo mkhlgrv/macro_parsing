@@ -15,34 +15,10 @@ check.directory <- function(actual_directory = NULL){
   dir.create(paste0(actual_directory, '/data/raw'),
              showWarnings = FALSE,
              recursive = TRUE) # сюда добавить все остальные директории если требуются
-  check.raw.files(actual_directory = actual_directory)
+  check.files(actual_directory = actual_directory, type='raw')
+  check.files(actual_directory = actual_directory, type='transform')
+  check.files(actual_directory = actual_directory, type='deseason')
 
-}
-#' check.raw.files
-#'
-#' @param actual_directory
-#'
-#' @return
-#' @export
-#'
-#' @examples
-check.raw.files <- function(actual_directory=NULL){
-  if(is.null(actual_directory)){
-    actual_directory <- Sys.getenv('directory')
-  }
-  list_files <- list.files(paste0(actual_directory, '/data/raw/'))
-  macroparsing::variables %>%
-    .$ticker %>%
-    paste0(".csv") %>%
-    .[which(!.%in% list_files)] %>%
-    purrr::walk(function(filei){
-      data.table::fwrite(tibble::tibble(date = character(),
-                                value = numeric(),
-                                update_date = character()),
-                         file = (paste0(actual_directory,  '/data/raw/',
-                                       filei))
-                         )
-    })
 }
 
 #' Title
@@ -61,7 +37,8 @@ set.environment <- function(path,
   dir.create(path = paste0(path, '/data'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/raw_excel'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/raw'), showWarnings = FALSE)
-  dir.create(path = paste0(path, '/data/out'), showWarnings = FALSE)
+  dir.create(path = paste0(path, '/data/transform'), showWarnings = FALSE)
+  dir.create(path = paste0(path, '/data/deseason'), showWarnings = FALSE)
 
   # create .Renviron file ----
   text <- paste0("fredr_api_key=",fredr_api_key,
@@ -71,3 +48,23 @@ set.environment <- function(path,
 
 }
 
+
+check.files <- function(actual_directory=NULL, type = c('raw', 'transform', 'deseason')){
+  type <- match.arg(type)
+  if(is.null(actual_directory)){
+    actual_directory <- Sys.getenv('directory')
+  }
+  list_files <- list.files(paste0(actual_directory, '/data/',type,'/'))
+  macroparsing::variables %>%
+    .$ticker %>%
+    paste0(".csv") %>%
+    .[which(!.%in% list_files)] %>%
+    purrr::walk(function(filei){
+      data.table::fwrite(tibble::tibble(date = character(),
+                                        value = numeric(),
+                                        update_date = character()),
+                         file = (paste0(actual_directory,  '/data/',type,'/',
+                                        filei))
+      )
+    })
+}

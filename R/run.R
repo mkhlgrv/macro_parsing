@@ -5,7 +5,7 @@
 # # plan(multisession)
 # # MOEX
 #
-# check.raw.files()
+# check.files()
 #
 # new('moex') %>%download.by.ticker('IMOEX')
 #
@@ -44,14 +44,14 @@
 
 # # download all data ----
 # library(macroparsing)
-# check.raw.files()
+# check.files()
 # st <- Sys.time()
 # download(source='cbr', use_future = F)
 # Sys.time() - st
 # do.call(file.remove,
 #         list(list.files("C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw/",
 #                         full.names = TRUE)))
-# check.raw.files()
+# check.files()
 # st <- Sys.time()
 # download(source='cbr', use_future = TRUE)
 # Sys.time() - st

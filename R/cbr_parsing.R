@@ -1,63 +1,6 @@
 #' @include common.R
-setClass('cbr',
-         slots = list(
-                      url = 'character',
-                      freq = 'factor',
-                      cbr_ticker = 'character'
-         ),
-         contains = 'parsed_ts')
 
 
-
-#' Title
-#'
-#' @param cbr
-#'
-#' @return
-#' @export
-#'
-#' @examples
-setMethod("initialize", "cbr",
-          function(.Object,
-                   ticker,
-                   observation_start,
-                   previous_date_till,
-                   date_from,
-                   ts,
-                   url,
-                   freq,
-                   cbr_ticker
-
-          ) {
-            .Object@ticker <- character()
-            .Object@observation_start <- lubridate::ymd()
-            .Object@previous_date_till <- lubridate::ymd()
-            .Object@use_archive <- logical()
-            .Object@date_from <- lubridate::ymd()
-            .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(),
-                                         update_date = lubridate::ymd())
-            .Object@url <- character()
-            .Object@freq <- factor(levels = c('d', 'w', 'm'))
-            .Object@cbr_ticker <- character()
-            validObject(.Object)
-            return(.Object)
-          }
-)
-
-
-
-setMethod("freq", "cbr",
-          function(object
-          ) {
-            object@freq <- macroparsing::variables %>%
-              .[which(.$ticker==object@ticker),] %>%
-              .$freq %>%
-              factor(levels = c('d', 'w', 'm', 'q'))
-            validObject(object)
-            return(object)
-          }
-)
 
 
 setMethod("date.from", "cbr",

@@ -1,3 +1,4 @@
+#'@include classes.R
 ticker <- function(object, ticker) {
   UseMethod("ticker")
 }
@@ -44,52 +45,25 @@ oecd.ticker <- function(object) {
   UseMethod("oecd_ticker")
 }
 
+transform <- function(object) {
+  UseMethod("transform")
+}
 
-#' Title
-#'
-#' @slot ticker character.
-#' @slot observation_start Date.
-#' @slot previous_date_till Date.
-#' @slot date_from Date.
-#' @slot ts data.frame.
-#'
-#' @return
-#' @export
-#'
-#' @examples
-setClass("parsed_ts",
-  slots = list(
-    ticker = "character",
-    observation_start = "Date",
-    use_archive = 'logical',
-    previous_date_till = "Date",
-    date_from = "Date",
-    ts = "data.frame"
-  )
-)
+transform.ts <- function(object) {
+  UseMethod("transform.ts")
+}
+write.transform.ts <- function(object) {
+  UseMethod("write.transform.ts")
+}
 
-setMethod(
-  "initialize", "parsed_ts",
-  function(.Object,
-           ticker,
-           observation_start,
-           use_archive,
-           date_from,
-           ts) {
-    .Object@ticker <- character()
-    .Object@observation_start <- lubridate::ymd()
-    .Object@use_archive <- logical()
-    .Object@previous_date_till <- lubridate::ymd()
-    .Object@date_from <- lubridate::ymd()
-    .Object@ts <- tibble::tibble(
-      date = lubridate::ymd(),
-      value = numeric(),
-      update_date = lubridate::ymd()
-    )
-    validObject(.Object)
-    return(.Object)
-  }
-)
+deseason <- function(object) {
+  UseMethod("deseason")
+}
+deseason.ts <- function(object) {
+  UseMethod("deseason.ts")
+}
+
+
 
 setMethod(
   "ticker", "parsed_ts",
@@ -124,6 +98,28 @@ setMethod(
   }
 )
 
+setMethod(
+  "transform", "parsed_ts",
+  function(object) {
+    object@transform <- macroparsing::variables %>%
+      .[which(.$ticker == object@ticker), ] %>%
+      .$transform
+    validObject(object)
+    return(object)
+  }
+)
+
+
+setMethod(
+  "deseason", "parsed_ts",
+  function(object) {
+    object@transform <- macroparsing::variables %>%
+      .[which(.$ticker == object@ticker), ] %>%
+      .$deseason
+    validObject(object)
+    return(object)
+  }
+)
 setMethod(
   "previous.date.till", "parsed_ts",
   function(object) {
@@ -191,3 +187,56 @@ setMethod("date.from", "parsed_ts",
           }
 )
 
+
+setMethod("freq", "parsed_ts",
+          function(object
+          ) {
+            object@freq <- macroparsing::variables %>%
+              .[which(.$ticker==object@ticker),] %>%
+              .$freq %>%
+              factor(levels = c('d', 'w', 'm', 'q'))
+            validObject(object)
+            return(object)
+          }
+)
+
+setMethod("transform.ts", "parsed_ts",
+          function(object
+          ) {
+
+            object@transform.ts <- data.table::fread(file = paste0(Sys.getenv('directory'),
+                                                                   '/data/raw/',
+                                                                   object@ticker,
+                                                                   '.csv')) %>%
+              na.omit() %>%
+              dplyr::group_by(date) %>%
+              dplyr::filter(dplyr::row_number() == max(dplyr::row_number())) %>%
+              dplyr::ungroup() %>%
+              {
+                if(object@transform=='cummean'){
+                  dplyr::group_by(.data = .,
+                                  zoo::as.yearmon(date)) %>%
+                    dplyr::mutate(value = dplyr::cummean(value)) %>%
+                    dplyr::ungroup() %>%
+                    dplyr::select(date, value, update_date)
+
+                } else{ .}
+              }
+            validObject(object)
+            return(object)
+          }
+)
+
+
+setMethod("write.transform.ts", "parsed_ts",
+          function(object) {
+
+            data.table::fwrite(object@transform.ts,
+                               file = paste0(Sys.getenv('directory'), '/data/transform/',
+                                             object@ticker,
+                                             ".csv"),
+                               append = FALSE)
+            validObject(object)
+            return(object)
+          }
+)

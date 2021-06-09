@@ -49,7 +49,7 @@ usd,cbr,d,USDRUB: Official exchange rate,Курс рубля к доллару,2
 fer,cbr,w,International Reserves of the Russian Federation (End of period),Международные резервы Российской Федерации (к концу периода),1998-05-29,FALSE,Международные резервы,no,logdiff
 miacr,cbr,d,Moscow InterBank Actual Credit Rate: Weighted Average Actual Rates on Moscow banks’ credits in rubles (1 day),"Показатели ставок межбанковского кредитного рынка группы MIACR: Средневзвешенные фактические ставки по кредитам в рублях, предоставленным московскими банками (1 день)",2000-08-01,FALSE,MIACR (1 день),cummean,diff
 saldo,cbr,d,The Bank of Russia transactions balance for liquidity supply/withdrawal,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности,2003-10-01,FALSE,Сальдо операций ЦБ по предоставлению / абсорбированию ликвидности,no,diff
-repo,cbr,d,Repo transactions amount outstanding,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01,FALSE,Требования ЦБ к кредитным организациям по операциям репо в рублях,no,diff
+repo,cbr,d,Repo transactions amount outstanding,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01,FALSE,Требования ЦБ к кредитным организациям по операциям репо в рублях,no,level
 export_usd,cbr,q,Exports in USD,Экспорт в долларах,1994-01-01,FALSE,Экспорт в долларах,no,logdiff
 monetary_base_weekly,cbr,w,Monetary Base (Narrow Definition),Денежная база (в узком определении),2014-10-01,FALSE,MO (недельная),no,logdiff
 depo,cbr,d,Deposit Standing Facility Interest Rates,Ставки по депозитам постоянного действия,1997-11-26,FALSE,Ставки по депозитам постоянного действия,cummean,diff

@@ -24,7 +24,8 @@ setClass("parsed_ts",
            freq = 'factor',
            transform = 'character',
            deseason = 'character',
-           transform.ts = "data.frame"
+           transform.ts = "data.frame",
+           deseason.ts = "data.frame"
          )
 )
 

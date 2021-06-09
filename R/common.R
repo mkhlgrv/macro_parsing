@@ -62,6 +62,9 @@ deseason <- function(object) {
 deseason.ts <- function(object) {
   UseMethod("deseason.ts")
 }
+write.deseason.ts <- function(object) {
+  UseMethod("write.deseason.ts")
+}
 
 
 
@@ -113,7 +116,7 @@ setMethod(
 setMethod(
   "deseason", "parsed_ts",
   function(object) {
-    object@transform <- macroparsing::variables %>%
+    object@deseason <- macroparsing::variables %>%
       .[which(.$ticker == object@ticker), ] %>%
       .$deseason
     validObject(object)
@@ -228,6 +231,46 @@ setMethod("transform.ts", "parsed_ts",
 )
 
 
+setMethod("deseason.ts", "parsed_ts",
+          function(object
+          ) {
+
+            object@deseason.ts <- data.table::fread(file = paste0(Sys.getenv('directory'),
+                                                                   '/data/transform/',
+                                                                   object@ticker,
+                                                                   '.csv'))
+                deseason_fun <- function(value, value_lag){
+                    if(object@deseason == "logdiff"){
+                    log(value)-log(value_lag)
+                    } else if(object@deseason == "diff"){
+                    value - value_lag
+                    } else if(object@deseason == "level"){
+                    value
+                    }
+                }
+                fred_fun <- {
+                  if(object@freq%in% c('d', 'w', 'm')){
+                    zoo::as.yearmon
+                  } else if(object@freq== 'q'){
+                    zoo::as.yearqtr
+                  }
+                }
+
+                  lagged_ts <- dplyr::mutate(.data = object@deseason.ts,
+                                             year_freq_lead = zoo::as.Date(fred_fun(date)+1)) %>%
+                    dplyr::arrange(date) %>%
+                    dplyr::group_by(year_freq_lead) %>%
+                    dplyr::summarise(value_lag = dplyr::last(value))
+                  object@deseason.ts <- object@deseason.ts %>%
+                    dplyr::mutate(year_freq = zoo::as.Date(fred_fun(date))) %>%
+                    dplyr::inner_join(lagged_ts, by = c("year_freq"="year_freq_lead")) %>%
+                    dplyr::mutate(value = deseason_fun(value, value_lag)) %>%
+                    dplyr::select(date, value, update_date)
+            validObject(object)
+            return(object)
+          }
+)
+
 setMethod("write.transform.ts", "parsed_ts",
           function(object) {
 
@@ -240,3 +283,21 @@ setMethod("write.transform.ts", "parsed_ts",
             return(object)
           }
 )
+
+
+
+setMethod("write.deseason.ts", "parsed_ts",
+          function(object) {
+
+            data.table::fwrite(object@deseason.ts,
+                               file = paste0(Sys.getenv('directory'), '/data/deseason/',
+                                             object@ticker,
+                                             ".csv"),
+                               append = FALSE)
+            validObject(object)
+            return(object)
+          }
+)
+
+
+

@@ -23,6 +23,16 @@ shinyUI(fluidPage(
                    multiple = TRUE,
                    options = list(maxItems = 9)
                    ),
+               selectizeInput(
+                   "type",
+                   "Тип данных:",
+                   choices =
+                       c("Исходный вид"="raw",
+                         "Трансформированные" = "transform",
+                         "Трансформированные и детрендированные" ="deseason"),
+                   selected = "deseason",
+                   multiple = FALSE
+               ),
                dateRangeInput("daterange", "Дата",
                               min = "1960-01-01",
                               separator = " - ",

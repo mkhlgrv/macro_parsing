@@ -5,7 +5,7 @@ shinyServer(function(input, output) {
   get.data.from.csv <- function(tickers){
     tickers %>%
     purrr::map_dfr(function(ticker){
-      data.table::fread(paste0(Sys.getenv('directory'),"/data/transform/",
+      data.table::fread(paste0(Sys.getenv('directory'),"/data/",input$type,"/",
                                ticker, '.csv'),
                         select = c('date', 'value')) %>%
         dplyr::mutate(ticker = ticker) %>%

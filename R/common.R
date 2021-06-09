@@ -1,3 +1,4 @@
+#'@include classes.R
 ticker <- function(object, ticker) {
   UseMethod("ticker")
 }
@@ -44,52 +45,28 @@ oecd.ticker <- function(object) {
   UseMethod("oecd_ticker")
 }
 
+transform <- function(object) {
+  UseMethod("transform")
+}
 
-#' Title
-#'
-#' @slot ticker character.
-#' @slot observation_start Date.
-#' @slot previous_date_till Date.
-#' @slot date_from Date.
-#' @slot ts data.frame.
-#'
-#' @return
-#' @export
-#'
-#' @examples
-setClass("parsed_ts",
-  slots = list(
-    ticker = "character",
-    observation_start = "Date",
-    use_archive = 'logical',
-    previous_date_till = "Date",
-    date_from = "Date",
-    ts = "data.frame"
-  )
-)
+transform.ts <- function(object) {
+  UseMethod("transform.ts")
+}
+write.transform.ts <- function(object) {
+  UseMethod("write.transform.ts")
+}
 
-setMethod(
-  "initialize", "parsed_ts",
-  function(.Object,
-           ticker,
-           observation_start,
-           use_archive,
-           date_from,
-           ts) {
-    .Object@ticker <- character()
-    .Object@observation_start <- lubridate::ymd()
-    .Object@use_archive <- logical()
-    .Object@previous_date_till <- lubridate::ymd()
-    .Object@date_from <- lubridate::ymd()
-    .Object@ts <- tibble::tibble(
-      date = lubridate::ymd(),
-      value = numeric(),
-      update_date = lubridate::ymd()
-    )
-    validObject(.Object)
-    return(.Object)
-  }
-)
+deseason <- function(object) {
+  UseMethod("deseason")
+}
+deseason.ts <- function(object) {
+  UseMethod("deseason.ts")
+}
+write.deseason.ts <- function(object) {
+  UseMethod("write.deseason.ts")
+}
+
+
 
 setMethod(
   "ticker", "parsed_ts",
@@ -124,6 +101,28 @@ setMethod(
   }
 )
 
+setMethod(
+  "transform", "parsed_ts",
+  function(object) {
+    object@transform <- macroparsing::variables %>%
+      .[which(.$ticker == object@ticker), ] %>%
+      .$transform
+    validObject(object)
+    return(object)
+  }
+)
+
+
+setMethod(
+  "deseason", "parsed_ts",
+  function(object) {
+    object@deseason <- macroparsing::variables %>%
+      .[which(.$ticker == object@ticker), ] %>%
+      .$deseason
+    validObject(object)
+    return(object)
+  }
+)
 setMethod(
   "previous.date.till", "parsed_ts",
   function(object) {
@@ -190,4 +189,115 @@ setMethod("date.from", "parsed_ts",
             return(object)
           }
 )
+
+
+setMethod("freq", "parsed_ts",
+          function(object
+          ) {
+            object@freq <- macroparsing::variables %>%
+              .[which(.$ticker==object@ticker),] %>%
+              .$freq %>%
+              factor(levels = c('d', 'w', 'm', 'q'))
+            validObject(object)
+            return(object)
+          }
+)
+
+setMethod("transform.ts", "parsed_ts",
+          function(object
+          ) {
+
+            object@transform.ts <- data.table::fread(file = paste0(Sys.getenv('directory'),
+                                                                   '/data/raw/',
+                                                                   object@ticker,
+                                                                   '.csv')) %>%
+              na.omit() %>%
+              dplyr::group_by(date) %>%
+              dplyr::filter(dplyr::row_number() == max(dplyr::row_number())) %>%
+              dplyr::ungroup() %>%
+              {
+                if(object@transform=='cummean'){
+                  dplyr::group_by(.data = .,
+                                  zoo::as.yearmon(date)) %>%
+                    dplyr::mutate(value = dplyr::cummean(value)) %>%
+                    dplyr::ungroup() %>%
+                    dplyr::select(date, value, update_date)
+
+                } else{ .}
+              }
+            validObject(object)
+            return(object)
+          }
+)
+
+
+setMethod("deseason.ts", "parsed_ts",
+          function(object
+          ) {
+
+            object@deseason.ts <- data.table::fread(file = paste0(Sys.getenv('directory'),
+                                                                   '/data/transform/',
+                                                                   object@ticker,
+                                                                   '.csv'))
+                deseason_fun <- function(value, value_lag){
+                    if(object@deseason == "logdiff"){
+                    log(value)-log(value_lag)
+                    } else if(object@deseason == "diff"){
+                    value - value_lag
+                    } else if(object@deseason == "level"){
+                    value
+                    }
+                }
+                fred_fun <- {
+                  if(object@freq%in% c('d', 'w', 'm')){
+                    zoo::as.yearmon
+                  } else if(object@freq== 'q'){
+                    zoo::as.yearqtr
+                  }
+                }
+
+                  lagged_ts <- dplyr::mutate(.data = object@deseason.ts,
+                                             year_freq_lead = zoo::as.Date(fred_fun(date)+1)) %>%
+                    dplyr::arrange(date) %>%
+                    dplyr::group_by(year_freq_lead) %>%
+                    dplyr::summarise(value_lag = dplyr::last(value))
+                  object@deseason.ts <- object@deseason.ts %>%
+                    dplyr::mutate(year_freq = zoo::as.Date(fred_fun(date))) %>%
+                    dplyr::inner_join(lagged_ts, by = c("year_freq"="year_freq_lead")) %>%
+                    dplyr::mutate(value = deseason_fun(value, value_lag)) %>%
+                    dplyr::select(date, value, update_date)
+            validObject(object)
+            return(object)
+          }
+)
+
+setMethod("write.transform.ts", "parsed_ts",
+          function(object) {
+
+            data.table::fwrite(object@transform.ts,
+                               file = paste0(Sys.getenv('directory'), '/data/transform/',
+                                             object@ticker,
+                                             ".csv"),
+                               append = FALSE)
+            validObject(object)
+            return(object)
+          }
+)
+
+
+
+setMethod("write.deseason.ts", "parsed_ts",
+          function(object) {
+
+            data.table::fwrite(object@deseason.ts,
+                               file = paste0(Sys.getenv('directory'), '/data/deseason/',
+                                             object@ticker,
+                                             ".csv"),
+                               append = FALSE)
+            validObject(object)
+            return(object)
+          }
+)
+
+
 

@@ -1,43 +1,37 @@
-#' Title
-#'
-#' @param tickers
-#' @param sources
-#' @param use_future
-#'
-#' @return
-#' @export
-#'
-#' @examples
-download <- function(tickers  = NULL, sources=NULL, use_future=FALSE){
-
-  check.raw.files()
-
+get.variables.df <- function(tickers=NULL, sources=NULL){
   if(is.null(tickers)&is.null(sources)){
-    variables_df <- macroparsing::variables
+    macroparsing::variables
   } else if(!is.null(tickers)&is.null(sources)){
-    variables_df <- macroparsing::variables %>%
-      dplyr::inner_join(
-        tibble::tibble(ticker = tickers),
-               by = 'ticker')
-  } else if(is.null(tickers)&!is.null(sources)){
-    variables_df <- macroparsing::variables %>%
-      dplyr::inner_join(
-        tibble::tibble(source = sources),
-                       by = 'source'
-      )
-  } else if(!is.null(tickers)&!is.null(sources)){
-
-    variables_df <- rbind(macroparsing::variables %>%
-      dplyr::inner_join(
-        tibble::tibble(source = sources),
-                       by = 'source'
-      ),
     macroparsing::variables %>%
       dplyr::inner_join(
         tibble::tibble(ticker = tickers),
-        by = 'ticker'
-      ))
+        by = 'ticker')
+  } else if(is.null(tickers)&!is.null(sources)){
+    macroparsing::variables %>%
+      dplyr::inner_join(
+        tibble::tibble(source = sources),
+        by = 'source'
+      )
+  } else if(!is.null(tickers)&!is.null(sources)){
+
+    rbind(macroparsing::variables %>%
+            dplyr::inner_join(
+              tibble::tibble(source = sources),
+              by = 'source'
+            ),
+          macroparsing::variables %>%
+            dplyr::inner_join(
+              tibble::tibble(ticker = tickers),
+              by = 'ticker'
+            ))
   }
+}
+fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
+                     type=c("raw", "transform", "deseason")){
+
+  check.files(type=type)
+
+  variables_df <- get.variables.df(tickers=tickers, sources=sources)
 
   if(use_future){
     future::plan(future::multisession())
@@ -47,6 +41,12 @@ download <- function(tickers  = NULL, sources=NULL, use_future=FALSE){
     iwalk_fun <- purrr::iwalk
     walk_fun <- purrr::walk
   }
+
+  by_tiker_fun <- switch(type,
+                         raw = download.by.ticker,
+                         transform = transform.by.ticker,
+                         deseason = deseason.by.ticker)
+
   variables_df %>%
       split(.$source) %>%
     iwalk_fun(function(x, source){
@@ -55,10 +55,34 @@ download <- function(tickers  = NULL, sources=NULL, use_future=FALSE){
           names %>%
         walk_fun(function(ticker, source){
             new(source) %>%
-              download.by.ticker(ticker)
+            by_tiker_fun(ticker)
           }, source = source)
       })
 
 
+
+}
+
+
+
+#' Title
+#'
+#' @param tickers
+#' @param sources
+#' @param use_future
+#' @param transform_and_deseason
+#'
+#' @return
+#' @export
+#'
+#' @examples
+download <- function(tickers  = NULL, sources=NULL,use_future=FALSE,
+                     transform_and_deseason = TRUE){
+
+  fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='raw')
+  if(transform_and_deseason){
+    fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='transform')
+    fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='deseason')
+  }
 
 }

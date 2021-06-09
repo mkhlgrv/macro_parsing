@@ -1,54 +1,56 @@
-ticker,source,freq,name_eng,name_rus,observation_start,use_archive
-IMOEX,moex,d,MOEX Russia Index,Индекс МосБиржи,1997-09-22,FALSE
-MOEX10,moex,d,MOEX 10 Index,Индекс МосБиржи 10,1998-01-06,FALSE
-RTSI,moex,d,RTS Index,Индекс РТС,1995-09-01,FALSE
-RTSOG,moex,d,RTS Oil & Gas Index,Индекс РТС нефти и газа,1999-12-31,FALSE
-RGBI,moex,d,MOEX Government Bond Index Clean Price,Индекс Мосбиржи государственных облигаций ценовой,2003-01-01,FALSE
-RGBITR,moex,d,MOEX Government Bond Index,Индекс Мосбиржи государственных облигаций,2003-01-01,FALSE
-SP500,fred,d,S&P 500,S&P 500,2011-05-31,TRUE
-DCOILBRENTEU,fred,d,Crude Oil Prices: Brent - Europe,Crude Oil Prices: Brent - Europe,1987-05-20,FALSE
-NBRUBIS,fred,m,Russia Nominal Effecive Exchange Rate ,Russia Nominal Effecive Exchange Rate,1997-05-20,FALSE
-PALLFNFINDEXM,fred,m,Global Price Index of All Commodities,Global Price Index of All Commodities,1992-01-01,FALSE
-PALUMUSDM,fred,m,Global price of Aluminum,Global price of Aluminum,1990-01-01,FALSE
-PINDUINDEXM,fred,m,Global price of Industrial Materials index,Global price of Industrial Materials indexs,1992-01-01,FALSE
-PMETAINDEXM,fred,m,Global price of Metal index,Global price of Metal index,1992-01-01,FALSE
-PNICKUSDM,fred,m,Global price of Nickel,Global price of Nickel,1990-01-01,FALSE
-PWHEAMTUSDM,fred,m,Global price of Wheat,Global price of Wheat,1990-01-01,FALSE
-PZINCUSDM,fred,m,Global price of Zinc,Global price of Zinc,1990-01-01,FALSE
-RBRUBIS,fred,m,Russia Real Effective Exchange Rate Broad,Russia Real Effective Exchange Rate Broad,1994-01-01,FALSE
-STLFSI2,fred,w,St. Louis Fed Financial Stress Index,St. Louis Fed Financial Stress Index,1993-12-31,FALSE
-PFOODINDEXM,fred,m,Global price of Food index,Global price of Food index,1992-01-01,FALSE
-PNRGINDEXM,fred,m,Global price of Energy index,Global price of Energy index,1992-01-01,FALSE
-cli_CHN,oecd,m,Composite leading indicator China,Composite leading indicator China,1992-05-01,FALSE
-cli_EA19,oecd,m,Composite leading indicator Euro area,Composite leading indicator Euro area,1965-12-01,FALSE
-cli_G7,oecd,m,Composite leading indicator G7,Composite leading indicator G7,1959-01-01,FALSE
-cli_OECD,oecd,m,Composite leading indicator OECD,Composite leading indicator OECD,1961-06-01,FALSE
-cli_OECDE,oecd,m,Composite leading indicator OECDE,Composite leading indicator OECDE,1966-11-01,FALSE
-cli_RUS,oecd,m,Composite leading indicator Russia,Composite leading indicator Russia,1992-09-01,FALSE
-cli_USA,oecd,m,Composite leading indicator USA,Composite leading indicator USA,1955-01-01,FALSE
-bci_CHN,oecd,m,Business confidence index China,Business confidence index China,2000-02-01,FALSE
-bci_EA19,oecd,m,Business confidence index Euro area,Business confidence index Euro area,1985-01-01,FALSE
-bci_G7,oecd,m,Business confidence index G7,Business confidence index G7,1962-12-01,FALSE
-bci_OECD,oecd,m,Business confidence index OECD,Business confidence index OECD,1974-07-01,FALSE
-bci_OECDE,oecd,m,Business confidence index OECDE,Business confidence index OECDE,1975-12-01,FALSE
-bci_RUS,oecd,m,Business confidence index Russia,Business confidence index Russia,1992-09-01,FALSE
-bci_USA,oecd,m,Business confidence index USA,Business confidence index USA,1950-01-01,FALSE
-cgi_CHN,oecd,m,Consumer confidence index China,Consumer confidence index China,1990-01-01,FALSE
-cgi_EA19,oecd,m,Consumer confidence index EA19,Consumer confidence index EA19,1973-01-01,FALSE
-cgi_G7,oecd,m,Consumer confidence index G7,Consumer confidence index G7,1973-01-01,FALSE
-cgi_OECD,oecd,m,Consumer confidence index OECD,Consumer confidence index OECD,1974-01-01,FALSE
-cgi_OECDE,oecd,m,Consumer confidence index OECDE,Consumer confidence index OECDE,1974-01-01,FALSE
-cgi_RUS,oecd,m,Consumer confidence index Russia,Consumer confidence index Russia,1998-11-01,FALSE
-cgi_USA,oecd,m,Consumer confidence index USA,Consumer confidence index USA,1960-01-01,FALSE
-igrea,dallasfed,m,Index of Global Real Economic Activity,Index of Global Real Economic Activity,1968-01-01,FALSE
-mosprime,cbr,d,MosPrime Rate (1 month),MosPrime Rate (1 мес),2005-04-18,FALSE
-money_base,cbr,m,Monetary Base (Narrow Definition),Денежная база (в узком определении),2002-01-01,FALSE
-m2,cbr,m,Money Supply,Денежная масса (М2),1992-12-01,FALSE
-import_usd,cbr,q,Imports in USD,Импорт в долларах,1994-01-01,FALSE
-usd,cbr,d,USDRUB: Official exchange rate,Курс рубля к доллару,2001-04-01,FALSE
-fer,cbr,w,International Reserves of the Russian Federation (End of period),Международные резервы Российской Федерации (к концу периода),1998-05-29,FALSE
-miacr,cbr,d,Moscow InterBank Actual Credit Rate: Weighted Average Actual Rates on Moscow banks’ credits in rubles (1 day),"Показатели ставок межбанковского кредитного рынка группы MIACR: Средневзвешенные фактические ставки по кредитам в рублях, предоставленным московскими банками (1 день)",2000-08-01,FALSE
-saldo,cbr,d,The Bank of Russia transactions balance for liquidity supply/withdrawal,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности,2003-10-01,FALSE
-repo,cbr,d,Repo transactions amount outstanding,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01,FALSE
-export_usd,cbr,q,Exports in USD,Экспорт в долларах,1994-01-01,FALSE
-money_base_weekly,cbr,w,Monetary Base (Narrow Definition),Денежная база (в узком определении),2014-10-01,FALSE
+ticker,source,freq,name_eng,name_rus,observation_start,use_archive,name_rus_short,transform,deseason
+IMOEX,moex,d,MOEX Russia Index,Индекс МосБиржи,1997-09-22,FALSE,Индекс МосБиржи,cummean,logdiff
+MOEX10,moex,d,MOEX 10 Index,Индекс МосБиржи 10,1998-01-06,FALSE,Индекс МосБиржи 10,cummean,logdiff
+RTSI,moex,d,RTS Index,Индекс РТС,1995-09-01,FALSE,Индекс РТС,cummean,logdiff
+RTSOG,moex,d,RTS Oil & Gas Index,Индекс РТС нефти и газа,1999-12-31,FALSE,Индекс РТС нефти и газа,cummean,logdiff
+RGBI,moex,d,MOEX Government Bond Index Clean Price,Индекс Мосбиржи государственных облигаций ценовой,2003-01-01,FALSE,Индекс Мосбиржи гособлигаций ценовой,cummean,logdiff
+RGBITR,moex,d,MOEX Government Bond Index,Индекс Мосбиржи государственных облигаций,2003-01-01,FALSE,Индекс Мосбиржи гособлигаций,cummean,logdiff
+SP500,fred,d,S&P 500,S&P 500,2011-05-31,TRUE,S&P 500,cummean,logdiff
+DCOILBRENTEU,fred,d,Crude Oil Prices: Brent - Europe,Crude Oil Prices: Brent - Europe,1987-05-20,FALSE,Crude Oil Prices: Brent - Europe,cummean,logdiff
+NBRUBIS,fred,m,Russia Nominal Effecive Exchange Rate ,Russia Nominal Effecive Exchange Rate,1997-05-20,FALSE,Russia Nominal Effecive Exchange Rate,no,logdiff
+PALLFNFINDEXM,fred,m,Global Price Index of All Commodities,Global Price Index of All Commodities,1992-01-01,FALSE,Global Price Index of All Commodities,no,logdiff
+PALUMUSDM,fred,m,Global price of Aluminum,Global price of Aluminum,1990-01-01,FALSE,Global price of Aluminum,no,logdiff
+PINDUINDEXM,fred,m,Global price of Industrial Materials index,Global price of Industrial Materials indexs,1992-01-01,FALSE,Global price of Industrial Materials indexs,no,logdiff
+PMETAINDEXM,fred,m,Global price of Metal index,Global price of Metal index,1992-01-01,FALSE,Global price of Metal index,no,logdiff
+PNICKUSDM,fred,m,Global price of Nickel,Global price of Nickel,1990-01-01,FALSE,Global price of Nickel,no,logdiff
+PWHEAMTUSDM,fred,m,Global price of Wheat,Global price of Wheat,1990-01-01,FALSE,Global price of Wheat,no,logdiff
+PZINCUSDM,fred,m,Global price of Zinc,Global price of Zinc,1990-01-01,FALSE,Global price of Zinc,no,logdiff
+RBRUBIS,fred,m,Russia Real Effective Exchange Rate Broad,Russia Real Effective Exchange Rate Broad,1994-01-01,FALSE,Russia Real Effective Exchange Rate Broad,no,logdiff
+STLFSI2,fred,w,St. Louis Fed Financial Stress Index,St. Louis Fed Financial Stress Index,1993-12-31,FALSE,St. Louis Fed Financial Stress Index,no,level
+PFOODINDEXM,fred,m,Global price of Food index,Global price of Food index,1992-01-01,FALSE,Global price of Food index,no,logdiff
+PNRGINDEXM,fred,m,Global price of Energy index,Global price of Energy index,1992-01-01,FALSE,Global price of Energy index,no,logdiff
+cli_CHN,oecd,m,Composite leading indicator China,Composite leading indicator China,1992-05-01,FALSE,CLI China,no,level
+cli_EA19,oecd,m,Composite leading indicator Euro area,Composite leading indicator Euro area,1965-12-01,FALSE,CLI Euro area,no,level
+cli_G7,oecd,m,Composite leading indicator G7,Composite leading indicator G7,1959-01-01,FALSE,CLI G7,no,level
+cli_OECD,oecd,m,Composite leading indicator OECD,Composite leading indicator OECD,1961-06-01,FALSE,CLI OECD,no,level
+cli_OECDE,oecd,m,Composite leading indicator OECDE,Composite leading indicator OECDE,1966-11-01,FALSE,CLI OECDE,no,level
+cli_RUS,oecd,m,Composite leading indicator Russia,Composite leading indicator Russia,1992-09-01,FALSE,CLI Russia,no,level
+cli_USA,oecd,m,Composite leading indicator USA,Composite leading indicator USA,1955-01-01,FALSE,CLI USA,no,level
+bci_CHN,oecd,m,Business confidence index China,Business confidence index China,2000-02-01,FALSE,BCI China,no,level
+bci_EA19,oecd,m,Business confidence index Euro area,Business confidence index Euro area,1985-01-01,FALSE,BCI Euro area,no,level
+bci_G7,oecd,m,Business confidence index G7,Business confidence index G7,1962-12-01,FALSE,BCI G7,no,level
+bci_OECD,oecd,m,Business confidence index OECD,Business confidence index OECD,1974-07-01,FALSE,BCI OECD,no,level
+bci_OECDE,oecd,m,Business confidence index OECDE,Business confidence index OECDE,1975-12-01,FALSE,BCI OECDE,no,level
+bci_RUS,oecd,m,Business confidence index Russia,Business confidence index Russia,1992-09-01,FALSE,BCI Russia,no,level
+bci_USA,oecd,m,Business confidence index USA,Business confidence index USA,1950-01-01,FALSE,BCI USA,no,level
+cgi_CHN,oecd,m,Consumer confidence index China,Consumer confidence index China,1990-01-01,FALSE,CGI China,no,level
+cgi_EA19,oecd,m,Consumer confidence index EA19,Consumer confidence index EA19,1973-01-01,FALSE,CGI EA19,no,level
+cgi_G7,oecd,m,Consumer confidence index G7,Consumer confidence index G7,1973-01-01,FALSE,CGI G7,no,level
+cgi_OECD,oecd,m,Consumer confidence index OECD,Consumer confidence index OECD,1974-01-01,FALSE,CGI OECD,no,level
+cgi_OECDE,oecd,m,Consumer confidence index OECDE,Consumer confidence index OECDE,1974-01-01,FALSE,CGI OECDE,no,level
+cgi_RUS,oecd,m,Consumer confidence index Russia,Consumer confidence index Russia,1998-11-01,FALSE,CGI Russia,no,level
+cgi_USA,oecd,m,Consumer confidence index USA,Consumer confidence index USA,1960-01-01,FALSE,CGI USA,no,level
+igrea,dallasfed,m,Index of Global Real Economic Activity,Index of Global Real Economic Activity,1968-01-01,FALSE,Index of Global Real Economic Activity,no,level
+mosprime,cbr,d,MosPrime Rate (1 month),MosPrime Rate (1 мес),2005-04-18,FALSE,MosPrime Rate (1 мес),cummean,diff
+monetary_base,cbr,m,Monetary Base (Narrow Definition),Денежная база (в узком определении),2002-01-01,FALSE,M0,no,logdiff
+m2,cbr,m,Money Supply,Денежная масса (М2),1992-12-01,FALSE,M2,no,logdiff
+import_usd,cbr,q,Imports in USD,Импорт в долларах,1994-01-01,FALSE,Импорт в долларах,no,logdiff
+usd,cbr,d,USDRUB: Official exchange rate,Курс рубля к доллару,2001-04-01,FALSE,Курс рубля к доллару,cummean,logdiff
+fer,cbr,w,International Reserves of the Russian Federation (End of period),Международные резервы Российской Федерации (к концу периода),1998-05-29,FALSE,Международные резервы,no,logdiff
+miacr,cbr,d,Moscow InterBank Actual Credit Rate: Weighted Average Actual Rates on Moscow banks’ credits in rubles (1 day),"Показатели ставок межбанковского кредитного рынка группы MIACR: Средневзвешенные фактические ставки по кредитам в рублях, предоставленным московскими банками (1 день)",2000-08-01,FALSE,MIACR (1 день),cummean,diff
+saldo,cbr,d,The Bank of Russia transactions balance for liquidity supply/withdrawal,Сальдо операций Банка России по предоставлению / абсорбированию ликвидности,2003-10-01,FALSE,Сальдо операций ЦБ по предоставлению / абсорбированию ликвидности,no,diff
+repo,cbr,d,Repo transactions amount outstanding,Требования Банка России к кредитным организациям по операциям репо в рублях,2006-11-01,FALSE,Требования ЦБ к кредитным организациям по операциям репо в рублях,no,level
+export_usd,cbr,q,Exports in USD,Экспорт в долларах,1994-01-01,FALSE,Экспорт в долларах,no,logdiff
+monetary_base_weekly,cbr,w,Monetary Base (Narrow Definition),Денежная база (в узком определении),2014-10-01,FALSE,MO (недельная),no,logdiff
+depo,cbr,d,Deposit Standing Facility Interest Rates,Ставки по депозитам постоянного действия,1997-11-26,FALSE,Ставки по депозитам постоянного действия,cummean,diff
+ostat,cbr,d,Correspondent account balances of credit institutions with the Bank of Russia,Денежные средства кредитных организаций на корреспондентских счетах в Банке России,1997-11-04,FALSE,Денежные средства кредитных организаций на коррсчетах в ЦБ,cummean,logdiff

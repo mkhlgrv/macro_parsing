@@ -46,7 +46,7 @@ macroparsing::download(use_future=TRUE) # все доступные времен
 ## Рабочая директория и ключ API
 После установки пакета и получению ключа выполните команду, указав адрес рабочей директории `path` (в ней будут сохраняться все скачанные файлы) и ключ `fredr_api_key`:
 ```r
-macroparsing::set.enviroment(path = "C:/PATH/TO/WORKING/DIR", fredr_api_key = "YourFredrAPIKey")
+macroparsing::set.environment(path = "C:/PATH/TO/WORKING/DIR", fredr_api_key = "YourFredrAPIKey")
 ```
 > :warning: **Избегайте кириллических символов при выборе директории** 
 

@@ -65,6 +65,9 @@ deseason.ts <- function(object) {
 write.deseason.ts <- function(object) {
   UseMethod("write.deseason.ts")
 }
+pattern <- function(object) {
+  UseMethod("pattern")
+}
 
 
 

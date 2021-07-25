@@ -54,3 +54,42 @@ export_usd,cbr,q,Exports in USD,Экспорт в долларах,1994-01-01,FA
 monetary_base_weekly,cbr,w,Monetary Base (Narrow Definition),Денежная база (в узком определении),2014-10-01,FALSE,MO (недельная),no,logdiff
 depo,cbr,d,Deposit Standing Facility Interest Rates,Ставки по депозитам постоянного действия,1997-11-26,FALSE,Ставки по депозитам постоянного действия,cummean,diff
 ostat,cbr,d,Correspondent account balances of credit institutions with the Bank of Russia,Денежные средства кредитных организаций на корреспондентских счетах в Банке России,1997-11-04,FALSE,Денежные средства кредитных организаций на коррсчетах в ЦБ,cummean,logdiff
+unemployment,rosstat,m,,"Безработица, в среднем за 3 месяца, 15-72 года",1994-01-03,TRUE,,dismean,diff
+gross_profit_nom,rosstat,q,,Валовая прибыль экономики в текущих ценах,1995-01-01,TRUE,,no,logdiff
+gdp_real,rosstat,q,,ВВП в постоянных ценах,1995-01-01,TRUE,,no,logdiff
+gdp_nom,rosstat,q,,ВВП в текущих ценах,1995-01-01,TRUE,,no,logdiff
+base_output,rosstat,m,,Выпуск товаров и услуг по базовым видам экономической деятельности  (к предыдущему месяцу),2004-01-01,TRUE,,base,logdiff
+mining_1,rosstat,m,,Добыча полезных ископаемых: индекс предпринимательской уверенности,2006-01-01,FALSE,,no,diff
+import_real,rosstat,q,,Импорт в постоянных ценах,1995-01-01,TRUE,,no,logdiff
+import_nom,rosstat,q,,Импорт в текущих ценах,1995-01-01,TRUE,,no,logdiff
+investment_nom,rosstat,q,,"Инвестиции в основной капитал (млрд руб, в текущих ценах)",1993-01-01,TRUE,,no,logdiff
+invest_fixed_capital_real,rosstat,q,,Инвестиции в основной капитал в постоянных ценах,2006-01-01,TRUE,,no,logdiff
+invest_fixed_capital_nom,rosstat,q,,Инвестиции в основной капитал в текущих ценах,1993-01-01,TRUE,,no,logdiff
+cpi,rosstat,m,,Индекс потребительских цен (к концу предыдущего месяца),1991-01-01,FALSE,,base,logdiff
+consumer,rosstat,q,,Индекс потребительской уверенности,2006-01-01,FALSE,,no,diff
+mpi,rosstat,m,,Индекс промышленного производства (к предыдущему месяцу),2000-01-01,TRUE,,base,logdiff
+cargo_price,rosstat,m,,Индекс тарифов на грузовые перевозки (к концу предыдущего месяца),1994-01-01,TRUE,,base,logdiff
+services_real,rosstat,m,,Индекс физического объема бытовых услуг населению в сопоставимых ценах в % к прошлому году (оперативные данные),1999-01-01,TRUE,,base,logdiff
+ppi,rosstat,m,,Индекс цен производителей промышленных товаров (к концу предыдущего месяца),1998-01-01,TRUE,,base,logdiff
+trp_cargo,rosstat,m,,Коммерческий грузооборот транспорта (млрд тонн-км),1995-01-01,TRUE,,no,logdiff
+wage_nom,rosstat,m,,Номинальная зарплата,1993-01-01,TRUE,,no,logdiff
+electricity_1,rosstat,m,,"Обеспечение электрической энергией, газом и паром; кондиционирование воздуха: индекс предпринимательской уверенности",2006-01-01,FALSE,,no,diff
+wholesale_real,rosstat,m,,"Оборот оптовой торговли, индекс физобъема, к предыдущему месяцу",2001-01-01,TRUE,,base,logdiff
+wholesale,rosstat,m,,"Оборот оптовой торговли, млрд руб (в текущих ценах)",2000-01-01,FALSE,,no,logdiff
+retail_real,rosstat,m,,"Оборот розничной торговли, индекс физобъема (1994.1 =100)",1994-01-01,TRUE,,no,logdiff
+retail_spending,rosstat,m,,"Оборот розничной торговли, млрд рублей  (в текущих ценах)",1999-01-01,TRUE,,no,logdiff
+manufacturing_1,rosstat,m,,Обрабатывающие производства: индекс предпринимательской уверенности,2006-01-01,FALSE,,no,diff
+construction_nom,rosstat,m,,"Объем работ, выполненных по виду деятельности ""Строительство"" (млн руб в текущих ценах)",1999-01-01,TRUE,,no,logdiff
+labor_income_nom,rosstat,q,,Оплата труда в текущих ценах,1995-01-01,TRUE,,no,logdiff
+services,rosstat,m,,"Платные услуги населению, в текущих ценах",2006-01-01,TRUE,,no,logdiff
+cons_real,rosstat,q,,Потребление домохозяйств в постоянных ценах,1995-01-01,TRUE,,no,logdiff
+cons_nom,rosstat,q,,Потребление домохозяйств в текущих ценах,1995-01-01,TRUE,,no,logdiff
+wage_real,rosstat,m,,Реальная зарплата (1993-01 = 100),1993-01-01,TRUE,,no,logdiff
+disp_income_real,rosstat,q,,"Реальные располагаемые денежные доходы, к прошлому периоду",1999-01-01,TRUE,,base,logdiff
+retail_1,rosstat,q,,Розничная торговля: индекс предпринимательской уверенности,2006-01-01,FALSE,,no,diff
+invest_real,rosstat,q,,Совокупные инвестиции в постоянных ценах,1995-01-01,TRUE,,no,logdiff
+invest_nom,rosstat,q,,Совокупные инвестиции в текущих ценах,1995-01-01,TRUE,,no,logdiff
+building_1,rosstat,q,,Строительство: индекс предпринимательской уверенности,2006-01-01,FALSE,,no,diff
+employment,rosstat,m,,"Численность занятых (15-72), в среднем за 3 месяца",1999-01-01,TRUE,,dismean,logdiff
+export_real,rosstat,q,,Экспорт в постоянных ценах,1995-01-01,TRUE,,no,logdiff
+export_nom,rosstat,q,,Экспорт в текущих ценах,2006-01-01,TRUE,,no,logdiff

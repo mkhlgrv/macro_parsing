@@ -17,6 +17,7 @@ Collate:
     'fred_parsing.R'
     'moex_parsing.R'
     'oecd_parsing.R'
+    'rosstat_parsing.R'
     'run.R'
     'util-deseason_by_ticker.R'
     'util-download_by_ticker.R'

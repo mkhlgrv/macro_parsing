@@ -39,7 +39,8 @@ shinyUI(fluidPage(
                               language = "ru",
                               start = "2000-01-01",
                               end   = lubridate::today() %>%
-                                  as.character())
+                                  as.character()),
+               downloadButton('downloadData', 'Загрузить')
         ),
 
         mainPanel(

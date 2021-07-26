@@ -1,5 +1,4 @@
 
-
 shinyServer(function(input, output) {
 
   get.data.from.csv <- function(tickers){
@@ -22,13 +21,22 @@ shinyServer(function(input, output) {
 
 
   }
+
+  output$downloadData <- downloadHandler(
+      filename = function() {
+        paste('data-', Sys.Date(), '.csv', sep='')
+      },
+      content = function(con) {
+          data.table::fwrite(get.data.from.csv(input$ticker), con)
+      }
+    )
     output$plot <- renderPlot({
 
       if(length(input$ticker)>0){
         get.data.from.csv(input$ticker) %>%
           filter(date >= input$daterange[1],
                  date <= input$daterange[2],) %>%
-          ggplot(aes(x=date, y =value, color ='mean'))+
+          ggplot(aes(x=date, y =value))+
           geom_line()+
           # geom_line(aes(y=cm_value, color='cummean'))+
           # geom_line(aes(y=rm_value, color='rollmean'))+

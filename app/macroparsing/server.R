@@ -33,7 +33,7 @@ shinyServer(function(input, output) {
     output$plot <- renderPlot({
 
       if(length(input$ticker)>0){
-        get.data.from.csv(input$ticker) %>%
+        get.data.from.csv(input$ticker[1:min(length(input$ticker), 9)]) %>%
           filter(date >= input$daterange[1],
                  date <= input$daterange[2],) %>%
           ggplot(aes(x=date, y =value))+

@@ -20,8 +20,8 @@ shinyUI(fluidPage(
                            x
                        },
                    selected = 'usd',
-                   multiple = TRUE,
-                   options = list(maxItems = 9)
+                   multiple = TRUE#,
+                   # options = list(maxItems = 9)
                    ),
                selectizeInput(
                    "type",

@@ -92,6 +92,7 @@ setMethod(
 setMethod(
   "download.by.ticker", "rosstat",
   function(object, .ticker) {
+    print(.ticker)
     object <-  object%>%
       ticker(.ticker) %>%
       observation.start %>%

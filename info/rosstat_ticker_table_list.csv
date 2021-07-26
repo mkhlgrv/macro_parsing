@@ -4,7 +4,7 @@ li_manufacturing_1,li_month
 li_mining_1,li_month
 li_consumer,li_consumer
 li_retail_1,li_retail
-li_building_1,lili_building
+li_building_1,li_building
 gdp_nom,stei
 gdp_real,stei
 ipi,stei
@@ -115,3 +115,4 @@ investment_nom,
 services_real,
 wholesale_real,
 wholesale,
+li_services,li_services

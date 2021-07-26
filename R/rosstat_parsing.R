@@ -79,9 +79,10 @@ setMethod("sheet.info","rosstat",
 
 setMethod("download.ts","rosstat",
           function(object){
-            httr::GET(object@file_url,
-                                httr::write_disk(temp_file <-
-                                                   tempfile(fileext = object@ext)))
+            # httr::GET(object@file_url,
+            #                     httr::write_disk(temp_file <-
+            #                                        tempfile(fileext = object@ext)))
+
 
               freq_cols <- switch(object@sheet_info$freq,
                                   "q" = 1:6,
@@ -111,14 +112,21 @@ setMethod("download.ts","rosstat",
                                 "q_horizontal" = "1 quarter")
 
 
+              temp_file <-
+                tempfile(fileext = object@ext)
+
+              download.file(object@file_url,
+                            temp_file,
+                            mode="wb",
+                            quiet = TRUE)
 
 
 
               sheet <- grep(paste0("(^",object@sheet_info$sheet,")( |\\.$|\\. |$)"),
                             readxl::excel_sheets(temp_file))
-
               res <- xlsx::read.xlsx(file = temp_file, sheetName = sheet, colIndex = freq_cols,
                                      startRow = object@sheet_info$start_row)
+
 
               start_row <- grep(pattern = object@sheet_info$header_pattern,
                                 x = res[,object@sheet_info$header_column])[object@sheet_info$n_match]+
@@ -175,9 +183,7 @@ setMethod("download.ts","rosstat",
                   as.numeric()
               }
 
-
-
-
+              file.remove(temp_file)
               object@ts <- tibble::tibble(
                 date = seq.Date(as.Date(paste0(start_year, "-01-01")), by =freq_by, length.out = length(value) ),
                 value = value

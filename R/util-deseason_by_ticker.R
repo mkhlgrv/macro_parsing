@@ -5,6 +5,7 @@ deseason.by.ticker <-  function(object, .ticker) {
 setMethod(
   "deseason.by.ticker", "parsed_ts",
   function(object, .ticker) {
+    print(.ticker)
     object <-  object%>%
       ticker(.ticker) %>%
       freq() %>%

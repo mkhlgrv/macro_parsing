@@ -95,7 +95,7 @@ income_real_disp,4.4,/ in accordance with the Methodological Provisions for calc
 li_electricity_1,1,2006,3,0,m_numeric,3,6,empty_row
 li_manufacturing_1,1,2006,2,0,m_numeric,3,6,next_serie
 li_mining_1,1,2006,1,0,m_numeric,3,6,next_serie
-li_consumer,1,2006,1,0,q,2,5,empty_row
+li_consumer,Лист1,2006,1,0,q,2,5,empty_row
 li_retail_1,1,2006,1,0,q,2,4,empty_row
 li_building_1,1,2006,1,0,q,2,5,empty_row
 li_services,1,2012,1,0,q,2,5,empty_row

@@ -1,0 +1,17 @@
+table,pattern,order
+stei,Electronic edition(.*?)December 2016,1
+stei,"href=\\""(.*?)\\""",2
+li_month,h1>Опережающие индикаторы по видам экономической деятельности(.*?)>XLS<,1
+li_month,"href=\\""(.*?)\\""",2
+li_consumer,Сфера услуг(.*?)>XLS<,1
+li_consumer,"href=\\""(.*?)\\""",2
+li_retail,Строительство(.*?)>XLS<,1
+li_retail,"href=\\""(.*?)\\""",2
+li_building,кондиционирование воздуха(.*?)>XLS<,1
+li_building,"href=\\""(.*?)\\""",2
+li_services,Розничная торговля(.*?)>XLS<,1
+li_services,"href=\\""(.*?)\\""",2
+gdp_expenditure,ВВП годы использование(.*?)ВВП кварталы использование,1
+gdp_expenditure,"href=\""(.*?)\""",2
+gdp_income,ВВП годы по доходам(.*?)ВВП кварталы по доходам,1
+gdp_income,"href=\\""(.*?)\\""",2

@@ -1,410 +1,192 @@
+table <- function(object) {
+  UseMethod("")
+}
+ext <- function(object) {
+  UseMethod("")
+}
 pattern <- function(object) {
   UseMethod("")
 }
+file.url <-  function(object) {
+  UseMethod("")
+}
+sheet.info <-  function(object) {
+  UseMethod("")
+}
+
+
+setMethod("table","rosstat",
+          function(object){
+            object@table <- macroparsing::rosstat_ticker_tables %>%
+              .[which(.$ticker == object@ticker), ] %>%
+              .$table
+            validObject(object)
+            return(object)
+          })
+
+setMethod("url","rosstat",
+          function(object){
+            object@url <- macroparsing::rosstat_tables %>%
+              .[which(.$table == object@table), ] %>%
+              .$url
+            validObject(object)
+            return(object)
+          })
+setMethod("ext","rosstat",
+          function(object){
+            object@ext <- macroparsing::rosstat_tables %>%
+              .[which(.$table == object@table), ] %>%
+              .$ext
+            validObject(object)
+            return(object)
+          })
+
 setMethod("pattern","rosstat",
           function(object){
-            rosstat@pattern
+            object@pattern <- macroparsing::rosstat_table_patterns %>%
+              .[which(.$table == object@table), ] %>%
+              .[order(.$order)] %>%
+              .$pattern %>%
+              as.list()
+
+            object@pattern[length(object@pattern)] <- 'href=\\"(.*?)\\"'
+            validObject(object)
+            return(object)
           })
-# получаем файл
-url <- "https://rosstat.gov.ru/compendium/document/50802"
-pattern_1 <- "Electronic edition(.*?)December 2016"
-pattern_2 <- 'href=\\"(.*?)\\"'
 
-file_url <- stringr::str_match(string = paste0(readLines(url,encoding = 'UTF-8'),
-                                               collapse = ''),
-                               pattern_1)[1,2] %>%
-  stringr::str_match(string = .,
-            pattern_2) %>%
-  .[1,2]
 
-file_url <- paste0("https://rosstat.gov.ru/",file_url)
+setMethod("file.url","rosstat",
+          function(object){
 
-httr::GET(file_url,#object@url,
-          httr::write_disk(temp_file <-
-                             tempfile(fileext = ".xlsx")))
-sheet <- grep("(^1.1)( |\\.|$)", readxl::excel_sheets(temp_file))
-freq_cols <- 1:6
-freq_by = "1 quarter"
+            object@file_url <- paste0("https://rosstat.gov.ru/",
+                                      find.by.pattern(x = paste0(readLines(object@url,encoding = 'UTF-8'),
+                                                          collapse = ''),
+                                               pattern = object@pattern)
+                                      )
+            validObject(object)
+            return(object)
+          })
 
-res <- xlsx::read.xlsx(file = temp_file, sheetName = sheet, colIndex = freq_cols, startRow = 2)
-res %>% colnames()
-match_n <- 1
-start_row <- grep(pattern = "/ GDP, bln rubles", x = res[,1])[match_n]+1
-res <- res[start_row:nrow(res),]
-end_row <- (which(grepl("\\d{4}",res[,1])==FALSE)-1)[1]
-start_year <- res[1,1]
-start_column <- grep('I', colnames(res))[1]
-value <-  res[start_row:end_row,start_column:ncol(res)] %>% t %>% as.matrix %>% as.numeric()
-tibble::tibble(
-  date = seq.Date(as.Date(paste0(start_year, "-01-01")), by =freq_by, length.out = length(value) ),
-  value = value
-)
 
-# из скаченного файла достаем переменную
-# ticker sheet_name header_pattern
-# первый столбец (кварталы или месяцы) определяем по первой встрече "I" или "Jan."
-#
-#
-# get.url.rosstat <- function(tabname = 'cpi'){
-#   if(tabname == 'cpi'){
-#     url <- 'https://rosstat.gov.ru/storage/mediabank/f5RJefBn/Индексы%20потребительских%20цен.html'
-#     pattern <- '<a  href=\\"(.*?)\\">на  товары и услуги</a>'
-#
-#     file_url <- str_match(string = paste0(readLines(url),collapse = ''), pattern)[1,2]
-#
-#   } else if(tabname == 'ppi'){
-#     url <- 'https://rosstat.gov.ru/storage/mediabank/MnPNkLA4/tab-prom-okved2.htm'
-#
-#
-#     pattern_1 <- 'Производителей промышленных товаров(.*?)><span'
-#     pattern_2 <- '<a  href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url),collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#   }else if(tabname == 'cargo_price'){
-#     url <- 'https://rosstat.gov.ru/storage/mediabank/XEtSuAuM/tab-gruz1.htm'
-#
-#
-#     pattern_1 <- '<b>Индексы тарифов на грузовые перевозки(.*?)><span'
-#     pattern_2 <- '<a  href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url),collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#
-#   } else if(tabname == 'mpi'){
-#     url <- 'https://rosstat.gov.ru/enterprise_industrial'
-#
-#
-#     pattern_1 <- 'базисный 2018 год(.*?)Индексы промышленного производства по субъектам Российской Федерации'
-#     pattern_2 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2300:2800],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   } else if(tabname == 'monthly_survey'){
-#     url <- 'https://rosstat.gov.ru/leading_indicators'
-#
-#
-#     pattern_1 <- 'title-page(.*?)Добыча полезных ископаемых'
-#     pattern_2 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2000:2500],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   } else if(tabname == 'unemployment'){
-#     url <- 'https://rosstat.gov.ru/labour_force'
-#
-#
-#     pattern_1 <- 'Уровень безработицы населения в возрасте 15 лет и старше по субъектам Российской Федерации(.*?)Уровень безработицы населения в возрасте 15-72 лет по субъектам Российской Федерации'
-#     pattern_2 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2800:3300],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   } else if(tabname == 'base_output'){
-#     url <- 'https://rosstat.gov.ru/accounts'
-#
-#
-#
-#     pattern_1 <- '>Индекс выпуска товаров и услуг по базовым видам экономической деятельности<(.*?)к предыдущему периоду'
-#     pattern_2 <- 'соответствующему периоду предыдущего года(.*?)в %'
-#     pattern_3 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[4200:4900],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_3) %>%
-#       .[1,2]
-#
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   } else if(tabname == 'building'){
-#     url <- 'https://rosstat.gov.ru/leading_indicators'
-#
-#
-#     pattern_1 <- 'Добыча(.*?)Строительство'
-#     pattern_2 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2200:2500],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   }else if(tabname == 'retail'){
-#     url <- 'https://rosstat.gov.ru/leading_indicators'
-#
-#
-#     pattern_1 <- 'Строительство(.*?)Розничная торговля'
-#     pattern_2 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2300:2600],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   } else if(tabname == 'consumer'){
-#     url <- 'https://rosstat.gov.ru/leading_indicators'
-#
-#
-#     pattern_1 <- 'Сфера услуг(.*?)Потребительский сектор'
-#     pattern_2 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2300:2600],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#
-#
-#   }else if(tabname == 'gdp_nom_va'){
-#     url <- 'https://rosstat.gov.ru/accounts'
-#
-#     pattern_1 <- 'Произведенный ВВП. Квартальные данные по ОКВЭД 2(.*?)текущих ценах'
-#     pattern_2 <- 'Доля малого и среднего предпринимательства в валовом внутреннем продукте(.*?)В '
-#     pattern_3 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2700:3000],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_3) %>%
-#       .[1,2]
-#
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   }else if(tabname == 'gdp_real_va'){
-#     url <- 'https://rosstat.gov.ru/accounts'
-#
-#     pattern_1 <- 'Произведенный ВВП. Квартальные данные по ОКВЭД 2(.*?)В постоянных ценах с исключением сезонного фактора'
-#     pattern_2 <- '</i>DOC</a>(.*?)</i>XLSX</a>'
-#     pattern_3 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2700:3000],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_3) %>%
-#       .[1,2]
-#
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   }else if(tabname == 'gdp_nom_expend'){
-#     url <- 'https://rosstat.gov.ru/storage/mediabank/4kfiafkX/tab28.htm'
-#
-#     pattern <- 'href=\\"(.*?)\\">2011'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern) %>%
-#       .[1,2]
-#
-#   }else if(tabname == 'gdp_real_expend'){
-#     url <- 'https://rosstat.gov.ru/storage/mediabank/rchyXzZz/tab29.htm'
-#
-#     pattern <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern) %>%
-#       .[1,2]
-#
-#   } else if(tabname == 'retail_spending'){
-#     url <- 'https://rosstat.gov.ru/folder/23457'
-#     pattern_1 <- 'Оборот розничной торговли, по Российской Федерации - месячный(.*?)\\.htm">'
-#     pattern_2 <- '>PNG<(.*?)>XLS<'
-#     pattern_3 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_3) %>%
-#       .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   }else if(tabname == 'wholesale'){
-#     url <- 'https://rosstat.gov.ru/folder/14306'
-#     pattern_1 <- 'по Российской Федерации, оборот оптовой торговли(.*?)по Российской Федерации по месяцам'
-#     pattern_2 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   }else if(tabname == 'wage_nom'){
-#     url <- 'https://rosstat.gov.ru/labor_market_employment_salaries'
-#     pattern_1 <- 'Среднемесячная номинальная начисленная заработная плата работников в целом по экономике Российской Федерации(.*?)по месяцам'
-#     pattern_2 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#
-#   }else if(tabname == 'employment'){
-#     url <- 'https://rosstat.gov.ru/labour_force'
-#
-#
-#     pattern_1 <- 'Численность занятых в возрасте 15 лет и старше по субъектам Российской Федерации(.*?)Численность занятых в возрасте 15-72 лет по субъектам Российской Федерации'
-#     pattern_2 <- 'href=\\"(.*?)\\"'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2500:2800],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>%
-#       .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#   }else if(tabname == 'gdp_income'){
-#     url <- 'https://rosstat.gov.ru/storage/mediabank/0t6Ycy6V/tab35.htm'
-#
-#     pattern <- 'href=\\"(.*?)\\">2011'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern) %>%
-#       .[1,2]
-#
-#   }else if(tabname == 'disp_income_real'){
-#     url <- 'https://rosstat.gov.ru/folder/13397'
-#
-#     pattern_1 <- 'Объем и структура денежных доходов населения Российской Федерации по источникам поступления \\(новая методология\\)(.*?)Реальные располагаемые денежные доходы населения по Российской Федерации \\(новая методология\\)'
-#     pattern_2 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>% .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#
-#   }
-#
-#   else if(tabname == 'trp_cargo'){
-#     url <- 'https://rosstat.gov.ru/folder/23455'
-#
-#     pattern_1 <- 'Отправление грузов водным транспортом в районы Крайнего Севера(.*?)Основные показатели перевозочной деятельности транспорта'
-#     pattern_2 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8'),collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>% .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#
-#   }else if(tabname == 'investment_nom'){
-#     url <- 'https://rosstat.gov.ru/investment_nonfinancial'
-#
-#     pattern_1 <- 'Оперативная информация(.*?)Структура инвестиций в основной капитал'
-#     pattern_2 <- 'Структура инвестиций(.*?)Инвестиции в основной капитал'
-#     pattern_3 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[3000:3500],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>% .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_3) %>% .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#
-#   }else if(tabname == 'construction_nom'){
-#     url <- 'https://rosstat.gov.ru/folder/14458'
-#
-#     pattern_1 <- 'Оперативная информация(.*?)выполненный по виду деятельности'
-#     pattern_2 <- 'Ввод в действие мощностей и объектов социально-культурного назначения по субъектам Российской Федерации(.*?)Объем работ'
-#     pattern_3 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[3000:3500],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>% .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_3) %>% .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#
-#   }
-#
-#   else if(tabname == 'retail_real'){
-#     file_url <- 'http://sophist.hse.ru/hse/1/tables/RTRD_M_I.htm'
-#
-#
-#   }else if(tabname == 'wholesale_real'){
-#     url <- 'https://rosstat.gov.ru/folder/14306'
-#
-#     pattern_1 <- 'по Российской Федерации\\, индекс физического объема оборота оптовой торговли(.*?)по Российской Федерации по месяцам'
-#     pattern_2 <- 'href=\\"(.*?)\\">'
-#
-#     file_url <- str_match(string = paste0(readLines(url, encoding = 'UTF-8')[2200:2600],collapse = ''),
-#                           pattern_1) %>%
-#       .[1,2] %>%
-#       str_match(string = .,
-#                 pattern_2) %>% .[1,2]
-#     file_url <- paste0('https://rosstat.gov.ru',file_url)
-#
-#   }
-#   else if(tabname == 'services'){
-#     file_url <- 'https://showdata.gks.ru/finder/descriptors/276924'
-#
-#
-#   }else if(tabname == 'investment_real'){
-#     file_url <- 'http://sophist.hse.ru/hse/1/tables/INVFC_Q_I.htm'
-#
-#
-#   }else if(tabname == 'construction_real'){
-#     file_url <- 'http://sophist.hse.ru/hse/1/tables/CNSTR_M.htm'
-#
-#
-#   }
-#   else if(tabname == 'wage_real'){
-#     file_url <- 'http://sophist.hse.ru/hse/1/tables/WAG_M.htm'
-#
-#
-#   }
-#   file_url
-# }
-#
+setMethod("sheet.info","rosstat",
+          function(object){
+
+            object@sheet_info <-  macroparsing::rosstat_headers %>%
+              .[which(.$ticker  == object@ticker), ]
+            validObject(object)
+            return(object)
+          })
+
+setMethod("download.ts","rosstat",
+          function(object){
+            httr::GET(object@file_url,
+                                httr::write_disk(temp_file <-
+                                                   tempfile(fileext = object@ext)))
+
+              freq_cols <- switch(object@sheet_info$freq,
+                                  "q" = 1:6,
+                                  "m" = 1:18,
+                                  "m_cumul" = 1:13,
+                                  "m_numeric" = 1:15,
+                                  "q_horizontal" = 1:500)
+
+              first_period_name <- switch(object@sheet_info$freq,
+                                          "q" = "I",
+                                          "m" = "Jan",
+                                          "m_cumul" = "Year",
+                                          "m_numeric" = "X1",
+                                          "q_horizontal" = "I квартал")
+              last_period_name <- switch(object@sheet_info$freq,
+                                          "q" = "IV",
+                                          "m" = "Dec",
+                                          "m_cumul" = "Nov",
+                                         "m_numeric" = "X12",
+                                         "q_horizontal" = NA)
+
+              freq_by <- switch(object@sheet_info$freq,
+                                "q" = "1 quarter",
+                                "m" = "1 month",
+                                "m_cumul" = "1 month",
+                                "m_numeric" = "1 month",
+                                "q_horizontal" = "1 quarter")
+
+
+
+
+
+              sheet <- grep(paste0("(^",object@sheet_info$sheet,")( |\\.$|\\. |$)"),
+                            readxl::excel_sheets(temp_file))
+
+              res <- xlsx::read.xlsx(file = temp_file, sheetName = sheet, colIndex = freq_cols,
+                                     startRow = object@sheet_info$start_row)
+
+              start_row <- grep(pattern = object@sheet_info$header_pattern,
+                                x = res[,object@sheet_info$header_column])[object@sheet_info$n_match]+
+                object@sheet_info$skip_after_header
+
+              if(object@sheet_info$freq != "q_horizontal"){
+                res <-  res[start_row:nrow(res),]
+                if(object@sheet_info$end_row_indicator == 'empty_row'){
+                  end_row <- (which(grepl("\\d{4}",res[,object@sheet_info$header_column])==FALSE)-1)[1]
+                } else if(object@sheet_info$end_row_indicator == 'next_serie'){
+                  end_row <- grep(object@sheet_info$header_pattern,
+                                  res[,object@sheet_info$header_column])[2] - 1
+                }
+
+
+                start_year <- res[1,object@sheet_info$header_column] %>%
+                  substr(start = 1,stop = 4) %>%
+                  as.numeric()
+
+                start_column <- grep(first_period_name, colnames(res))[1]
+                end_column <- grep(last_period_name, colnames(res))[1]
+
+                if(object@sheet_info$freq=='m_cumul'){
+                  columns <- c((start_column+1):end_column,
+                               start_column)
+                } else {
+                  columns <- start_column:end_column
+                }
+
+
+
+                # нужно проверять на нумерик
+                value <-  res[1:end_row,
+                              columns] %>%
+                  t %>%
+                  as.matrix %>%
+                  as.numeric()
+              } else{
+
+                year_colnames <- xlsx::read.xlsx(file = temp_file,
+                                sheetName = sheet,
+                                colIndex = 1:5,
+                                startRow = (object@sheet_info$start_row-1)) %>%
+                  colnames()
+
+                start_year <- stringr::str_match(year_colnames, '\\d{4}') %>%
+                  na.omit %>%
+                  .[1,1] %>%
+                  as.numeric()
+
+
+                res <-  res[start_row,(object@sheet_info$header_column+1):ncol(res)]
+                value <- res %>%
+                  as.numeric()
+              }
+
+
+
+
+              object@ts <- tibble::tibble(
+                date = seq.Date(as.Date(paste0(start_year, "-01-01")), by =freq_by, length.out = length(value) ),
+                value = value
+              ) %>%
+                dplyr::mutate(update_date = as.Date(Sys.Date())) %>%
+                na.omit() %>%
+                dplyr::arrange(date, update_date)
+
+
+            validObject(object)
+            return(object)
+          })

@@ -88,3 +88,25 @@ setMethod(
     return(object)
   }
 )
+
+setMethod(
+  "download.by.ticker", "rosstat",
+  function(object, .ticker) {
+    object <-  object%>%
+      ticker(.ticker) %>%
+      observation.start %>%
+      use.archive %>%
+      previous.date.till %>%
+      date.from %>%
+      table %>%
+      url %>%
+      ext %>%
+      pattern %>%
+      file.url %>%
+      sheet.info %>%
+      download.ts%>%
+      write.ts
+    validObject(object)
+    return(object)
+  }
+)

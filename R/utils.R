@@ -68,3 +68,14 @@ check.files <- function(actual_directory=NULL, type = c('raw', 'transform', 'des
       )
     })
 }
+
+find.by.pattern <- function(x, pattern){
+  if(length(pattern)>0){
+    x <- stringr::str_match(string = x,
+                            pattern[[1]])[1,2]
+    pattern <- pattern[-1]
+    find.by.pattern(x, pattern)
+  } else {
+    x
+  }
+}

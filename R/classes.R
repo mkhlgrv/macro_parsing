@@ -158,7 +158,12 @@ setMethod("initialize", "oecd",
 )
 
 setClass('rosstat',
-         slots = list(pattern = 'list'),
+         slots = list(table = 'character',
+                      url = 'character',
+                      ext = 'character',
+                      pattern = 'list',
+                      sheet_info = 'data.frame',
+                      file_url = 'character'),
          contains = 'parsed_ts')
 
 

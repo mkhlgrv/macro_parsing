@@ -16,3 +16,5 @@ li - leading indicators https://rosstat.gov.ru/leading_indicators
 
 у некоторых переменных стоит источник rosstat1 - эти переменные пока не загружаются
 
+
+4.1 Total number of unemployed и для занятых и для безработных

@@ -77,7 +77,7 @@ ppi_services,3.5,/ services,1,1,m,1,2,empty_row
 employed_15_72,4.1,"           / Number of employed population 15 to 72 years old, mln person",1,1,m,1,2,empty_row
 employed,4.1,            / Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
 unemployed_15_72,4.1,"            / Total number of unemployed 15 to 72 years old , mln person",1,1,m,1,2,empty_row
-unemployed,4.1,            / Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
+unemployed,4.1,            / Total number of unemployed aged 15 years and over,2,1,m,1,2,empty_row
 unemployment_15_72,4.1,"/ Unemployment rate 15 to 72 years old, percent",1,1,m,1,2,empty_row
 unemployment,4.1,/ Unemployment rate aged 15 years and over,1,1,m,1,2,empty_row
 unemployment_registered,4.1,         / Number of unemployed registered at bodies of state employment services,1,1,m,1,2,empty_row

@@ -14,23 +14,27 @@ shinyUI(fluidPage(
                    "ticker",
                    "Переменные:",
                    choices =
-                       {
+                       split({
                            x <- macroparsing::variables$ticker
                            names(x) <- macroparsing::variables$name_rus_short
                            x
                        },
+                       macroparsing::variables$source
+                       ),
                    selected = 'usd',
                    multiple = TRUE#,
                    # options = list(maxItems = 9)
                    ),
                selectizeInput(
                    "type",
-                   "Тип данных:",
+                   "Представление данных:",
                    choices =
-                       c("Исходный вид"="raw",
-                         "Трансформированные" = "transform",
-                         "Трансформированные и детрендированные" ="deseason"),
-                   selected = "deseason",
+                       c("В уровнях"="level",
+                         "Темп роста к предыдущему периоду" = "logdiff",
+                         "Темп роста к аналогичному периоду прошлого году" ="logdiff4",
+                         "Изменение к предыдущему периоду" = "diff",
+                         "Изменение к аналогичному периоду прошлого году" = "diff4"),
+                   selected = "level",
                    multiple = FALSE
                ),
                dateRangeInput("daterange", "Дата",

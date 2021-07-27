@@ -156,3 +156,30 @@ setMethod("initialize", "oecd",
             return(.Object)
           }
 )
+
+setClass('rosstat',
+         slots = list(table = 'character',
+                      url = 'character',
+                      ext = 'character',
+                      pattern = 'list',
+                      sheet_info = 'data.frame',
+                      file_url = 'character'),
+         contains = 'parsed_ts')
+
+
+setMethod("initialize", "rosstat",
+          function(.Object
+          ) {
+            .Object@observation_start <- lubridate::ymd()
+            .Object@previous_date_till <- lubridate::ymd()
+            .Object@date_from <- lubridate::ymd()
+            .Object@ts <- tibble::tibble(
+              date = lubridate::ymd(),
+              value = numeric(),
+              update_date = lubridate::ymd()
+            )
+            .Object@freq <- factor(levels = c('d', 'w', 'm', 'q'))
+            validObject(.Object)
+            return(.Object)
+          }
+)

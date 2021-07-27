@@ -76,10 +76,16 @@ fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
 #' @export
 #'
 #' @examples
-download <- function(tickers  = NULL, sources=NULL,use_future=FALSE,
+download <- function(tickers  = NULL,
+                     sources=NULL,
+                     use_future=FALSE,
+                     raw = TRUE,
                      transform_and_deseason = TRUE){
 
-  fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='raw')
+  if(raw){
+    fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='raw')
+  }
+
   if(transform_and_deseason){
     fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='transform')
     fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='deseason')

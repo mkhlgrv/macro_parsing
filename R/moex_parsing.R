@@ -1,44 +1,4 @@
 #' @include common.R
-setClass('moex',
-         slots = list(previous_date_till='Date',
-                      date_till = 'Date',
-                      url = 'character'
-                      ),
-         contains = 'parsed_ts')
-
-
-
-setMethod("initialize", "moex",
-          function(.Object,
-                   ticker,
-                   observation_start,
-                   previous_date_till,
-                   date_from,
-                   date_till,
-                   url,
-                   ts
-          ) {
-            .Object@ticker <- character()
-            .Object@observation_start <- lubridate::ymd()
-            .Object@previous_date_till <- lubridate::ymd()
-            .Object@use_archive <- logical()
-            .Object@date_from <- lubridate::ymd()
-            .Object@date_till <- lubridate::ymd()
-            .Object@url <- character()
-            .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(),
-                                         update_date = lubridate::ymd())
-            validObject(.Object)
-            return(.Object)
-          }
-)
-
-
-
-
-
-
-
 
 
 

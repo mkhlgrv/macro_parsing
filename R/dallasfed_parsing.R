@@ -1,28 +1,4 @@
 #' @include common.R
-setClass('dallasfed',slots = list(url='character'),
-         contains = 'parsed_ts')
-
-setMethod("initialize", "dallasfed",
-          function(.Object,
-                   ticker,
-                   observation_start,
-                   date_from,
-                   ts,
-                   url
-          ) {
-            .Object@ticker <- character()
-            .Object@observation_start <- lubridate::ymd()
-            .Object@use_archive <- logical()
-            .Object@previous_date_till <- lubridate::ymd()
-            .Object@date_from <- lubridate::ymd()
-            .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(),
-                                         update_date = lubridate::ymd())
-            .Object@url <- character()
-            validObject(.Object)
-            return(.Object)
-          }
-)
 
 
 

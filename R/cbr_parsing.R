@@ -1,63 +1,6 @@
 #' @include common.R
-setClass('cbr',
-         slots = list(
-                      url = 'character',
-                      freq = 'factor',
-                      cbr_ticker = 'character'
-         ),
-         contains = 'parsed_ts')
 
 
-
-#' Title
-#'
-#' @param cbr
-#'
-#' @return
-#' @export
-#'
-#' @examples
-setMethod("initialize", "cbr",
-          function(.Object,
-                   ticker,
-                   observation_start,
-                   previous_date_till,
-                   date_from,
-                   ts,
-                   url,
-                   freq,
-                   cbr_ticker
-
-          ) {
-            .Object@ticker <- character()
-            .Object@observation_start <- lubridate::ymd()
-            .Object@previous_date_till <- lubridate::ymd()
-            .Object@use_archive <- logical()
-            .Object@date_from <- lubridate::ymd()
-            .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(),
-                                         update_date = lubridate::ymd())
-            .Object@url <- character()
-            .Object@freq <- factor(levels = c('d', 'w', 'm'))
-            .Object@cbr_ticker <- character()
-            validObject(.Object)
-            return(.Object)
-          }
-)
-
-
-
-setMethod("freq", "cbr",
-          function(object
-          ) {
-            object@freq <- macroparsing::variables %>%
-              .[which(.$ticker==object@ticker),] %>%
-              .$freq %>%
-              factor(levels = c('d', 'w', 'm', 'q'))
-            validObject(object)
-            return(object)
-          }
-)
 
 
 setMethod("date.from", "cbr",
@@ -119,7 +62,7 @@ setMethod("url", "cbr",
                      ,'&VAL_NM_RQ=',
                      object@cbr_ticker)
             }
-            else if(object@ticker %in% c('miacr')){ # also: depo, swap, ostat
+            else if(object@ticker %in% c('miacr', 'depo')){ # also: depo, swap, ostat
 
               object@url <- paste0('http://www.cbr.ru/scripts/xml_',
                      object@cbr_ticker
@@ -129,18 +72,28 @@ setMethod("url", "cbr",
                      format(lubridate::today(), format = "%d/%m/%Y")
                      )
             }
+            else if(object@ticker %in% c('ostat')){ # also: depo, swap, ostat
+
+              object@url <- paste0('http://www.cbr.ru/scripts/XML_',
+                                   object@cbr_ticker
+                                   ,'.asp?date_req1=',
+                                   format(object@date_from, format = "%d/%m/%Y")
+                                   ,'&date_req2=',
+                                   format(lubridate::today(), format = "%d/%m/%Y")
+              )
+            }
             else if(object@ticker %in% c('mosprime',
                                     'saldo',
                                     'repo',
                                     'fer',
-                                    'money_base_weekly',
-                                    'money_base')){
+                                    'monetary_base_weekly',
+                                    'monetary_base')){
               object@url <-
                 paste0('https://www.cbr.ru/eng/hd_base/',
                        object@cbr_ticker,
                        '/')
 
-              if(object@ticker %in% c('fer', 'money_base_weekly', 'money_base')){
+              if(object@ticker %in% c('fer', 'monetary_base_weekly', 'monetary_base')){
                 object@url <-
                   paste0(object@url,
                          '?UniDbQuery.Posted=True',
@@ -169,8 +122,12 @@ setMethod("url", "cbr",
 
 rename.in.xml <- function(x, ticker){
   ticker <- match.arg(ticker, choices = c("usd", "miacr"))
-  value_name <- switch(ticker, usd = "Value", miacr = "C1")
-  x %>% .[, c(".attrs", value_name)] %>% dplyr::rename(date = .attrs,
+  value_name <- switch(ticker,
+                       usd = "Value",
+                       miacr = "C1"
+                       )
+  x %>% .[, c(".attrs", value_name)] %>%
+    dplyr::rename(date = .attrs,
                                                        value = {
                                                          {
                                                            value_name
@@ -201,8 +158,8 @@ format.date.value.xml <- function(x, ticker){
       dplyr::mutate(value = gsub(",", "", value) %>%
                       gsub(pattern = "—",replacement =  NA,x = .) %>%
                       as.numeric())
-  } else if(ticker %in% c('money_base_weekly',
-                                'money_base')){
+  } else if(ticker %in% c('monetary_base_weekly',
+                                'monetary_base')){
     x %>%
       dplyr::mutate(date = as.Date(date, format = '%d.%m.%Y')) %>%
       dplyr::mutate(value = gsub(",", "", value) %>%
@@ -229,13 +186,40 @@ setMethod("download.ts", "cbr",
                               update_date = as.Date(Sys.Date())) %>%
                 dplyr::arrange(date, update_date)
 
+            }else if(object@ticker %in% c('depo', 'ostat')){
+              if(object@ticker == 'depo'){
+                valuename <- 'Overnight'
+              } else{
+                valuename <- "InRussia"
+              }
+              object@ts <- XML::xmlToList(object@url)%>%
+                purrr::map_dfr(function(x){
+                  x <- x %>%
+                    plyr::compact()
+
+                  if(valuename %in% names(x)){
+
+                    tibble::tibble(date = x$.attrs %>% as.Date(format = '%d.%m.%Y'),
+                                   value = gsub(',','.', x[valuename]) %>%
+                                     as.numeric())}
+                  else{
+                    tibble::tibble(date = lubridate::ymd(),
+                                   value = numeric())
+                  }
+                }) %>%
+                dplyr::mutate(date = as.Date(date),
+                              update_date = as.Date(Sys.Date())) %>%
+                dplyr::arrange(date, update_date)
             }
+
+
+
             else if(object@ticker %in% c('mosprime',
                                            'saldo',
                                            'repo',
                                            'fer',
-                                           'money_base_weekly',
-                                           'money_base')){
+                                           'monetary_base_weekly',
+                                           'monetary_base')){
 
 
               if(object@ticker %in% c('mosprime', 'saldo', 'repo')){
@@ -250,8 +234,8 @@ setMethod("download.ts", "cbr",
                                                  format = "%d/%m/%Y"),
                                         'UniDbQuery.Posted'= 'True'))
               } else if(object@ticker %in% c('miacr', 'fer',
-                                       'money_base_weekly',
-                                       'money_base')){
+                                       'monetary_base_weekly',
+                                       'monetary_base')){
                 x <- httr::GET(object@url)
               }
               if(object@ticker == 'mosprime'){
@@ -260,7 +244,7 @@ setMethod("download.ts", "cbr",
                 col_index <- c(1,2)
               }
               n_skip <- integer()
-              if(object@ticker == 'money_base'){
+              if(object@ticker == 'monetary_base'){
                 n_skip <- 1L
               }
 

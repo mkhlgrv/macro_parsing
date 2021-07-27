@@ -1,31 +1,4 @@
 #' @include common.R
-setClass('oecd',
-         slots = list(oecd_ticker = 'character',
-                      url = 'character'),
-         contains = 'parsed_ts')
-
-setMethod("initialize", "oecd",
-          function(.Object,
-                   ticker,
-                   observation_start,
-                   date_from,
-                   ts,
-                   oecd_ticker
-          ) {
-            .Object@ticker <- character()
-            .Object@observation_start <- lubridate::ymd()
-            .Object@previous_date_till <- lubridate::ymd()
-            .Object@use_archive <- logical()
-            .Object@date_from <- lubridate::ymd()
-            .Object@ts <- tibble::tibble(date = lubridate::ymd(),
-                                         value = numeric(),
-                                         update_date = lubridate::ymd())
-            .Object@oecd_ticker <- character()
-            .Object@url <- character()
-            validObject(.Object)
-            return(.Object)
-          }
-)
 
 
 setMethod("oecd.ticker", "oecd",

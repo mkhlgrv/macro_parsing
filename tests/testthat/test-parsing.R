@@ -62,20 +62,20 @@ test_that("Test oecd methods", {
 
 
 test_that("Test IGREA methods", {
-  igrea_ts <- new('igrea') %>%
+  dallasfed_ts <- new('dallasfed') %>%
       ticker('igrea') %>%
       observation.start %>%
       url %>%
       download.ts
 
-  expect_s4_class(igrea_ts, 'igrea')
-  expect_equal(igrea_ts@ticker,"igrea")
-  expect_match(igrea_ts@url, 'media/Documents/research/igrea/igrea')
-  expect_equal(igrea_ts@observation_start,as.Date('1968-01-01'))
-  expect_equal(ncol(igrea_ts@ts),3)
-  expect_equal(igrea_ts@ts$date %>% class,'Date')
-  expect_equal(igrea_ts@ts$value %>% class,'numeric')
-  expect_equal(igrea_ts@ts$update_date %>% class,'Date')
+  expect_s4_class(dallasfed_ts, 'dallasfed')
+  expect_equal(dallasfed_ts@ticker,"igrea")
+  expect_match(dallasfed_ts@url, 'media/Documents/research/igrea/igrea')
+  expect_equal(dallasfed_ts@observation_start,as.Date('1968-01-01'))
+  expect_equal(ncol(dallasfed_ts@ts),3)
+  expect_equal(dallasfed_ts@ts$date %>% class,'Date')
+  expect_equal(dallasfed_ts@ts$value %>% class,'numeric')
+  expect_equal(dallasfed_ts@ts$update_date %>% class,'Date')
 
 })
 

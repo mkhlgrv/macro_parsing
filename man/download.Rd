@@ -4,10 +4,15 @@
 \alias{download}
 \title{Title}
 \usage{
-download(tickers = NULL, sources = NULL, use_future = FALSE)
+download(
+  tickers = NULL,
+  sources = NULL,
+  use_future = FALSE,
+  transform_and_deseason = TRUE
+)
 }
 \arguments{
-\item{use_future}{}
+\item{transform_and_deseason}{}
 }
 \value{
 

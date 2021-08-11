@@ -8,6 +8,7 @@ download(
   tickers = NULL,
   sources = NULL,
   use_future = FALSE,
+  raw = TRUE,
   transform_and_deseason = TRUE
 )
 }

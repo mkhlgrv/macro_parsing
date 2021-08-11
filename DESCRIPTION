@@ -24,6 +24,7 @@ Collate:
     'util-transform_by_ticker.R'
     'utils-download.R'
     'utils-pipe.R'
+    'utils-refequal.R'
     'utils.R'
 Imports: 
     magrittr

@@ -322,7 +322,7 @@ shinyServer(function(input, output) {
                     dplyr::mutate(date = zoo::as.yearqtr(date)%>% zoo::as.Date())
                 } else if(freq=='y'){
                   x <- x %>%
-                    dplyr::mutate(date = as.Date(paste0(year(date), "-01-01")))
+                    dplyr::mutate(date = as.Date(paste0(lubridate::year(date), "-01-01")))
                 }
                     x %>%
                       dplyr::group_by(date) %>%

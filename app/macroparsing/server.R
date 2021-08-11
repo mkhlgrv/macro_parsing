@@ -211,12 +211,12 @@ shinyServer(function(input, output) {
 
     output$table <- renderDataTable({
       macroparsing::variables[,c("name_rus_short","observation_start", "freq", "source")] %>%
-        inner_join(macroparsing::sources[,c("source", "name_rus_short")], by = "source") %>%
+        inner_join(macroparsing::sources[,c("source", "name_rus")], by = "source") %>%
         select(-source) %>%
         dplyr::rename(Переменная="name_rus_short",
                                 "Начало наблюдений" = "observation_start",
                                 "Периодичность" = 'freq',
-                                "Источник" = "description")
+                                "Источник" = "name_rus")
       }
 
     )

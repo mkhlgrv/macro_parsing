@@ -43,21 +43,8 @@ shinyServer(function(input, output) {
     # display a modal dialog with a header, textinput and action buttons
     showModal(modalDialog(
       tags$h2('Добавить переменную'),
-      selectizeInput(
-        "ticker",
-        "Переменные:",
-        choices =
-          split({
-            x <- macroparsing::variables$ticker
-            names(x) <- macroparsing::variables$name_rus_short
-            x
-          },
-          macroparsing::variables$source
-          ),
-        selected = 'usd',
-        multiple = FALSE#,
-        # options = list(maxItems = 9)
-      ),
+      checkboxInput("only_main", "Показать только важные переменные", FALSE),
+      uiOutput("variables_input"),
       selectizeInput(
         "type",
         "Представление данных:",
@@ -188,11 +175,12 @@ shinyServer(function(input, output) {
         paste('data-', Sys.Date(), '.csv', sep='')
       },
       content = function(con) {
+        len <- length(ticker_to_show$ticker)
           data.table::fwrite(get.data.from.csv(ticker_to_show$ticker,
                                                ticker_to_show$type,
                                                ticker_to_show$freq,
-                                               input$daterange[1],
-                                               input$daterange[2]),
+                                               rep(input$daterange[1],len),
+                                               rep(input$daterange[2], len)),
                              con)
       }
     )
@@ -200,8 +188,8 @@ shinyServer(function(input, output) {
 
       if(length(ticker_to_show$ticker)>0){
 
-
         len <- length(ticker_to_show$ticker)
+
         get.data.from.csv(ticker_to_show$ticker,
                           ticker_to_show$type,
                           ticker_to_show$freq,
@@ -226,6 +214,38 @@ shinyServer(function(input, output) {
       selectizeInput("freq","Периодичность",choices= freqs(), selected=1)
     })
 
+    output$variables_input <- renderUI( {
+
+      selectizeInput(
+        "ticker",
+        "Переменные:",
+        choices ={
+          if(input$only_main){
+          x <- macroparsing::variables$ticker
+          names(x) <- macroparsing::variables$name_rus_short
+
+
+          x[which(x %in% c("usd", "gdp_real", "gdp_nom", "DCOILBRENTEU"))]
+
+          } else{
+            split({
+              x <- macroparsing::variables$ticker
+              names(x) <- macroparsing::variables$name_rus_short
+              x
+
+            },
+            macroparsing::variables$source
+            )
+          }
+
+        }
+          ,
+        selected = 'usd',
+        multiple = FALSE
+      )
+    })
+
+
 
     get.data.from.csv <-
       function(ticker, type,
@@ -245,6 +265,7 @@ shinyServer(function(input, output) {
 
 
             k <- switch(.freq,#.freq,
+                        "y"=1,
                         'q' = 4,
                         'm'=12,
                         'w' = 52,
@@ -255,22 +276,26 @@ shinyServer(function(input, output) {
               if(freq_start==.freq){
                 x
               } else {
-                transform <- macroparsing::variables %>%
-                  .[which(.$ticker==.ticker),transform]
+                aggregate <- macroparsing::variables %>%
+                  .[which(.$ticker==.ticker),aggregate]
                 # sum mean prod
-                if(transform=="sum"){
-                  fun_lambda <- sum()
-                } else if(transform=="mean"){
-                  fun_lambda <- mean()
+                if(aggregate=="sum"){
+                  fun_lambda <- sum
+                } else if(aggregate=="mean"){
+                  fun_lambda <- mean
                 }
-                else if(transform=="prod"){
-                  fun_lambda <- cumprod()
+                else if(aggregate=="prod"){
+                  fun_lambda <- cumprod
                 }
-                else if(transform=="last"){
-                  fun_lambda <- last()
+                else if(aggregate=="last"){
+                  fun_lambda <- last
                 }
 
 
+
+                if(aggregate=="prod"){
+                  x$value <- x$value/100
+                }
                 if(.freq=="w"){
                   x <- x %>%
                     dplyr::mutate(date = get.next.weekday(date, "Пт",0))
@@ -290,7 +315,6 @@ shinyServer(function(input, output) {
 
                 }
               }
-            }
 
             fun_to_transfrom <- function(x){
               if(.type=="level"){
@@ -311,11 +335,14 @@ shinyServer(function(input, output) {
                                                          lag = k))
               }
             }
+
             data.table::fread(paste0(Sys.getenv('directory'),"/data/","raw","/",
                                      .ticker, '.csv'),
-                              select = c('date', 'value')) %>%
+                              select = c('date', 'value', "update_date")) %>%
+              dplyr::group_by(date) %>%
+              dplyr::summarise(value = last(value)) %>%
               na.omit %>%
-              fun_to_aggregate %>%
+              fun_to_aggregate() %>%
               fun_to_transfrom() %>%
               dplyr::mutate(ticker = .ticker,
                             type = .type,
@@ -329,7 +356,8 @@ shinyServer(function(input, output) {
             # dplyr::mutate(mean_value = mean(value)) %>%
             # dplyr::ungroup() %>%
             # dplyr::mutate(rm_value = zoo::rollmean(value, k = 23, fill = NA, align = "right"))
-          }) %>%
+          }
+    ) %>%
           inner_join(macroparsing::variables[,
                                              c('ticker', 'name_rus_short')],
                      by ='ticker')

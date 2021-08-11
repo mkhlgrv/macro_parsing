@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ticker,source,freq,name_eng,name_rus,observation_start,use_archive,name_rus_short,transform,deseason,aggregate
 IMOEX,moex,d,MOEX Russia Index,Индекс МосБиржи,1997-09-22,FALSE,Индекс МосБиржи,cummean,logdiff,mean
 MOEX10,moex,d,MOEX 10 Index,Индекс МосБиржи 10,1998-01-06,FALSE,Индекс МосБиржи 10,cummean,logdiff,mean

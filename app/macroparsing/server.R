@@ -208,6 +208,21 @@ shinyServer(function(input, output) {
 
 
     })
+
+    output$table <- renderDataTable({
+      macroparsing::variables[,c("name_rus_short","observation_start", "freq", "source")] %>%
+        inner_join(macroparsing::sources[,c("source", "description")], by = "source") %>%
+        select(-source) %>%
+        dplyr::rename(Переменная="name_rus_short",
+                                "Начало наблюдений" = "observation_start",
+                                "Периодичность" = 'freq',
+                                "Источник" = "description")
+      }
+
+    )
+
+
+
 #
     output$frequency_input <- renderUI( {
 
@@ -336,6 +351,21 @@ shinyServer(function(input, output) {
               }
             }
 
+            type_name <- switch(.type,
+                  "level"="В уровнях",
+              "logdiff"="Темп роста к предыдущему периоду" ,
+               "logdiff4"="Темп роста к аналогичному периоду прошлого году",
+             "diff"= "Изменение к предыдущему периоду",
+              "diff4"="Изменение к аналогичному периоду прошлого году")
+
+            freq_name <- switch(.freq,
+                            "y"="Год",
+                              "q"="Квартал",
+                              "m"="Месяц",
+                              "w"="Неделя",
+                              "d"="День")
+
+
             data.table::fread(paste0(Sys.getenv('directory'),"/data/","raw","/",
                                      .ticker, '.csv'),
                               select = c('date', 'value', "update_date")) %>%
@@ -345,8 +375,8 @@ shinyServer(function(input, output) {
               fun_to_aggregate() %>%
               fun_to_transfrom() %>%
               dplyr::mutate(ticker = .ticker,
-                            type = .type,
-                            freq = .freq
+                            type = type_name,
+                            freq = freq_name
               ) %>%
               na.omit %>%
               filter(date >= .daterange[1],

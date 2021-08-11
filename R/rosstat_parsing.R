@@ -158,7 +158,7 @@ setMethod("download.ts","rosstat",
 
 
 
-                # нужно проверять на нумерик
+                # нужно проверять на соответствие типу numeric
                 value <-  res[1:end_row,
                               columns] %>%
                   t %>%
@@ -184,6 +184,7 @@ setMethod("download.ts","rosstat",
               }
 
               file.remove(temp_file)
+              gc()
               object@ts <- tibble::tibble(
                 date = seq.Date(as.Date(paste0(start_year, "-01-01")), by =freq_by, length.out = length(value) ),
                 value = value

@@ -73,3 +73,6 @@
 # download(ticker='SP500')
 # devtools::load_all()
 # options(java.parameters = "- Xmx1024m")
+
+
+# devtools::build()

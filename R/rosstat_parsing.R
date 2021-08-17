@@ -85,11 +85,11 @@ setMethod("download.ts","rosstat",
 
 
               freq_cols <- switch(object@sheet_info$freq,
-                                  "q" = 1:6,
-                                  "m" = 1:18,
-                                  "m_cumul" = 1:13,
-                                  "m_numeric" = 1:15,
-                                  "q_horizontal" = 1:500)
+                                  "q" = rep("guess",6),
+                                  "m" = rep("guess",18),
+                                  "m_cumul" = rep("guess",13),
+                                  "m_numeric" = rep("guess",15),
+                                  "q_horizontal" = rep("guess",500))
 
               first_period_name <- switch(object@sheet_info$freq,
                                           "q" = "I",
@@ -124,8 +124,11 @@ setMethod("download.ts","rosstat",
 
               sheet <- grep(paste0("(^",object@sheet_info$sheet,")( |\\.$|\\. |$)"),
                             readxl::excel_sheets(temp_file))
-              res <- xlsx::read.xlsx(file = temp_file, sheetName = sheet, colIndex = freq_cols,
-                                     startRow = object@sheet_info$start_row)
+
+              res <- readxl::read_xlsx(path = temp_file,
+                                sheet = sheet,
+                                skip =  object@sheet_info$start_row-1,
+                                col_types = freq_cols)
 
 
               start_row <- grep(pattern = object@sheet_info$header_pattern,
@@ -166,10 +169,11 @@ setMethod("download.ts","rosstat",
                   as.numeric()
               } else{
 
-                year_colnames <- xlsx::read.xlsx(file = temp_file,
-                                sheetName = sheet,
-                                colIndex = 1:5,
-                                startRow = (object@sheet_info$start_row-1)) %>%
+
+                year_colnames <- readxl::read_xlsx(path = temp_file,
+                                  sheet = sheet,
+                                  skip =  object@sheet_info$start_row-2,
+                                  col_types = rep("guess", 5))%>%
                   colnames()
 
                 start_year <- stringr::str_match(year_colnames, '\\d{4}') %>%

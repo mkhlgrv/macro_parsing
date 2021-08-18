@@ -79,3 +79,7 @@ find.by.pattern <- function(x, pattern){
     x
   }
 }
+
+show.variables <- function(){
+  macroparsing::variables[, c("ticker", "source", "freq", "name_eng", "name_rus_short", "observation_start")]
+}

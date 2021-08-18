@@ -74,17 +74,17 @@ cpi_food,3.5,/ food products,1,1,m,1,2,empty_row
 cpi_alcohol,3.5,/ alcoholic beverages,1,1,m,1,2,empty_row
 ppi_non_food,3.5,/ non-food products,1,1,m,1,2,empty_row
 ppi_services,3.5,/ services,1,1,m,1,2,empty_row
-employed_15_72,4.1,"           / Number of employed population 15 to 72 years old, mln person",1,1,m,1,2,empty_row
-employed,4.1,            / Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
-unemployed_15_72,4.1,"            / Total number of unemployed 15 to 72 years old , mln person",1,1,m,1,2,empty_row
-unemployed,4.1,            / Total number of unemployed aged 15 years and over,2,1,m,1,2,empty_row
+employed_15_72,4.1,"/ Number of employed population 15 to 72 years old",1,1,m,1,2,empty_row
+employed,4.1,/ Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
+unemployed_15_72,4.1,"/ Total number of unemployed 15 to 72 years old",1,1,m,1,2,empty_row
+unemployed,4.1,/ Total number of unemployed aged 15 years and over,2,1,m,1,2,empty_row
 unemployment_15_72,4.1,"/ Unemployment rate 15 to 72 years old, percent",1,1,m,1,2,empty_row
 unemployment,4.1,/ Unemployment rate aged 15 years and over,1,1,m,1,2,empty_row
-unemployment_registered,4.1,         / Number of unemployed registered at bodies of state employment services,1,1,m,1,2,empty_row
-non_labor,4.1,"     / Number of citizens not engaged in labor activities, registered   with bodies of  state employment services",1,1,m,1,2,empty_row
-employer_demands,4.1,"  / Employer demands for employees entered to bodies of state employment services, thou person",1,1,m,1,2,empty_row
-non_labor_to_employer_demands,4.1,  / Potential number of population not engaged in labor activities,1,1,m,1,2,empty_row
-wage_nom,4.2,           / Accrued average monthly nominal wages per employee,1,1,m,1,2,empty_row
+unemployment_registered,4.1,/ Number of unemployed registered at bodies of state employment services,1,1,m,1,2,empty_row
+non_labor,4.1,"/ Number of citizens not engaged in labor activities, registered   with bodies of  state employment services",1,1,m,1,2,empty_row
+employer_demands,4.1,"/ Employer demands for employees entered to bodies of state employment services, thou person",1,1,m,1,2,empty_row
+non_labor_to_employer_demands,4.1,/ Potential number of population not engaged in labor activities,1,1,m,1,2,empty_row
+wage_nom,4.2,/ Accrued average monthly nominal wages per employee,1,1,m,1,2,empty_row
 wage_real,4.2,/ percent of previous period,2,1,m,1,2,empty_row
 money_income_1996,4.4,/ in accordance with the methodology for calculating the balance of money incomes and expenditures of population,1,1,q,1,2,empty_row
 money_income,4.4,/ in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,1,1,q,1,2,empty_row

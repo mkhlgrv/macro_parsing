@@ -91,3 +91,6 @@ get.next.weekday <- function(date, day, lead=0){
   }
   out
 }
+show.variables <- function(){
+  macroparsing::variables[, c("ticker", "source", "freq", "name_eng", "name_rus_short", "observation_start")]
+}

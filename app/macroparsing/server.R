@@ -1,4 +1,5 @@
 
+
 shinyServer(function(input, output) {
 
   ticker_to_show <- reactiveValues()
@@ -99,7 +100,7 @@ shinyServer(function(input, output) {
           } else{
             x <- 1:length(ticker_to_show$ticker)
             names(x) <- macroparsing::variables %>%
-              inner_join(tibble(ticker=ticker_to_show$ticker), by = "ticker") %>%
+              inner_join(tibble::tibble(ticker=ticker_to_show$ticker), by = "ticker") %>%
               .$name_rus_short
             x
           }
@@ -210,20 +211,17 @@ shinyServer(function(input, output) {
     })
 
     output$table <- renderDataTable({
-      macroparsing::variables[,c("name_rus_short","observation_start", "freq", "source")] %>%
+      macroparsing::variables[,c("name_rus_short","ticker", "freq", "source")] %>%
         inner_join(macroparsing::sources[,c("source", "name_rus")], by = "source") %>%
-        select(-source) %>%
-        dplyr::rename(Переменная="name_rus_short",
-                                "Начало наблюдений" = "observation_start",
+        dplyr::select(-source) %>%
+        dplyr::rename("Переменная"="name_rus_short",
+                                "Тикер" = "ticker",
                                 "Периодичность" = 'freq',
                                 "Источник" = "name_rus")
       }
 
     )
 
-
-
-#
     output$frequency_input <- renderUI( {
 
       selectizeInput("freq","Периодичность",choices= freqs(), selected=1)
@@ -313,7 +311,7 @@ shinyServer(function(input, output) {
                 }
                 if(.freq=="w"){
                   x <- x %>%
-                    dplyr::mutate(date = get.next.weekday(date, "Пт",0))
+                    dplyr::mutate(date = macroparsing:::get.next.weekday(date, "Пт",0))
                 } else if(freq=='m'){
                   x <- x %>%
                     dplyr::mutate(date = zoo::as.yearmon(date) %>% zoo::as.Date())

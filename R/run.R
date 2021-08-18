@@ -74,5 +74,29 @@
 # devtools::load_all()
 # options(java.parameters = "- Xmx1024m")
 
+# список всех функций (NCmisc)
+# rfile <- file.choose() # choose an R script file with functions
+# NCmisc::list.functions.in.file(rfile)
 
-# devtools::build()
+# usethis::use_package("dplyr")
+# usethis::use_package("data.table")
+# usethis::use_package("XML")
+# usethis::use_package("plyr")
+# usethis::use_package("fredr")
+# usethis::use_package("zoo")
+# usethis::use_package("httr")
+# usethis::use_package("purrr")
+# usethis::use_package("readxl")
+# usethis::use_package("tibble")
+# usethis::use_package("lubridate")
+# usethis::use_package("jsonlite")
+# usethis::use_package("stringr")
+# usethis::use_package("furrr")
+# usethis::use_package("future")
+
+
+# roxygen2::roxygenise()
+
+
+devtools::build(path = 'macroparsing')
+# devtools::install_local(path = 'macroparsing_0.0.0.9000.tar.gz', dependencies = TRUE,force=TRUE)

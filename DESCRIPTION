@@ -27,6 +27,21 @@ Collate:
     'utils-refequal.R'
     'utils.R'
 Imports: 
-    magrittr
+    data.table,
+    dplyr,
+    fredr,
+    furrr,
+    future,
+    httr,
+    jsonlite,
+    lubridate,
+    magrittr,
+    plyr,
+    purrr,
+    readxl,
+    stringr,
+    tibble,
+    XML,
+    zoo
 Depends: 
     R (>= 2.10)

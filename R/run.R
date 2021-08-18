@@ -98,5 +98,7 @@
 # roxygen2::roxygenise()
 
 
-devtools::build(path = 'macroparsing')
+# devtools::build(path = 'macroparsing')
 # devtools::install_local(path = 'macroparsing_0.0.0.9000.tar.gz', dependencies = TRUE,force=TRUE)
+
+# shiny::runApp('app/macroparsing')

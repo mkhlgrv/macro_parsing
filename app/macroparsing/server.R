@@ -1,6 +1,4 @@
-
-
-shinyServer(function(input, output) {
+function(input, output) {
 
   ticker_to_show <- reactiveValues()
 
@@ -392,7 +390,7 @@ shinyServer(function(input, output) {
 
 
       }
-})
+}
 
 
 

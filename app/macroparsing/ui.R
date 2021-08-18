@@ -1,7 +1,4 @@
 
-
-
-shinyUI(
     navbarPage("База данных для экономики России",
                tabPanel("График",
                         fluidRow(
@@ -30,4 +27,3 @@ shinyUI(
                         fluidRow(mainPanel((dataTableOutput("table"))))
                         )
     )
-)

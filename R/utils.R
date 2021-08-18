@@ -43,8 +43,8 @@ set.environment <- function(path,
   # create .Renviron file ----
   text <- paste0("fredr_api_key=",fredr_api_key,
   "\ndirectory=",path)
-  file.create(paste0(path, '/.Renviron'))
-  write(text,file=paste0(path, '/.Renviron'))
+  file.create(paste0(Sys.getenv("HOME"), '/.Renviron'))
+  write(text,file=paste0(Sys.getenv("HOME"), '/.Renviron'))
 
 }
 

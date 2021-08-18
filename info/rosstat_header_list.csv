@@ -65,7 +65,7 @@ ppi_animal,3.2,/ Producer price indices of animal husbandry products,1,1,m,1,2,e
 ppi_cattle,3.2,/ Cattle,1,1,m,1,2,empty_row
 ppi_poultry,3.2,/ Poultry,1,1,m,1,2,empty_row
 ppi_milk,3.2,"/ Milk, rubles per ton",1,1,m,1,2,empty_row
-ppi_eggs,3.2,"/ Hen’s eggs in shell, fresh, rubles per thou pieces",1,1,m,1,2,empty_row
+ppi_eggs,3.2,/ Hen’s eggs,1,1,m,1,2,empty_row
 ppi_investment,3.3,/ Aggregated price index for investment  products,1,1,m,1,2,empty_row
 ppi_construction,3.3,/ of which production price index for construction products,1,1,m,1,2,empty_row
 ppi_freight,3.4,/  Freight producer price,1,1,m,1,2,empty_row
@@ -74,9 +74,9 @@ cpi_food,3.5,/ food products,1,1,m,1,2,empty_row
 cpi_alcohol,3.5,/ alcoholic beverages,1,1,m,1,2,empty_row
 ppi_non_food,3.5,/ non-food products,1,1,m,1,2,empty_row
 ppi_services,3.5,/ services,1,1,m,1,2,empty_row
-employed_15_72,4.1,"/ Number of employed population 15 to 72 years old",1,1,m,1,2,empty_row
+employed_15_72,4.1,/ Number of employed population 15 to 72 years old,1,1,m,1,2,empty_row
 employed,4.1,/ Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
-unemployed_15_72,4.1,"/ Total number of unemployed 15 to 72 years old",1,1,m,1,2,empty_row
+unemployed_15_72,4.1,/ Total number of unemployed 15 to 72 years old,1,1,m,1,2,empty_row
 unemployed,4.1,/ Total number of unemployed aged 15 years and over,2,1,m,1,2,empty_row
 unemployment_15_72,4.1,"/ Unemployment rate 15 to 72 years old, percent",1,1,m,1,2,empty_row
 unemployment,4.1,/ Unemployment rate aged 15 years and over,1,1,m,1,2,empty_row

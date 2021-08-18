@@ -158,9 +158,18 @@ setMethod(
         )
     }
 
+    file_name <- paste0(Sys.getenv('directory'), '/data/raw/',object@ticker,
+                        ".csv")
+    ts_old <- data.table::fread(file= file_name, encoding = "UTF-8",
+                                colClasses = c("Date", "numeric", "Date"))
+
+    object@ts <- dplyr::anti_join(object@ts,
+                                  ts_old,
+                     by =c('date', 'value')
+                     )
+
     data.table::fwrite(object@ts,
-                       file = paste0(Sys.getenv('directory'), '/data/raw/',object@ticker,
-                                     ".csv"),
+                       file = file_name,
                        append = TRUE)
     validObject(object)
     return(object)
@@ -251,7 +260,7 @@ setMethod("deseason.ts", "parsed_ts",
                     value
                     }
                 }
-                fred_fun <- {
+                freq_fun <- {
                   if(object@freq%in% c('d', 'w', 'm')){
                     zoo::as.yearmon
                   } else if(object@freq== 'q'){
@@ -260,12 +269,12 @@ setMethod("deseason.ts", "parsed_ts",
                 }
 
                   lagged_ts <- dplyr::mutate(.data = object@deseason.ts,
-                                             year_freq_lead = zoo::as.Date(fred_fun(date)+1)) %>%
+                                             year_freq_lead = zoo::as.Date(freq_fun(date)+1)) %>%
                     dplyr::arrange(date) %>%
                     dplyr::group_by(year_freq_lead) %>%
                     dplyr::summarise(value_lag = dplyr::last(value))
                   object@deseason.ts <- object@deseason.ts %>%
-                    dplyr::mutate(year_freq = zoo::as.Date(fred_fun(date))) %>%
+                    dplyr::mutate(year_freq = zoo::as.Date(freq_fun(date))) %>%
                     dplyr::inner_join(lagged_ts, by = c("year_freq"="year_freq_lead")) %>%
                     dplyr::mutate(value = deseason_fun(value, value_lag)) %>%
                     dplyr::select(date, value, update_date)

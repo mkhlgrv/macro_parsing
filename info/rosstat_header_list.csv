@@ -1,97 +1,97 @@
 ticker,sheet,header_pattern,n_match,skip_after_header,freq,header_column,start_row,end_row_indicator
-gdp_nom,1.1,"/ GDP, bln rubles",1,1,q,1,2,empty_row
-gdp_real,1.1,"/ Volume index of produced GDP, percent",1,1,q,1,2,empty_row
-ipi,1.2,/ percent of previous period,1,1,m,1,2,empty_row
-ipi_mining,1.2,/ reporting month as percent of previous month,1,1,m,1,2,empty_row
-ipi_manufacturing,1.2,/ reporting month as percent of previous month,2,1,m,1,2,empty_row
-ipi_electricity,1.2,/ reporting month as percent of previous month,3,1,m,1,2,empty_row
-ipi_water,1.2,/ reporting month as percent of previous month,4,1,m,1,2,empty_row
-api,1.3,/ percent of corresponding period of previous year,1,1,m,1,2,empty_row
-animal_livestock,1.4, / Livestock and poultry for slaughter,1,1,m,1,2,empty_row
-animal_milk,1.4,"/ Milk, thou tons",1,1,m,1,2,empty_row
-animal_eggs,1.4,"/ Eggs, mln pieces",1,1,m,1,2,empty_row
-freight_turnover,1.5,"/ Freight turnover of transport, including commercial and noncommercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
-freight_turnover_commercial,1.5,"/ Commercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
-freight_loading_railway,1.5,"/ Freight loading on railway transport, mln ton",1,1,m,1,2,empty_row
-investment_fc,1.6,/ Investments in fixed capital,1,1,q,1,2,empty_row
-investment_fc_own_funds,1.6.1,/ own funds of organizations,1,1,q,1,2,empty_row
-investment_fc_external_funds,1.6.1,/ external funds,1,1,q,1,2,empty_row
+gdp_nom,1.1,"GDP, bln rubles",1,1,q,1,2,empty_row
+gdp_real,1.1,"Volume index of produced GDP, percent",1,1,q,1,2,empty_row
+ipi,1.2,percent of previous period,1,1,m,1,2,empty_row
+ipi_mining,1.2,reporting month as percent of previous month,1,1,m,1,2,empty_row
+ipi_manufacturing,1.2,reporting month as percent of previous month,2,1,m,1,2,empty_row
+ipi_electricity,1.2,reporting month as percent of previous month,3,1,m,1,2,empty_row
+ipi_water,1.2,reporting month as percent of previous month,4,1,m,1,2,empty_row
+api,1.3,percent of corresponding period of previous year,1,1,m,1,2,empty_row
+animal_livestock,1.4, Livestock and poultry for slaughter,1,1,m,1,2,empty_row
+animal_milk,1.4,"Milk, thou tons",1,1,m,1,2,empty_row
+animal_eggs,1.4,"Eggs, mln pieces",1,1,m,1,2,empty_row
+freight_turnover,1.5,"Freight turnover of transport, including commercial and noncommercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
+freight_turnover_commercial,1.5,"Commercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
+freight_loading_railway,1.5,"Freight loading on railway transport, mln ton",1,1,m,1,2,empty_row
+investment_fc,1.6,Investments in fixed capital,1,1,q,1,2,empty_row
+investment_fc_own_funds,1.6.1,own funds of organizations,1,1,q,1,2,empty_row
+investment_fc_external_funds,1.6.1,external funds,1,1,q,1,2,empty_row
 investment_fc_budget_funds,1.6.1,/of which budget funds,1,1,q,1,2,empty_row
-investment_fc_federal_budget,1.6.1,/ from federal budget,1,1,q,1,2,empty_row
-construction_nom,1.7,/ Volume of works in construction activity,1,1,m,1,2,empty_row
-residential,1.8,"/ Residential buildings commissioned by organizations of all types of ownership, mln sq meters of total floor space of living accommodations",1,1,m,1,2,empty_row
-deficit,1.11,/ Deficit,1,1,m_cumul,1,2,empty_row
-retail_nom,1.12,"/ Retail trade turnover, bln rubles",1,1,m,1,2,empty_row
-retail_real,1.12,/ percent of previous period,1,1,m,1,2,empty_row
+investment_fc_federal_budget,1.6.1,from federal budget,1,1,q,1,2,empty_row
+construction_nom,1.7,Volume of works in construction activity,1,1,m,1,2,empty_row
+residential,1.8,"Residential buildings commissioned by organizations of all types of ownership, mln sq meters of total floor space of living accommodations",1,1,m,1,2,empty_row
+deficit,1.11,Deficit,1,1,m_cumul,1,2,empty_row
+retail_nom,1.12,"Retail trade turnover, bln rubles",1,1,m,1,2,empty_row
+retail_real,1.12,percent of previous period,1,1,m,1,2,empty_row
 retail_food_nom,1.12,"food products, including beverages, and tobacco",1,1,m,1,2,empty_row
-retail_food_real,1.12,/ percent of previous period,2,1,m,1,2,empty_row
-retail_non_food_nom,1.12,/ non-food goods,1,1,m,1,2,empty_row
-retail_non_food_real,1.12,/ percent of previous period,3,1,m,1,2,empty_row
-retail_catering_nom,1.12,"/ Catering turnover, bln rubles",1,1,m,1,2,empty_row
-retail_catering_real,1.12,/ percent of previous period,4,1,m,1,2,empty_row
-retail_inventory_nom,1.12,"/ Trade stock of retail trade organizations, end of period",1,1,m,1,2,empty_row
-retail_inventory_days,1.12,"/ Availability of stock of retail trade turnover, days of trade",1,1,m,1,2,empty_row
-services_market,1.13,/ Volume of market services,1,1,m,1,2,empty_row
-net_result_mining,2.2,/Mining and quarrying,1,1,m_cumul,1,2,empty_row
-net_result_manufacturing,2.2,/ Manufacturing,1,1,m_cumul,1,2,empty_row
-net_result_electricity,2.2,"/ Electricity, gas, steam and air conditioning supply",1,1,m_cumul,1,2,empty_row
-net_result_construction,2.2,/ Construction,1,1,m_cumul,1,2,empty_row
-net_result_transport,2.2,/ Transport and storage,1,1,m_cumul,1,2,empty_row
-loss_making_mining,2.2,/ share of total,1,1,m_cumul,1,2,empty_row
-loss_making_manufacturing,2.2,/ share of total,2,1,m_cumul,1,2,empty_row
-loss_making_electricity,2.2,/ share of total,3,1,m_cumul,1,2,empty_row
-loss_making_construction,2.2,/ share of total,4,1,m_cumul,1,2,empty_row
-loss_making_transport,2.2,/ share of total,5,1,m_cumul,1,2,empty_row
-indebtedness_cred,2.4,"/ Creditor indebtedness, bln rubles",1,1,m,1,2,empty_row
-indebtedness_cred_overdue,2.4,"/ of which overdue payments, bln rubles",1,1,m,1,2,empty_row
-indebtedness_cred_suppliers,2.4,"/ Suppliers, bln rubles",1,1,m,1,2,empty_row
-indebtedness_cred_budget,2.4,"/ In budgets of all levels, bln rubles",1,1,m,1,2,empty_row
-indebtedness_debt,2.4,"/ Debtor indebtedness, bln rubles",1,1,m,1,2,empty_row
-indebtedness_debt_overdue,2.4,"/ of which overdue payments, bln rubles",2,1,m,1,2,empty_row
-indebtedness_debt_customer,2.4,"/ from debtor overdue payments is indebtedness of customers, bln rubles",1,1,m,1,2,empty_row
-wage_overdue,2.5,"/  Overdue arrears of wages of month, total",1,1,m,1,2,empty_row
-ppi,3.1,/ Producer price index of industrial goods,1,1,m,1,2,empty_row
-ppi_mining,3.1,/ Mining and quarrying,1,1,m,1,2,empty_row
-ppi_manufacturing,3.1,/ Manufacturing,1,1,m,1,2,empty_row
-ppi_electricity,3.1,"/ Electricity, gas, steam and air conditioning supply",1,1,m,1,2,empty_row
-ppi_water,3.1,"/ Water supply;sewerage, waste management and remediation activities",1,1,m,1,2,empty_row
+retail_food_real,1.12,percent of previous period,2,1,m,1,2,empty_row
+retail_non_food_nom,1.12,non-food goods,1,1,m,1,2,empty_row
+retail_non_food_real,1.12,percent of previous period,3,1,m,1,2,empty_row
+retail_catering_nom,1.12,"Catering turnover, bln rubles",1,1,m,1,2,empty_row
+retail_catering_real,1.12,percent of previous period,4,1,m,1,2,empty_row
+retail_inventory_nom,1.12,"Trade stock of retail trade organizations, end of period",1,1,m,1,2,empty_row
+retail_inventory_days,1.12,"Availability of stock of retail trade turnover, days of trade",1,1,m,1,2,empty_row
+services_market,1.13,Volume of market services,1,1,m,1,2,empty_row
+net_result_mining,2.2,Mining and quarrying,1,1,m_cumul,1,2,empty_row
+net_result_manufacturing,2.2,Manufacturing,1,1,m_cumul,1,2,empty_row
+net_result_electricity,2.2,"Electricity, gas, steam and air conditioning supply",1,1,m_cumul,1,2,empty_row
+net_result_construction,2.2,Construction,1,1,m_cumul,1,2,empty_row
+net_result_transport,2.2,Transport and storage,1,1,m_cumul,1,2,empty_row
+loss_making_mining,2.2,share of total,1,1,m_cumul,1,2,empty_row
+loss_making_manufacturing,2.2,share of total,2,1,m_cumul,1,2,empty_row
+loss_making_electricity,2.2,share of total,3,1,m_cumul,1,2,empty_row
+loss_making_construction,2.2,share of total,4,1,m_cumul,1,2,empty_row
+loss_making_transport,2.2,share of total,5,1,m_cumul,1,2,empty_row
+indebtedness_cred,2.4,"Creditor indebtedness, bln rubles",1,1,m,1,2,empty_row
+indebtedness_cred_overdue,2.4,"of which overdue payments, bln rubles",1,1,m,1,2,empty_row
+indebtedness_cred_suppliers,2.4,"Suppliers, bln rubles",1,1,m,1,2,empty_row
+indebtedness_cred_budget,2.4,"In budgets of all levels, bln rubles",1,1,m,1,2,empty_row
+indebtedness_debt,2.4,"Debtor indebtedness, bln rubles",1,1,m,1,2,empty_row
+indebtedness_debt_overdue,2.4,"of which overdue payments, bln rubles",2,1,m,1,2,empty_row
+indebtedness_debt_customer,2.4,"from debtor overdue payments is indebtedness of customers, bln rubles",1,1,m,1,2,empty_row
+wage_overdue,2.5,"Overdue arrears of wages of month, total",1,1,m,1,2,empty_row
+ppi,3.1,Producer price index of industrial goods,1,1,m,1,2,empty_row
+ppi_mining,3.1,Mining and quarrying,1,1,m,1,2,empty_row
+ppi_manufacturing,3.1,Manufacturing,1,1,m,1,2,empty_row
+ppi_electricity,3.1,"Electricity, gas, steam and air conditioning supply",1,1,m,1,2,empty_row
+ppi_water,3.1,"Water supply;sewerage, waste management and remediation activities",1,1,m,1,2,empty_row
 ppi_oil,3.1.1,"Dehydrated, desalted and stabilized oil",1,1,m,1,2,empty_row
-ppil_coal,3.1.1,"/ Coal, except anthracite, coked coal and brown coal, rubles per ton",1,1,m,1,2,empty_row
-ppi_gas,3.1.1,"/ Natural gas, rubles per thou cubic meter",1,1,m,1,2,empty_row
-ppi_gasoline,3.1.1," / Gasoline, rubles per ton",1,1,m,1,2,empty_row
-ppi_diesel,3.1.1,"/ Diesel oils, rubles per ton",1,1,m,1,2,empty_row
-ppi_resid,3.1.1,"/ Residual fuel oil, rubles per ton",1,1,m,1,2,empty_row
-ppi_animal,3.2,/ Producer price indices of animal husbandry products,1,1,m,1,2,empty_row
-ppi_cattle,3.2,/ Cattle,1,1,m,1,2,empty_row
-ppi_poultry,3.2,/ Poultry,1,1,m,1,2,empty_row
-ppi_milk,3.2,"/ Milk, rubles per ton",1,1,m,1,2,empty_row
-ppi_eggs,3.2,"/ Hen’s eggs in shell, fresh, rubles per thou pieces",1,1,m,1,2,empty_row
-ppi_investment,3.3,/ Aggregated price index for investment  products,1,1,m,1,2,empty_row
-ppi_construction,3.3,/ of which production price index for construction products,1,1,m,1,2,empty_row
-ppi_freight,3.4,/  Freight producer price,1,1,m,1,2,empty_row
-cpi,3.5,/  Consumer price index,1,1,m,1,2,empty_row
-cpi_food,3.5,/ food products,1,1,m,1,2,empty_row
-cpi_alcohol,3.5,/ alcoholic beverages,1,1,m,1,2,empty_row
-ppi_non_food,3.5,/ non-food products,1,1,m,1,2,empty_row
-ppi_services,3.5,/ services,1,1,m,1,2,empty_row
-employed_15_72,4.1,"           / Number of employed population 15 to 72 years old, mln person",1,1,m,1,2,empty_row
-employed,4.1,            / Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
-unemployed_15_72,4.1,"            / Total number of unemployed 15 to 72 years old , mln person",1,1,m,1,2,empty_row
-unemployed,4.1,            / Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
-unemployment_15_72,4.1,"/ Unemployment rate 15 to 72 years old, percent",1,1,m,1,2,empty_row
-unemployment,4.1,/ Unemployment rate aged 15 years and over,1,1,m,1,2,empty_row
-unemployment_registered,4.1,         / Number of unemployed registered at bodies of state employment services,1,1,m,1,2,empty_row
-non_labor,4.1,"     / Number of citizens not engaged in labor activities, registered   with bodies of  state employment services",1,1,m,1,2,empty_row
-employer_demands,4.1,"  / Employer demands for employees entered to bodies of state employment services, thou person",1,1,m,1,2,empty_row
-non_labor_to_employer_demands,4.1,  / Potential number of population not engaged in labor activities,1,1,m,1,2,empty_row
-wage_nom,4.2,           / Accrued average monthly nominal wages per employee,1,1,m,1,2,empty_row
-wage_real,4.2,/ percent of previous period,2,1,m,1,2,empty_row
-money_income_1996,4.4,/ in accordance with the methodology for calculating the balance of money incomes and expenditures of population,1,1,q,1,2,empty_row
-money_income,4.4,/ in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,1,1,q,1,2,empty_row
-income_real_1996,4.4,/ in accordance with the methodology for calculating the balance of money incomes and expenditures of population,5,1,q,1,2,empty_row
-income_real,4.4,/ in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,5,1,q,1,2,empty_row
-income_real_disp_1996,4.4,/ in accordance with the methodology for calculating the balance of money incomes and expenditures of population,7,1,q,1,2,empty_row
-income_real_disp,4.4,/ in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,7,1,q,1,2,empty_row
+ppil_coal,3.1.1,"Coal, except anthracite, coked coal and brown coal, rubles per ton",1,1,m,1,2,empty_row
+ppi_gas,3.1.1,"Natural gas, rubles per thou cubic meter",1,1,m,1,2,empty_row
+ppi_gasoline,3.1.1,"Gasoline, rubles per ton",1,1,m,1,2,empty_row
+ppi_diesel,3.1.1,"Diesel oils, rubles per ton",1,1,m,1,2,empty_row
+ppi_resid,3.1.1,"Residual fuel oil, rubles per ton",1,1,m,1,2,empty_row
+ppi_animal,3.2,Producer price indices of animal husbandry products,1,1,m,1,2,empty_row
+ppi_cattle,3.2,Cattle,1,1,m,1,2,empty_row
+ppi_poultry,3.2,Poultry,1,1,m,1,2,empty_row
+ppi_milk,3.2,"Milk, rubles per ton",1,1,m,1,2,empty_row
+ppi_eggs,3.2,Hen’s eggs,1,1,m,1,2,empty_row
+ppi_investment,3.3,Aggregated price index for investment  products,1,1,m,1,2,empty_row
+ppi_construction,3.3,of which production price index for construction products,1,1,m,1,2,empty_row
+ppi_freight,3.4,Freight producer price,1,1,m,1,2,empty_row
+cpi,3.5,Consumer price index,1,1,m,1,2,empty_row
+cpi_food,3.5,food products,1,1,m,1,2,empty_row
+cpi_alcohol,3.5,alcoholic beverages,1,1,m,1,2,empty_row
+ppi_non_food,3.5,non-food products,1,1,m,1,2,empty_row
+ppi_services,3.5,services,1,1,m,1,2,empty_row
+employed_15_72,4.1,Number of employed population 15 to 72 years old,1,1,m,1,2,empty_row
+employed,4.1,Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
+unemployed_15_72,4.1,Total number of unemployed 15 to 72 years old,1,1,m,1,2,empty_row
+unemployed,4.1,Total number of unemployed aged 15 years and over,2,1,m,1,2,empty_row
+unemployment_15_72,4.1,"Unemployment rate 15 to 72 years old, percent",1,1,m,1,2,empty_row
+unemployment,4.1,Unemployment rate aged 15 years and over,1,1,m,1,2,empty_row
+unemployment_registered,4.1,Number of unemployed registered at bodies of state employment services,1,1,m,1,2,empty_row
+non_labor,4.1,"Number of citizens not engaged in labor activities, registered   with bodies of  state employment services",1,1,m,1,2,empty_row
+employer_demands,4.1,"Employer demands for employees entered to bodies of state employment services, thou person",1,1,m,1,2,empty_row
+non_labor_to_employer_demands,4.1,Potential number of population not engaged in labor activities,1,1,m,1,2,empty_row
+wage_nom,4.2,Accrued average monthly nominal wages per employee,1,1,m,1,2,empty_row
+wage_real,4.2,percent of previous period,2,1,m,1,2,empty_row
+money_income_1996,4.4,in accordance with the methodology for calculating the balance of money incomes and expenditures of population,1,1,q,1,2,empty_row
+money_income,4.4,in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,1,1,q,1,2,empty_row
+income_real_1996,4.4,in accordance with the methodology for calculating the balance of money incomes and expenditures of population,5,1,q,1,2,empty_row
+income_real,4.4,in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,5,1,q,1,2,empty_row
+income_real_disp_1996,4.4,in accordance with the methodology for calculating the balance of money incomes and expenditures of population,7,1,q,1,2,empty_row
+income_real_disp,4.4,in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,7,1,q,1,2,empty_row
 li_electricity_1,1,2006,3,0,m_numeric,3,6,empty_row
 li_manufacturing_1,1,2006,2,0,m_numeric,3,6,next_serie
 li_mining_1,1,2006,1,0,m_numeric,3,6,next_serie

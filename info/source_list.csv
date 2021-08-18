@@ -1,7 +1,7 @@
-source, url, description
-moex, htps://moex.com/en/,Moscow Exchange
-fred,https://fred.stlouisfed.org,Federal Reserve Economic Data
-oecd,https://data.oecd.org/,OECD Data
-dallasfed,https://www.dallasfed.org/research/igrea,Federal Reserve Bank of Dallas
-cbr,https://www.cbr.ru/eng/,Central Bank of Russia
-rosstat,https://eng.rosstat.gov.ru/,Federal State Statistics Service
+source, url,name_eng,name_rus
+moex, htps://moex.com/en/,Moscow Exchange,Мосбиржа
+fred,https://fred.stlouisfed.org,Federal Reserve Bank of Dallas,Federal Reserve Bank of Dallas
+oecd,https://data.oecd.org/,OECD Data,OECD Data
+dallasfed,https://www.dallasfed.org/research/igrea,Federal Reserve Bank of Dallas,Federal Reserve Bank of Dallas
+cbr,https://www.cbr.ru/eng/,Central Bank of Russia,Банк России
+rosstat,https://eng.rosstat.gov.ru/,Federal State Statistics Service,Росстат

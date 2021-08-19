@@ -68,7 +68,9 @@ write.deseason.ts <- function(object) {
 pattern <- function(object) {
   UseMethod("pattern")
 }
-
+write.log <- function(object) {
+  UseMethod("write.log")
+}
 
 
 setMethod(
@@ -311,5 +313,18 @@ setMethod("write.deseason.ts", "parsed_ts",
           }
 )
 
+setMethod("write.log", "parsed_ts",
+          function(object){
+            if(nrow(object@ts)!=0){
+              log_info <- data.table::data.table(ticker = object@ticker,
+                                     n = nrow(object@ts),
+                                     update_date = object@ts$update_date[1])
+              data.table::fwrite(log_info,
+                                 file = paste0(Sys.getenv('directory'), "/data/info.csv"),
+                                 append = TRUE)
+            }
+            validObject(object)
+            return(object)
+          })
 
 

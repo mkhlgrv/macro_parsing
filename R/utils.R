@@ -100,3 +100,18 @@ get.next.weekday <- function(date, day, lead=0){
 show.variables <- function(){
   macroparsing::variables[, c("ticker", "source", "freq","name_rus_short")]
 }
+
+
+update.log.file <- function(){
+  list.files(path = paste0(Sys.getenv("directory"), "/data/raw")) %>%
+    purrr::map_dfr(function(filei){
+      ticker <- gsub(pattern = ".csv", replacement = "", x = filei)
+      log_info <- data.table::fread(paste0(Sys.getenv("directory"), "/data/raw/",filei)) %>%
+        dplyr::group_by(update_date) %>%
+        dplyr::summarise(n = dplyr::n()) %>%
+        dplyr::mutate(ticker = ticker,
+                      update_date = as.Date(update_date))
+    }) %>%
+    data.table::fwrite(file = paste0(Sys.getenv("directory"), "/data/info.csv"))
+}
+

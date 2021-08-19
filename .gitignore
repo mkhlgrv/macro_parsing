@@ -39,3 +39,4 @@ vignettes/*.pdf
 .Rproj.user
 *.html
 readme_app.Rmd
+readme_app.md

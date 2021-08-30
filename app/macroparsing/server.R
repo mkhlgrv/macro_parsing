@@ -1,4 +1,4 @@
-function(input, output) {
+function(input, output, session) {
 
   ticker_to_show <- reactiveValues()
 
@@ -37,6 +37,25 @@ function(input, output) {
       )
     ))
   })
+
+
+  last_update <- function(){
+    data.table::fread(paste0(Sys.getenv("directory"), "/data/info.csv")) %>%
+      dplyr::arrange(dplyr::desc(update_date)) %>%
+      .[1,]
+    }
+  output$last_update <- shinydashboard::renderInfoBox({
+    shinydashboard::infoBox(
+      title = "Последняя обновленная переменная:",
+      value = last_update() %>% .$update_date %>% format("%d %b %Y"),
+      subtitle = paste0(last_update() %>% .$ticker),
+      icon = icon("area-chart"),
+      color = "purple",
+      width = 12,
+      fill=TRUE
+    )
+  })
+
 
   observeEvent(input$add, {
     # display a modal dialog with a header, textinput and action buttons

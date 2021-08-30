@@ -43,8 +43,8 @@ set.environment <- function(path,
   # create .Renviron file ----
   text <- paste0("fredr_api_key=",fredr_api_key,
   "\ndirectory=",path)
-  file.create(paste0(path, '/.Renviron'))
-  write(text,file=paste0(path, '/.Renviron'))
+  file.create(paste0(Sys.getenv("HOME"), '/.Renviron'))
+  write(text,file=paste0(Sys.getenv("HOME"), '/.Renviron'))
 
 }
 
@@ -91,6 +91,27 @@ get.next.weekday <- function(date, day, lead=0){
   }
   out
 }
+#' show.variables
+#'
+#' @return
+#' @export
+#'
+#' @examples
 show.variables <- function(){
-  macroparsing::variables[, c("ticker", "source", "freq", "name_eng", "name_rus_short", "observation_start")]
+  macroparsing::variables[, c("ticker", "source", "freq","name_rus_short")]
 }
+
+
+update.log.file <- function(){
+  list.files(path = paste0(Sys.getenv("directory"), "/data/raw")) %>%
+    purrr::map_dfr(function(filei){
+      ticker <- gsub(pattern = ".csv", replacement = "", x = filei)
+      log_info <- data.table::fread(paste0(Sys.getenv("directory"), "/data/raw/",filei)) %>%
+        dplyr::group_by(update_date) %>%
+        dplyr::summarise(n = dplyr::n()) %>%
+        dplyr::mutate(ticker = ticker,
+                      update_date = as.Date(update_date))
+    }) %>%
+    data.table::fwrite(file = paste0(Sys.getenv("directory"), "/data/info.csv"))
+}
+

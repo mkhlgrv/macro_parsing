@@ -14,7 +14,8 @@ setMethod(
         cbr.ticker() %>%
         url() %>%
         download.ts() %>%
-        write.ts()
+        write.ts()%>%
+      write.log
     validObject(object)
     return(object)
   }
@@ -32,7 +33,8 @@ setMethod(
         date.from %>%
 
         download.ts %>%
-        write.ts
+        write.ts%>%
+      write.log
     validObject(object)
     return(object)
   }
@@ -43,13 +45,14 @@ setMethod(
   function(object, .ticker) {
     object <-  object%>%
       ticker(.ticker) %>%
-        freq %>%
-        observation.start %>%
-        use.archive %>%
-        previous.date.till %>%
-        date.from %>%
-        download.ts%>%
-        write.ts
+      freq %>%
+      observation.start %>%
+      use.archive %>%
+      previous.date.till %>%
+      date.from %>%
+      download.ts%>%
+      write.ts %>%
+      write.log
     validObject(object)
     return(object)
   }
@@ -67,7 +70,8 @@ setMethod(
         oecd.ticker %>%
         url %>%
         download.ts%>%
-        write.ts
+        write.ts%>%
+      write.log
     validObject(object)
     return(object)
   }
@@ -83,7 +87,8 @@ setMethod(
         date.from %>%
         url %>%
         download.ts%>%
-        write.ts
+        write.ts%>%
+      write.log
     validObject(object)
     return(object)
   }
@@ -106,7 +111,8 @@ setMethod(
       file.url %>%
       sheet.info %>%
       download.ts%>%
-      write.ts
+      write.ts%>%
+      write.log
     validObject(object)
     return(object)
   }

@@ -37,3 +37,6 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 .Rproj.user
+*.html
+readme_app.Rmd
+readme_app.md

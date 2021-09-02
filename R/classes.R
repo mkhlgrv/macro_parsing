@@ -183,3 +183,26 @@ setMethod("initialize", "rosstat",
             return(.Object)
           }
 )
+
+
+setClass('internal',
+         slots = list(related_ticker = 'character'),
+         contains = 'parsed_ts')
+
+
+setMethod("initialize", "internal",
+          function(.Object
+          ) {
+            .Object@observation_start <- lubridate::ymd()
+            .Object@previous_date_till <- lubridate::ymd()
+            .Object@date_from <- lubridate::ymd()
+            .Object@ts <- tibble::tibble(
+              date = lubridate::ymd(),
+              value = numeric(),
+              update_date = lubridate::ymd()
+            )
+            .Object@freq <- factor(levels = c('d', 'w', 'm', 'q'))
+            validObject(.Object)
+            return(.Object)
+          }
+)

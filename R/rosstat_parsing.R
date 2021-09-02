@@ -70,7 +70,6 @@ setMethod("file.url","rosstat",
 
 setMethod("sheet.info","rosstat",
           function(object){
-
             object@sheet_info <-  macroparsing::rosstat_headers %>%
               .[which(.$ticker  == object@ticker), ]
             validObject(object)
@@ -149,7 +148,7 @@ setMethod("download.ts","rosstat",
                 res <-  res[start_row:nrow(res),]
 
                 if(object@sheet_info$end_row_indicator == 'empty_row'){
-                  non_year_rows <- which(grepl("\\d{4}",res[,object@sheet_info$header_column] %>%
+                  non_year_rows <- which(grepl("^\\d{4}",res[,object@sheet_info$header_column] %>%
                            dplyr::pull(1))==FALSE)
                   if(length(non_year_rows)==0){
                     end_row <- nrow(res)
@@ -219,7 +218,8 @@ setMethod("download.ts","rosstat",
               ) %>%
                 dplyr::mutate(update_date = as.Date(Sys.Date())) %>%
                 na.omit() %>%
-                dplyr::arrange(date, update_date)
+                dplyr::arrange(date, update_date) %>%
+                data.table::as.data.table()
 
 
             validObject(object)

@@ -117,3 +117,22 @@ setMethod(
     return(object)
   }
 )
+
+setMethod(
+  "download.by.ticker", "internal",
+  function(object, .ticker) {
+    print(.ticker)
+    object <-  object%>%
+      ticker(.ticker) %>%
+      use.archive %>%
+      observation.start %>%
+      previous.date.till %>%
+      date.from %>%
+      related.ticker %>%
+      download.ts%>%
+      write.ts%>%
+      write.log
+    validObject(object)
+    return(object)
+  }
+)

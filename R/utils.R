@@ -33,6 +33,7 @@ check.directory <- function(actual_directory = NULL){
 set.environment <- function(path,
                             fredr_api_key){
   # create directories ----
+  message('Создание рабочей директории')
   dir.create(path = path, showWarnings = FALSE, recursive = TRUE)
   dir.create(path = paste0(path, '/data'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/raw_excel'), showWarnings = FALSE)
@@ -40,11 +41,25 @@ set.environment <- function(path,
   dir.create(path = paste0(path, '/data/transform'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/deseason'), showWarnings = FALSE)
 
+  if(file.exists(path)){
+    message(paste0('Рабочая директория успешно создана: ', path))
+  } else {
+    message(paste0('Не удалось создать рабочую директорию: ', path))
+  }
+
   # create .Renviron file ----
+  message('Создание файла с глобальными переменными')
   text <- paste0("fredr_api_key=",fredr_api_key,
   "\ndirectory=",path)
   file.create(paste0(Sys.getenv("HOME"), '/.Renviron'))
   write(text,file=paste0(Sys.getenv("HOME"), '/.Renviron'))
+  if(file.exists(paste0(Sys.getenv("HOME"), '/.Renviron'))){
+    message(paste0('Файл с глобальными переменными успешно создан: ', paste0(Sys.getenv("HOME"), '/.Renviron')))
+  } else {
+    message(paste0('Не удалось создать файл с глобальными переменными: ',
+                   paste0(Sys.getenv("HOME"), '/.Renviron'),
+                   '. Возможно, возникла проблема с правами доступа.'))
+  }
 
 }
 

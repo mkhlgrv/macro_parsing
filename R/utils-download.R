@@ -1,20 +1,20 @@
 get.variables.df <- function(tickers=NULL, sources=NULL){
   if(is.null(tickers)&is.null(sources)){
-    macroparsing::variables
+    out <- macroparsing::variables
   } else if(!is.null(tickers)&is.null(sources)){
-    macroparsing::variables %>%
+    out <- macroparsing::variables %>%
       dplyr::inner_join(
         tibble::tibble(ticker = tickers),
         by = 'ticker')
   } else if(is.null(tickers)&!is.null(sources)){
-    macroparsing::variables %>%
+   out <-  macroparsing::variables %>%
       dplyr::inner_join(
         tibble::tibble(source = sources),
         by = 'source'
       )
   } else if(!is.null(tickers)&!is.null(sources)){
 
-    rbind(macroparsing::variables %>%
+    out <- rbind(macroparsing::variables %>%
             dplyr::inner_join(
               tibble::tibble(source = sources),
               by = 'source'
@@ -24,7 +24,16 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
               tibble::tibble(ticker = tickers),
               by = 'ticker'
             ))
-  }
+}
+    internal_n <- which(out$source=='internal')
+    not_internal_n <- which(out$source!='internal')
+    if(length(internal_n)>0 & length(not_internal_n)>0){
+    out[c(not_internal_n,
+                   internal_n),
+                 ]
+    } else{
+      out
+    }
 }
 fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
                      type=c("raw", "transform", "deseason")){

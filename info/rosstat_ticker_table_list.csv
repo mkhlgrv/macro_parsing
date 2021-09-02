@@ -81,11 +81,11 @@ cpi_alcohol,stei
 ppi_non_food,stei
 ppi_services,stei
 employed_15_72,stei
-employed,stei
+employed_15,stei
 unemployed_15_72,stei
-unemployed,stei
+unemployed_15,stei
 unemployment_15_72,stei
-unemployment,stei
+unemployment_15,stei
 unemployment_registered,stei
 non_labor,stei
 employer_demands,stei

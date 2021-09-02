@@ -28,31 +28,22 @@
 # usethis::use_data(cbr_names, overwrite = TRUE)
 # usethis::use_data(sources, overwrite = TRUE)
 # usethis::use_data(oecd_names, overwrite = TRUE)
-
 #
 # rosstat_tables <- data.table::fread('info/rosstat_table_list.csv', encoding = 'UTF-8')
 # rosstat_table_patterns <- data.table::fread('info/rosstat_table_pattern_list.csv', encoding = 'UTF-8')
 # rosstat_ticker_tables <- data.table::fread('info/rosstat_ticker_table_list.csv', encoding = 'UTF-8')
 # rosstat_headers <- data.table::fread('info/rosstat_header_list.csv', encoding = 'UTF-8')
+# internal_tickers <- data.table::fread('info/internal_ticker_list.csv', encoding = 'UTF-8')
 #
 #
 # usethis::use_data(rosstat_tables, overwrite = TRUE)
 # usethis::use_data(rosstat_table_patterns, overwrite = TRUE)
 # usethis::use_data(rosstat_ticker_tables, overwrite = TRUE)
 # usethis::use_data(rosstat_headers, overwrite = TRUE)
-
+# usethis::use_data(internal_tickers, overwrite = TRUE)
 
 # test ----
 # testthat::test_local()
-
-# S&P 500 archive data ----
-#
-# archive_SP500 <- rio::import('C:/Users/mkhlgrv/Documents/forecast/database/raw/fred sp500.xlsx')[1:4132,] %>%
-#   mutate(date = as.Date(date),
-#          update_date = lubridate::today()) %>%
-#   rename(value = sp500)
-# usethis::use_data(archive_SP500, internal = TRUE, overwrite = TRUE)
-# eval(parse(text = 'macroparsing:::archive_SP500'))
 
 
 # # download all data ----

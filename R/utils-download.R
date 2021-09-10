@@ -24,7 +24,9 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
               tibble::tibble(ticker = tickers),
               by = 'ticker'
             ))
-}
+  }
+  out <- out[which(out$source!='rosstat1'),]
+
     internal_n <- which(out$source=='internal')
     not_internal_n <- which(out$source!='internal')
     if(length(internal_n)>0 & length(not_internal_n)>0){

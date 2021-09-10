@@ -113,7 +113,8 @@ get.next.weekday <- function(date, day, lead=0){
 #'
 #' @examples
 show.variables <- function(){
-  macroparsing::variables[, c("ticker", "source", "freq","name_rus_short")]
+  macroparsing::variables[, c("ticker", "source", "freq","name_rus_short")] %>%
+    dplyr::filter(source != 'rosstat1')
 }
 
 

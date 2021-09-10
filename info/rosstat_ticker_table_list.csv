@@ -13,9 +13,9 @@ ipi_manufacturing,stei
 ipi_electricity,stei
 ipi_water,stei
 api,stei
-animal_livestock,stei
-animal_milk,stei
-animal_eggs,stei
+livestock,stei
+milk,stei
+eggs,stei
 freight_turnover,stei
 freight_turnover_commercial,stei
 freight_loading_railway,stei

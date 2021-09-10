@@ -7,9 +7,9 @@ ipi_manufacturing,1.2,reporting month as percent of previous month,2,1,m,1,2,emp
 ipi_electricity,1.2,reporting month as percent of previous month,3,1,m,1,2,empty_row
 ipi_water,1.2,reporting month as percent of previous month,4,1,m,1,2,empty_row
 api,1.3,percent of corresponding period of previous year,1,1,m,1,2,empty_row
-animal_livestock,1.4, Livestock and poultry for slaughter,1,1,m,1,2,empty_row
-animal_milk,1.4,"Milk, thou tons",1,1,m,1,2,empty_row
-animal_eggs,1.4,"Eggs, mln pieces",1,1,m,1,2,empty_row
+livestock,1.4, Livestock and poultry for slaughter,1,1,m,1,2,empty_row
+milk,1.4,"Milk, thou tons",1,1,m,1,2,empty_row
+eggs,1.4,"Eggs, mln pieces",1,1,m,1,2,empty_row
 freight_turnover,1.5,"Freight turnover of transport, including commercial and noncommercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
 freight_turnover_commercial,1.5,"Commercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
 freight_loading_railway,1.5,"Freight loading on railway transport, mln ton",1,1,m,1,2,empty_row

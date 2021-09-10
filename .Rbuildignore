@@ -3,3 +3,13 @@
 .Rprofile
 ^LICENSE\.md$
 LICENSE
+^info$
+^readme_app.Rmd$
+^readme_app.md$
+^.Renviron$
+^R\run.R$
+^app$
+^\.Renviron$
+^readme_app.html$
+^ach$
+^README.md$

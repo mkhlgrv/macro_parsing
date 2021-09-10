@@ -34,6 +34,7 @@
 # rosstat_ticker_tables <- data.table::fread('info/rosstat_ticker_table_list.csv', encoding = 'UTF-8')
 # rosstat_headers <- data.table::fread('info/rosstat_header_list.csv', encoding = 'UTF-8')
 # internal_tickers <- data.table::fread('info/internal_ticker_list.csv', encoding = 'UTF-8')
+# additional_info <- data.table::fread('info/var_list_additional.csv', encoding = 'UTF-8')
 #
 #
 # usethis::use_data(rosstat_tables, overwrite = TRUE)
@@ -41,6 +42,7 @@
 # usethis::use_data(rosstat_ticker_tables, overwrite = TRUE)
 # usethis::use_data(rosstat_headers, overwrite = TRUE)
 # usethis::use_data(internal_tickers, overwrite = TRUE)
+# usethis::use_data(additional_info, overwrite = TRUE)
 
 # test ----
 # testthat::test_local()

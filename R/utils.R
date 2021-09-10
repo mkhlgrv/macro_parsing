@@ -106,16 +106,69 @@ get.next.weekday <- function(date, day, lead=0){
   }
   out
 }
+
+
+russificate.tab <- function(x){
+  x %>%
+    dplyr::mutate(source = dplyr::recode(source,
+                            rosstat = 'Росстат',
+                            oecd = 'OECD',
+                            fred = 'FRED',
+                            cbr = 'Банк России',
+                            internal = 'Внутренние расчеты',
+                            dallasfed = 'Federal Reserve Bank of Dallas',
+                            moex = 'Мосбиржа'
+    ),
+    freq =
+      dplyr::recode(freq,
+              d = 'день',
+              w = 'неделя',
+              m = 'месяц',
+              q = 'квартал'
+      ))
+}
+
+add.href.to.column <- function(x, column){
+  x <- x %>% tibble::as_tibble()
+  x[, column] <- paste0('<a href="',x[[column]], '">',x[[column]],'</a>')
+  x
+}
+
 #' show.variables
 #'
 #' @return
 #' @export
 #'
 #' @examples
-show.variables <- function(){
-  macroparsing::variables[, c("ticker", "source", "freq","name_rus_short")] %>%
-    dplyr::filter(source != 'rosstat1')
+show.variables <- function(additional=FALSE, russificate = FALSE, url_as_href=FALSE){
+  if(!additional){
+    out <- macroparsing::variables[, c("ticker", "source", "freq","name_rus_short")] %>%
+      dplyr::filter(source != 'rosstat1') %>%
+      dplyr::arrange(ticker)
+  } else {
+    out <- macroparsing::variables[, c("ticker", "source", "freq","name_rus_short", 'observation_start')] %>%
+      dplyr::left_join(macroparsing::additional_info, by = 'ticker') %>%
+      dplyr::filter(source != 'rosstat1') %>%
+      dplyr::arrange(ticker)
+
+    if(url_as_href){
+      out <- out %>%
+        add.href.to.column('url')
+    }
+  }
+
+
+  if(russificate){
+    out %>%
+      russificate.tab()
+  } else{
+    out
+  }
+
 }
+
+
+
 
 
 update.log.file <- function(){

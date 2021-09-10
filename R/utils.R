@@ -44,7 +44,7 @@ set.environment <- function(path,
   if(file.exists(path)){
     message(paste0('Рабочая директория успешно создана: ', path))
   } else {
-    message(paste0('Не удалось создать рабочую директорию: ', path))
+    warning(paste0('Не удалось создать рабочую директорию: ', path))
   }
 
   # create .Renviron file ----
@@ -56,9 +56,8 @@ set.environment <- function(path,
   if(file.exists(paste0(Sys.getenv("HOME"), '/.Renviron'))){
     message(paste0('Файл с глобальными переменными успешно создан: ', paste0(Sys.getenv("HOME"), '/.Renviron')))
   } else {
-    message(paste0('Не удалось создать файл с глобальными переменными: ',
-                   paste0(Sys.getenv("HOME"), '/.Renviron'),
-                   '. Возможно, возникла проблема с правами доступа.'))
+    warning(paste0('Не удалось создать файл с глобальными переменными: ',
+                   paste0(Sys.getenv("HOME"), '/.Renviron')))
   }
 
 }
@@ -129,8 +128,8 @@ russificate.tab <- function(x){
 }
 
 add.href.to.column <- function(x, column){
-  x <- x %>% tibble::as_tibble()
-  x[, column] <- paste0('<a href="',x[[column]], '">',x[[column]],'</a>')
+  x <- x %>% dplyr::as_tibble()
+  x[column] <- paste0('<a href="',x[[column]], '">',x[[column]],'</a>')
   x
 }
 
@@ -141,29 +140,25 @@ add.href.to.column <- function(x, column){
 #'
 #' @examples
 show.variables <- function(additional=FALSE, russificate = FALSE, url_as_href=FALSE){
-  if(!additional){
-    out <- macroparsing::variables[, c("ticker", "source", "freq","name_rus_short")] %>%
-      dplyr::filter(source != 'rosstat1') %>%
-      dplyr::arrange(ticker)
-  } else {
-    out <- macroparsing::variables[, c("ticker", "source", "freq","name_rus_short", 'observation_start')] %>%
-      dplyr::left_join(macroparsing::additional_info, by = 'ticker') %>%
-      dplyr::filter(source != 'rosstat1') %>%
-      dplyr::arrange(ticker)
+  out <- macroparsing::variables[, c("ticker","name_rus_short", "source", "freq", "observation_start")]
+  if(additional){
+    out <- out %>%
+      dplyr::left_join(macroparsing::additional_info, by = 'ticker')
 
     if(url_as_href){
-      out <- out %>%
-        add.href.to.column('url')
+      out <- add.href.to.column(out, 'url')
     }
   }
-
+  out <- out %>%
+    dplyr::filter(source != 'rosstat1') %>%
+    dplyr::arrange(ticker)
 
   if(russificate){
-    out %>%
+    out <- out %>%
       russificate.tab()
-  } else{
-    out
   }
+
+  data.table::data.table(out)
 
 }
 

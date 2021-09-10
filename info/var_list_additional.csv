@@ -1,0 +1,168 @@
+ticker,url,comment
+eggs,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.4
+livestock,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.4
+milk,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.4
+api,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.3
+bci_CHN,https://data.oecd.org/leadind/business-confidence-index-bci.htm,Поиск по тикеру
+bci_EA19,https://data.oecd.org/leadind/business-confidence-index-bci.htm,Поиск по тикеру
+bci_G7,https://data.oecd.org/leadind/business-confidence-index-bci.htm,Поиск по тикеру
+bci_OECD,https://data.oecd.org/leadind/business-confidence-index-bci.htm,Поиск по тикеру
+bci_OECDE,https://data.oecd.org/leadind/business-confidence-index-bci.htm,Поиск по тикеру
+bci_RUS,https://data.oecd.org/leadind/business-confidence-index-bci.htm,Поиск по тикеру
+bci_USA,https://data.oecd.org/leadind/business-confidence-index-bci.htm,Поиск по тикеру
+cgi_CHN,https://data.oecd.org/leadind/consumer-confidence-index-cci.htm,Поиск по тикеру
+cgi_EA19,https://data.oecd.org/leadind/consumer-confidence-index-cci.htm,Поиск по тикеру
+cgi_G7,https://data.oecd.org/leadind/consumer-confidence-index-cci.htm,Поиск по тикеру
+cgi_OECD,https://data.oecd.org/leadind/consumer-confidence-index-cci.htm,Поиск по тикеру
+cgi_OECDE,https://data.oecd.org/leadind/consumer-confidence-index-cci.htm,Поиск по тикеру
+cgi_RUS,https://data.oecd.org/leadind/consumer-confidence-index-cci.htm,Поиск по тикеру
+cgi_USA,https://data.oecd.org/leadind/consumer-confidence-index-cci.htm,Поиск по тикеру
+cli_CHN,https://data.oecd.org/leadind/composite-leading-indicator-cli.htm,Поиск по тикеру
+cli_EA19,https://data.oecd.org/leadind/composite-leading-indicator-cli.htm,Поиск по тикеру
+cli_G7,https://data.oecd.org/leadind/composite-leading-indicator-cli.htm,Поиск по тикеру
+cli_OECD,https://data.oecd.org/leadind/composite-leading-indicator-cli.htm,Поиск по тикеру
+cli_OECDE,https://data.oecd.org/leadind/composite-leading-indicator-cli.htm,Поиск по тикеру
+cli_RUS,https://data.oecd.org/leadind/composite-leading-indicator-cli.htm,Поиск по тикеру
+cli_USA,https://data.oecd.org/leadind/composite-leading-indicator-cli.htm,Поиск по тикеру
+cons_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 2"
+cons_real,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 6"
+construction_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.7
+cpi,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.5
+cpi_alcohol,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.5
+cpi_food,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.5
+DCOILBRENTEU,https://fred.stlouisfed.org/series/DCOILBRENTEU,
+deficit,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.11
+depo,https://cbr.ru/hd_base/deposit_base/,Ставка овернайт
+employed,,Слитые ряды employed_15_72 (до декабря 2016) и employed_15 (с января 2017)
+employed_15,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+employed_15_72,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+employer_demands,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+export_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 2"
+export_real,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 6"
+export_usd,https://cbr.ru/statistics/macro_itm/svs/,Платежный баланс Российской Федерации (cтандартные компоненты)
+fer,https://cbr.ru/hd_base/mrrf/mrrf_7d/,
+freight_loading_railway,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.5
+freight_turnover,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.5
+freight_turnover_commercial,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.5
+gdp_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.1
+gdp_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.1
+gross_profit_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы по доходам (с 1995 г.), Таблица 2"
+igrea,https://www.dallasfed.org/research/igrea,
+IMOEX,https://www.moex.com/ru/index/IMOEX,
+import_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 2"
+import_real,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 6"
+import_usd,https://cbr.ru/statistics/macro_itm/svs/,Платежный баланс Российской Федерации (cтандартные компоненты)
+income_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.4
+income_real_disp,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.4
+indebtedness_cred,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.4
+indebtedness_cred_budget,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.4
+indebtedness_cred_overdue,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.4
+indebtedness_cred_suppliers,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.4
+indebtedness_debt,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.4
+indebtedness_debt_customer,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.4
+indebtedness_debt_overdue,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.4
+invest_fixed_capital_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 2"
+invest_fixed_capital_real,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 6"
+invest_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 2"
+invest_real,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 6"
+investment_fc,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.6
+investment_fc_budget_funds,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.6.1
+investment_fc_external_funds,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.6.1
+investment_fc_federal_budget,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.6.1
+investment_fc_own_funds,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.6.1
+ipi,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.2
+ipi_electricity,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.2
+ipi_manufacturing,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.2
+ipi_mining,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.2
+ipi_water,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.2
+labor_income_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы по доходам (с 1995 г.), Таблица 2"
+li_building_1,https://rosstat.gov.ru/leading_indicators,"Строительство, Таблица 1"
+li_consumer,https://rosstat.gov.ru/leading_indicators,"Потребительский сектор, Таблица 1"
+li_electricity_1,https://rosstat.gov.ru/leading_indicators,"Добыча полезных ископаемых, обрабатывающие производства, обеспечение электрической энергией, газом и паром; кондиционирование воздуха"
+li_manufacturing_1,https://rosstat.gov.ru/leading_indicators,"Добыча полезных ископаемых, обрабатывающие производства, обеспечение электрической энергией, газом и паром; кондиционирование воздуха"
+li_mining_1,https://rosstat.gov.ru/leading_indicators,"Добыча полезных ископаемых, обрабатывающие производства, обеспечение электрической энергией, газом и паром; кондиционирование воздуха, Таблица 1"
+li_retail_1,https://rosstat.gov.ru/leading_indicators,"Розничная торговля, Таблица 1"
+li_services,https://rosstat.gov.ru/leading_indicators,"Сфера услуг, Таблица 1"
+loss_making_construction,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+loss_making_electricity,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+loss_making_manufacturing,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+loss_making_mining,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+loss_making_transport,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+m2,https://cbr.ru/statistics/ms/,Наличная и безналичная составляющие М2
+miacr,https://cbr.ru/hd_base/mkr/mkr_base/,
+MOEX10,https://www.moex.com/ru/index/IMOEX,
+monetary_base,https://cbr.ru/hd_base/mb_nd/mb_nd_month/,
+monetary_base_weekly,https://cbr.ru/hd_base/mb_nd/mb_nd_weekly/,
+money_income,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.4
+mosprime,https://cbr.ru/hd_base/mosprime/,
+NBRUBIS,https://fred.stlouisfed.org/series/NBRUBIS,
+net_result_construction,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+net_result_electricity,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+net_result_manufacturing,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+net_result_mining,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+net_result_transport,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.2
+non_labor,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+non_labor_to_employer_demands,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+ostat,https://cbr.ru/hd_base/ostat_base/,Колонка По России
+PALLFNFINDEXM,https://fred.stlouisfed.org/PALLFNFINDEXM,
+PALUMUSDM,https://fred.stlouisfed.org/series/PALUMUSDM,
+PFOODINDEXM,https://fred.stlouisfed.org/series/PFOODINDEXM,
+PINDUINDEXM,https://fred.stlouisfed.org/series/PFOODINDEXM,
+PMETAINDEXM,https://fred.stlouisfed.org/series/PMETAINDEXM,
+PNICKUSDM,https://fred.stlouisfed.org/series/PNICKUSDM,
+PNRGINDEXM,https://fred.stlouisfed.org/series/PNRGINDEXM,
+ppi,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1
+ppi_animal,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.2
+ppi_cattle,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.2
+ppi_construction,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.3
+ppi_diesel,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1.1
+ppi_eggs,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.2
+ppi_electricity,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1
+ppi_freight,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.4
+ppi_gas,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1.1
+ppi_gasoline,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1.1
+ppi_investment,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.3
+ppi_manufacturing,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1
+ppi_milk,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.2
+ppi_mining,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1
+ppi_non_food,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.5
+ppi_oil,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1.1
+ppi_poultry,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.2
+ppi_resid,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1.1
+ppi_services,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.5
+ppi_water,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1
+ppil_coal,https://rosstat.gov.ru/compendium/document/50802,Раздел 3.1.1
+PWHEAMTUSDM,https://fred.stlouisfed.org/series/PWHEAMTUSDM,
+PZINCUSDM,https://fred.stlouisfed.org/series/PZINCUSDM,
+RBRUBIS,https://fred.stlouisfed.org/series/RBRUBIS,
+repo,https://cbr.ru/hd_base/repo_debt/,Колонка Объем задолженности
+residential,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.8
+retail_catering_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_catering_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_food_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_food_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_inventory_days,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_inventory_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_non_food_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_non_food_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+retail_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.12
+RGBI,https://www.moex.com/ru/index/RGBI,
+RGBITR,https://www.moex.com/ru/index/RGBITR,
+RTSI,https://www.moex.com/ru/index/RTSI,
+RTSOG,https://www.moex.com/ru/index/RTSOG,
+saldo,https://cbr.ru/hd_base/saldo/,
+services_market,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.13
+SP500,https://fred.stlouisfed.org/series/SP500,Поиск по тикеру
+STLFSI2,https://fred.stlouisfed.org/series/STLFSI2,Поиск по тикеру
+unemployed,,Слитые ряды unemployed_15_72 (до декабря 2016) и unemployed_15 (с января 2017)
+unemployed_15,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+unemployed_15_72,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+unemployment,,Слитые ряды unemployment_15_72 (до декабря 2016) и unemployment_15 (с января 2017)
+unemployment_15,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+unemployment_15_72,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+unemployment_registered,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.1
+usd,https://cbr.ru/currency_base/dynamics/,Поиск по названию
+wage_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.2
+wage_overdue,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.5
+wage_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.2

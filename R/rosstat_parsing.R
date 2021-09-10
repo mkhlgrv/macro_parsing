@@ -78,10 +78,6 @@ setMethod("sheet.info","rosstat",
 
 setMethod("download.ts","rosstat",
           function(object){
-            # httr::GET(object@file_url,
-            #                     httr::write_disk(temp_file <-
-            #                                        tempfile(fileext = object@ext)))
-
 
               freq_cols <- switch(object@sheet_info$freq,
                                   "q" = rep("guess",6),
@@ -96,6 +92,7 @@ setMethod("download.ts","rosstat",
                                           "m_cumul" = "Year",
                                           "m_numeric" = "^1$",
                                           "q_horizontal" = "I квартал")
+
               last_period_name <- switch(object@sheet_info$freq,
                                           "q" = "IV",
                                           "m" = "Dec",

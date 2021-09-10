@@ -30,7 +30,7 @@ test_that("Test fred methods", {
 
   expect_s4_class(fred_ts, 'fred')
   expect_equal(fred_ts@ticker,"NBRUBIS")
-  expect_equal(fred_ts@observation_start,as.Date('1997-05-20'))
+  expect_equal(fred_ts@observation_start,as.Date('1997-05-01'))
   expect_equal(ncol(fred_ts@ts),3)
   expect_equal(fred_ts@use_archive,FALSE)
   expect_equal(fred_ts@ts$date %>% class,'Date')

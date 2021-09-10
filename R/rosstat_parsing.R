@@ -122,15 +122,18 @@ setMethod("download.ts","rosstat",
                             readxl::excel_sheets(temp_file))
 
 
-              if(object@sheet_info$freq != "q_horizontal"){
+              # if(object@sheet_info$freq != "q_horizontal"){
+              suppressMessages(
                 res <- readxl::read_excel(path = temp_file,
                                           sheet = sheet,
                                           skip =  object@sheet_info$start_row-1)
-              } else{
-                res <- readxl::read_excel(path = temp_file,
-                                          sheet = sheet,
-                                          skip =  object@sheet_info$start_row-1)
-              }
+              )
+              # }
+              # else{
+              #   res <- readxl::read_excel(path = temp_file,
+              #                             sheet = sheet,
+              #                             skip =  object@sheet_info$start_row-1)
+              # }
 
 
 
@@ -189,10 +192,13 @@ setMethod("download.ts","rosstat",
 
 
 
-                year_colnames <- readxl::read_excel(path = temp_file,
-                                  sheet = sheet,
-                                  skip =  object@sheet_info$start_row-2, )%>%
-                  colnames()
+                suppressMessages(
+                  year_colnames <- readxl::read_excel(path = temp_file,
+                                                      sheet = sheet,
+                                                      skip =  object@sheet_info$start_row-2, )%>%
+                    colnames()
+                )
+
 
                 start_year <- stringr::str_match(year_colnames, '\\d{4}') %>%
                   na.omit %>%

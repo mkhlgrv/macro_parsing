@@ -42,8 +42,10 @@ fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
 
   check.files(type=type)
 
-  variables_df <- get.variables.df(tickers=tickers, sources=sources)
+  variables_df <- get.variables.df(tickers=tickers, sources=sources) #%>%
+    #dplyr::mutate(row_n = row_number())
 
+  pb <- progress::progress_bar$new(total = nrow(variables_df))
   if(use_future){
     future::plan(future::multisession())
     iwalk_fun <- furrr::future_iwalk
@@ -59,12 +61,13 @@ fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
                          deseason = deseason.by.ticker)
 
   variables_df %>%
-      split(.$source) %>%
+      split(factor(.$source, levels = unique(.$source))) %>%
     iwalk_fun(function(x, source){
         x %>%
           split(.$ticker) %>%
           names %>%
         walk_fun(function(ticker, source){
+          pb$tick()
             new(source) %>%
             by_tiker_fun(ticker)
           }, source = source)
@@ -91,7 +94,7 @@ download <- function(tickers  = NULL,
                      sources=NULL,
                      use_future=FALSE,
                      raw = TRUE,
-                     transform_and_deseason = TRUE){
+                     transform_and_deseason = FALSE){
 
   if(raw){
     fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='raw')

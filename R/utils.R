@@ -179,3 +179,14 @@ update.log.file <- function(){
     data.table::fwrite(file = paste0(Sys.getenv("directory"), "/data/info.csv"))
 }
 
+
+check.bracket <- function(x){
+  if(!is.numeric(x)){
+    x <- gsub(' ','' ,x)
+    x <- gsub('\\d{1}\\)','' ,x)
+    x <- gsub(',','\\.' ,x)
+    print(x)
+
+  }
+  x
+}

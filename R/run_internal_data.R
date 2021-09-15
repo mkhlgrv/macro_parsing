@@ -1,27 +1,4 @@
-
-# list.files('C:/Users/mkhlgrv/Documents/forecast/database/raw')
-# lf = list.files('C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw', full.names = TRUE)
-# lf_names = list.files('C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw', full.names = FALSE)
-#
-# rio::import('C:/Users/mkhlgrv/Documents/forecast/database/raw/gdp_nom.xlsx')
-# rio::import('C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw/gdp_nom.csv')
-#
-# x = purrr::map_dfr(1:length(lf), function(i){
-#   obs_start = lf[i] %>% rio::import() %>% summarise(x=min(date)) %>% pull(x) %>% as.character
-#   tick = gsub('.csv', '',lf_names[i])
-#   tibble(observation_start = obs_start, ticker = tick)
-# })
-# obs= x %>% arrange(ticker) %>% .[,"observation_start"]
-#
-# vals = rio::import('C:/Users/mkhlgrv/Documents/macroparsing/info/var_list.csv',
-#             encoding='UTF-8') %>% arrange(ticker)
-# vals$observation_start = obs %>%
-#   pull(observation_start)
-# vals %>% rio::export(file = 'C:/Users/mkhlgrv/Documents/macroparsing/info/var_list.csv')
-#
-#
-#
-# archive data ----
+# # archive data ----
 # # S&P 500
 # archive_SP500 <- rio::import('C:/Users/mkhlgrv/Documents/forecast/database/raw/fred sp500.xlsx')[1:4132,] %>%
 #   mutate(date = as.Date(date),
@@ -171,6 +148,20 @@
 # # # unemployment
 # archive_unemployment = data.table::fread('C:/Users/mkhlgrv/Documents/macroparsing/info/archive/unemployment_15_72.csv',
 #                                          colClasses = c("Date", "numeric", "Date"))[1:216,] %>% na.omit
+# # ppi
+# archive_ppi <- rio::import('C:/Users/mkhlgrv/Documents/forecast/database/binded/binded m.xlsx')[,c('date',"ppi")] %>%
+#   mutate(date = as.Date(date),
+#          update_date = lubridate::today())%>%
+#   filter(date < '2016-01-01') %>%
+#   rename(value = ppi) %>%
+#   na.omit
+# # gdp_real archive
+# archive_gdp_real <- rio::import('C:/Users/mkhlgrv/Documents/forecast/database/binded/binded q.xlsx')[,c('date',"gdp_real")] %>%
+#     mutate(date = as.Date(date),
+#            update_date = lubridate::today()) %>%
+#   filter(date < '2011-01-01') %>%
+#     rename(value = gdp_real) %>%
+#   na.omit
 # # # writing ----
 # # # важно: только один файл с внутренней информацией
 # usethis::use_data(archive_SP500,
@@ -189,6 +180,7 @@
 #                   archive_invest_real,
 #                   archive_ipi,
 #                   archive_ppi,
+#                   archive_gdp_real,
 #                   archive_money_income,
 #                   archive_income_real,
 #                   archive_income_real_disp,

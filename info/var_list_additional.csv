@@ -45,7 +45,7 @@ freight_loading_railway,https://rosstat.gov.ru/compendium/document/50802,Раз�
 freight_turnover,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.5
 freight_turnover_commercial,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.5
 gdp_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.1
-gdp_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.1
+gdp_real,https://rosstat.gov.ru/accounts,"ВВП кварталы использование (с 1995 г.), Таблица 6"
 gross_profit_nom,https://rosstat.gov.ru/accounts,"ВВП кварталы по доходам (с 1995 г.), Таблица 2"
 igrea,https://www.dallasfed.org/research/igrea,
 IMOEX,https://www.moex.com/ru/index/IMOEX,
@@ -166,3 +166,5 @@ usd,https://cbr.ru/currency_base/dynamics/,Поиск по названию
 wage_nom,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.2
 wage_overdue,https://rosstat.gov.ru/compendium/document/50802,Раздел 2.5
 wage_real,https://rosstat.gov.ru/compendium/document/50802,Раздел 4.2
+gdp_volume_index,https://rosstat.gov.ru/compendium/document/50802,Раздел 1.1
+construction_real,,construction_nom/(Кумулятивное произведение ppi_construction/100); 1999.1=100

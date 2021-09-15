@@ -6,7 +6,7 @@ li_consumer,li_consumer
 li_retail_1,li_retail
 li_building_1,li_building
 gdp_nom,stei
-gdp_real,stei
+gdp_volume_index,stei
 ipi,stei
 ipi_mining,stei
 ipi_manufacturing,stei
@@ -116,3 +116,4 @@ services_real,
 wholesale_real,
 wholesale,
 li_services,li_services
+gdp_real,gdp_expenditure

@@ -1,6 +1,6 @@
 ticker,sheet,header_pattern,n_match,skip_after_header,freq,header_column,start_row,end_row_indicator
 gdp_nom,1.1,"GDP, bln rubles",1,1,q,1,2,empty_row
-gdp_real,1.1,"Volume index of produced GDP, percent",1,1,q,1,2,empty_row
+gdp_volume_index,1.1,"Volume index of produced GDP, percent",1,1,q,1,2,empty_row
 ipi,1.2,percent of previous period,1,1,m,1,2,empty_row
 ipi_mining,1.2,reporting month as percent of previous month,1,1,m,1,2,empty_row
 ipi_manufacturing,1.2,reporting month as percent of previous month,2,1,m,1,2,empty_row
@@ -108,3 +108,4 @@ invest_fixed_capital_real,6,валовое накопление основног
 invest_fixed_capital_nom,2,валовое накопление основного капитала,1,0,q_horizontal,1,4,
 labor_income_nom,2,оплата труда наемных работников,1,0,q_horizontal,1,4,
 gross_profit_nom,2,валовая прибыль экономики,1,0,q_horizontal,1,4	,
+gdp_real,6,Валовой внутренний продукт,1,0,q_horizontal,1,4,

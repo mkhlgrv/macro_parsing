@@ -92,7 +92,7 @@
 
 
 # devtools::build()
-# devtools::install_local(path = 'macroparsing_0.0.0.9000.tar.gz', dependencies = TRUE,force=TRUE)
+# devtools::install_local(path = "C:/Users/mkhlgrv/Documents/macroparsing_0.0.0.9000.tar.gz")#, dependencies = TRUE,force=TRUE)
 # update.log.file()
 
 # shiny::runApp('app/macroparsing')

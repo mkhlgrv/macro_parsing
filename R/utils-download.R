@@ -94,7 +94,7 @@ download <- function(tickers  = NULL,
                      sources=NULL,
                      use_future=FALSE,
                      raw = TRUE,
-                     transform_and_deseason = FALSE){
+                     transform_and_deseason = TRUE){
 
   if(raw){
     fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='raw')

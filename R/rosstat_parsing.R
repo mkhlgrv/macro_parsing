@@ -1,3 +1,6 @@
+#' @include utils.R
+
+
 table <- function(object) {
   UseMethod("")
 }
@@ -147,6 +150,7 @@ setMethod("download.ts","rosstat",
               if(object@sheet_info$freq != "q_horizontal"){
                 res <-  res[start_row:nrow(res),]
 
+
                 if(object@sheet_info$end_row_indicator == 'empty_row'){
                   non_year_rows <- which(grepl("^\\d{4}",res[,object@sheet_info$header_column] %>%
                            dplyr::pull(1))==FALSE)
@@ -187,7 +191,9 @@ setMethod("download.ts","rosstat",
                   as.data.frame() %>%
                   t %>%
                   as.matrix %>%
+                  check.bracket() %>%
                   as.numeric()
+
               } else{
 
 

@@ -4,7 +4,7 @@
 \alias{show.variables}
 \title{show.variables}
 \usage{
-show.variables()
+show.variables(additional = FALSE, russificate = FALSE, url_as_href = FALSE)
 }
 \value{
 

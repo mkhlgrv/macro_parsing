@@ -24,6 +24,7 @@ Collate:
     'run_internal_data.R'
     'util-deseason_by_ticker.R'
     'util-download_by_ticker.R'
+    'util-save_excel.R'
     'util-transform_by_ticker.R'
     'utils-download.R'
     'utils-pipe.R'

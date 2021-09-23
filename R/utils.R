@@ -15,9 +15,9 @@ check.directory <- function(actual_directory = NULL){
   dir.create(paste0(actual_directory, '/data/raw'),
              showWarnings = FALSE,
              recursive = TRUE) # сюда добавить все остальные директории если требуются
+
   check.files(actual_directory = actual_directory, type='raw')
   check.files(actual_directory = actual_directory, type='transform')
-  check.files(actual_directory = actual_directory, type='deseason')
 
 }
 
@@ -39,7 +39,7 @@ set.environment <- function(path,
   dir.create(path = paste0(path, '/data/raw_excel'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/raw'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/transform'), showWarnings = FALSE)
-  dir.create(path = paste0(path, '/data/deseason'), showWarnings = FALSE)
+  dir.create(path = paste0(path, '/data/log'), showWarnings = FALSE)
 
   if(file.exists(path)){
     message(paste0('Рабочая директория успешно создана: ', path))
@@ -63,10 +63,20 @@ set.environment <- function(path,
 }
 
 
-check.files <- function(actual_directory=NULL, type = c('raw', 'transform', 'deseason')){
+check.files <- function(actual_directory=NULL, type = c('raw', 'transform')){
   type <- match.arg(type)
   if(is.null(actual_directory)){
     actual_directory <- Sys.getenv('directory')
+  }
+  if(type=="raw"){
+    dir.create(paste0(actual_directory, '/data/raw_excel'),
+               showWarnings = FALSE,
+               recursive = TRUE)
+    for(table in macroparsing::rosstat_tables$table){
+      dir.create(paste0(actual_directory, '/data/raw_excel/', table),
+                 showWarnings = FALSE,
+                 recursive = TRUE)
+    }
   }
   list_files <- list.files(paste0(actual_directory, '/data/',type,'/'))
   macroparsing::variables %>%
@@ -185,7 +195,6 @@ check.bracket <- function(x){
     x <- gsub(' ','' ,x)
     x <- gsub('\\d{1}\\)','' ,x)
     x <- gsub(',','\\.' ,x)
-    print(x)
 
   }
   x

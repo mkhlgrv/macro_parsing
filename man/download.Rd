@@ -9,7 +9,7 @@ download(
   sources = NULL,
   use_future = FALSE,
   raw = TRUE,
-  transform_and_deseason = TRUE
+  transform = TRUE
 )
 }
 \arguments{

@@ -104,10 +104,7 @@ setMethod(
       previous.date.till %>%
       date.from %>%
       table %>%
-      url %>%
-      ext %>%
-      pattern %>%
-      file.url %>%
+      file.path %>%
       sheet.info %>%
       download.ts %>%
       write.ts %>%

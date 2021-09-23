@@ -4,68 +4,18 @@
 table <- function(object) {
   UseMethod("")
 }
-ext <- function(object) {
-  UseMethod("")
-}
-pattern <- function(object) {
-  UseMethod("")
-}
-file.url <-  function(object) {
-  UseMethod("")
-}
 sheet.info <-  function(object) {
   UseMethod("")
 }
-
+file.path <- function(object){
+  UseMethod("")
+}
 
 setMethod("table","rosstat",
           function(object){
             object@table <- macroparsing::rosstat_ticker_tables %>%
               .[which(.$ticker == object@ticker), ] %>%
               .$table
-            validObject(object)
-            return(object)
-          })
-
-setMethod("url","rosstat",
-          function(object){
-            object@url <- macroparsing::rosstat_tables %>%
-              .[which(.$table == object@table), ] %>%
-              .$url
-            validObject(object)
-            return(object)
-          })
-setMethod("ext","rosstat",
-          function(object){
-            object@ext <- macroparsing::rosstat_tables %>%
-              .[which(.$table == object@table), ] %>%
-              .$ext
-            validObject(object)
-            return(object)
-          })
-
-setMethod("pattern","rosstat",
-          function(object){
-            object@pattern <- macroparsing::rosstat_table_patterns %>%
-              .[which(.$table == object@table), ] %>%
-              .[order(.$order)] %>%
-              .$pattern %>%
-              as.list()
-
-            object@pattern[length(object@pattern)] <- 'href=\\"(.*?)\\"'
-            validObject(object)
-            return(object)
-          })
-
-
-setMethod("file.url","rosstat",
-          function(object){
-
-            object@file_url <- paste0("https://rosstat.gov.ru/",
-                                      find.by.pattern(x = paste0(readLines(object@url,encoding = 'UTF-8'),
-                                                          collapse = ''),
-                                               pattern = object@pattern)
-                                      )
             validObject(object)
             return(object)
           })
@@ -78,6 +28,15 @@ setMethod("sheet.info","rosstat",
             validObject(object)
             return(object)
           })
+setMethod("file.path","rosstat",
+          function(object){
+            lf <- list.files(paste0(Sys.getenv("directory"), "/data/raw_excel/", object@table),full.names = TRUE)
+            object@file_path <-  lf[length(lf)]
+
+            validObject(object)
+            return(object)
+          })
+
 
 setMethod("download.ts","rosstat",
           function(object){
@@ -111,33 +70,14 @@ setMethod("download.ts","rosstat",
                                 "q_horizontal" = "1 quarter")
 
 
-              temp_file <-
-                tempfile(fileext = object@ext)
-
-              download.file(object@file_url,
-                            temp_file,
-                            mode="wb",
-                            quiet = TRUE)
-
-
-
               sheet <- grep(paste0("(^",object@sheet_info$sheet,")( |\\.$|\\. |$)"),
-                            readxl::excel_sheets(temp_file))
+                            readxl::excel_sheets(object@file_path))
 
-
-              # if(object@sheet_info$freq != "q_horizontal"){
               suppressMessages(
-                res <- readxl::read_excel(path = temp_file,
+                res <- readxl::read_excel(path = object@file_path,
                                           sheet = sheet,
                                           skip =  object@sheet_info$start_row-1)
               )
-              # }
-              # else{
-              #   res <- readxl::read_excel(path = temp_file,
-              #                             sheet = sheet,
-              #                             skip =  object@sheet_info$start_row-1)
-              # }
-
 
 
 
@@ -184,22 +124,24 @@ setMethod("download.ts","rosstat",
                   columns <- start_column:end_column
                 }
 
-                # нужно проверять на соответствие типу numeric
 
-                value <-  res[1:end_row,
-                              columns] %>%
-                  as.data.frame() %>%
-                  t %>%
-                  as.matrix %>%
-                  check.bracket() %>%
-                  as.numeric()
+                suppressWarnings({
+                  value <-  res[1:end_row,
+                                columns] %>%
+                    as.data.frame() %>%
+                    t %>%
+                    as.matrix %>%
+                    check.bracket() %>%
+                    as.numeric()
+                })
+
 
               } else{
 
 
 
                 suppressMessages(
-                  year_colnames <- readxl::read_excel(path = temp_file,
+                  year_colnames <- readxl::read_excel(path = object@file_path,
                                                       sheet = sheet,
                                                       skip =  object@sheet_info$start_row-2, )%>%
                     colnames()
@@ -218,9 +160,8 @@ setMethod("download.ts","rosstat",
                 value <- res %>%
                   as.numeric()
               }
-
-              file.remove(temp_file)
               gc()
+
               object@ts <- tibble::tibble(
                 date = seq.Date(as.Date(paste0(start_year, "-01-01")), by =freq_by, length.out = length(value) ),
                 value = value

@@ -159,11 +159,8 @@ setMethod("initialize", "oecd",
 
 setClass('rosstat',
          slots = list(table = 'character',
-                      url = 'character',
-                      ext = 'character',
-                      pattern = 'list',
-                      sheet_info = 'data.frame',
-                      file_url = 'character'),
+                      file_path = 'character',
+                      sheet_info = 'data.frame'),
          contains = 'parsed_ts')
 
 
@@ -206,3 +203,39 @@ setMethod("initialize", "internal",
             return(.Object)
           }
 )
+
+
+setClass("rosstat_table",
+         slots = list(table = "character",
+                      url = 'character',
+                      ext = "character",
+                      pattern = "list",
+                      file_url = "character",
+                      modified = "character")
+)
+
+setMethod("initialize","rosstat_table",
+          function(.Object, table){
+            .Object@table <-  table
+            .Object@url <- macroparsing::rosstat_tables %>%
+              .[which(.$table == .Object@table), ] %>%
+              .$url
+            .Object@ext <- macroparsing::rosstat_tables %>%
+              .[which(.$table == .Object@table), ] %>%
+              .$ext
+
+            .Object@pattern <- macroparsing::rosstat_table_patterns %>%
+              .[which(.$table == .Object@table), ] %>%
+              .[order(.$order)] %>%
+              .$pattern %>%
+              as.list()
+
+            .Object@pattern[length(.Object@pattern)] <- 'href=\\"(.*?)\\"'
+            .Object@modified <- ""
+
+
+
+
+            validObject(.Object)
+            return(.Object)
+          })

@@ -31,6 +31,7 @@
 #
 # rosstat_tables <- data.table::fread('info/rosstat_table_list.csv', encoding = 'UTF-8')
 # rosstat_table_patterns <- data.table::fread('info/rosstat_table_pattern_list.csv', encoding = 'UTF-8')
+# rosstat_xls_patterns <- data.table::fread('info/rosstat_xls_pattern_list.csv', encoding = 'UTF-8')
 # rosstat_ticker_tables <- data.table::fread('info/rosstat_ticker_table_list.csv', encoding = 'UTF-8')
 # rosstat_headers <- data.table::fread('info/rosstat_header_list.csv', encoding = 'UTF-8')
 # internal_tickers <- data.table::fread('info/internal_ticker_list.csv', encoding = 'UTF-8')
@@ -39,6 +40,7 @@
 #
 # usethis::use_data(rosstat_tables, overwrite = TRUE)
 # usethis::use_data(rosstat_table_patterns, overwrite = TRUE)
+# usethis::use_data(rosstat_xls_patterns, overwrite = TRUE)
 # usethis::use_data(rosstat_ticker_tables, overwrite = TRUE)
 # usethis::use_data(rosstat_headers, overwrite = TRUE)
 # usethis::use_data(internal_tickers, overwrite = TRUE)

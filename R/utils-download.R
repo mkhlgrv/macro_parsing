@@ -62,21 +62,33 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
       out
     }
 }
-fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
+download.rosstat.tables <- function(variables_df){
+  rosstat_tables <- dplyr::inner_join(macroparsing::rosstat_ticker_tables,
+                                      variables_df, by = "ticker") %>%
+    .$table %>%
+    unique
+
+
+  pb <- progress::progress_bar$new(total = length(rosstat_tables),
+                                   format = "[:bar] :percent :eta")
+  purrr::walk(rosstat_tables,
+              function(table){
+                pb$tick()
+                new("rosstat_table", table) %>%
+                  modified()%>%
+                  source.modified() %>%
+                  find.url() %>%
+                  download.from.url()
+              })
+}
+fill.folder <- function(tickers  = NULL, sources=NULL,
                      type=c("raw", "transform", "deseason")){
 
   check.files(type=type)
 
   variables_df <- get.variables.df(tickers=tickers, sources=sources)
 
-  if(use_future){
-    future::plan(future::multisession())
-    iwalk_fun <- furrr::future_iwalk
-    walk_fun <- furrr::future_walk
-  } else{
-    iwalk_fun <- purrr::iwalk
-    walk_fun <- purrr::walk
-  }
+
 
   by_tiker_fun <- switch(type,
                          raw = download.by.ticker,
@@ -92,23 +104,7 @@ fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
     log_file <- paste0(Sys.getenv('directory'),'/data/log/',format(Sys.time(), '%Y_%m_%d_%H_%M_%S'),'.log')
     file.create(log_file)
 
-    rosstat_tables <- dplyr::inner_join(macroparsing::rosstat_ticker_tables,
-               variables_df, by = "ticker") %>%
-      .$table %>%
-      unique
-
-
-    pb <- progress::progress_bar$new(total = length(rosstat_tables),
-                                     format = "[:bar] :percent :eta")
-    purrr::walk(rosstat_tables,
-                function(table){
-                  pb$tick()
-                  new("rosstat_table", table) %>%
-                    modified()%>%
-                    source.modified() %>%
-                    find.url() %>%
-                    download.from.url()
-                })
+    download.rosstat.tables(variables_df)
 
 
   }
@@ -119,11 +115,11 @@ fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
 
   variables_df %>%
       split(factor(.$source, levels = unique(.$source))) %>%
-    iwalk_fun(function(x, source){
+    purrr::iwalk(function(x, source){
         x %>%
           split(.$ticker) %>%
           names %>%
-        walk_fun(function(ticker, source){
+        purrr::walk(function(ticker, source){
           pb$tick()
           tryCatch({
             result <- new(source) %>%
@@ -166,29 +162,56 @@ fill.folder <- function(tickers  = NULL, sources=NULL, use_future=FALSE,
 
 
 
-#' Title
+#' download
 #'
-#' @param tickers
-#' @param sources
-#' @param use_future
-#' @param transform_and_deseason
+#' Функция обновляет базу данных для определенных тикеров или источников. Если тикеры и источники не указаны, производится обновление всей базы данных, запись сырых данных в папку data/raw (файлы ticker.csv с тремя колонками: date, value, update_date),
+#' запись использованных excel-файлов из Росстата в папку data/raw_excel (файлы .xls, .xlsx в исходном виде).
 #'
-#' @return
+#' Обратите внимание: в папку raw происходит запись таких комбинаций (date, value),
+#'  которые до этого не встречались в таблице. Некоторые переменные, в частности индексы OECD и Индекс глобальной экономической активности, каждый месяц пересчитываются для всех значений.
+#'
+#'  Это означает, что соответствующие таблицы в папке raw будут полностью обновляться, однако старые значения удаляться не будут. Также следует учесть, что папка data/raw_excel
+#'   потенциально может занимать достаточно много места,
+#'  так как в ней хранятся все исходные excel-файлы, когда-либо использованные для скачивания данных с Росстата.
+#'
+#'  Папка raw состоит из нескольких подпапок, названных так же, как называются отдельные таблицы, которые можно получить с Росстата \code{macroparsing::rosstat_tables}.
+#'   В каждой из подпапок сохраняются версии исходных файлов, названные по датам обновления файла на сайте Росстата.
+#'
+#'  В папке transform для каждого тикера представлена трансформированная версия временного ряда (таблица date, value): во-первых, для каждой даты есть только одно значение, соответствующее
+#'  самому актуальном значению ряда. Во-вторых, дневные временные ряды переведены в среднее с начала месяца значение. В-третьих, те ряды, которые исходно представляются
+#'  отностельно прошлого месяца (в частности, ИПЦ), переведены в цепные индексы.
+#'
+#'
+#'
+#' @param tickers строковый вектор тикеров из таблицы \code{macroparsing::show.variables()}
+#' @param sources строковый вектор источников из таблицы \code{macroparsing::sources}
+#' @param raw логическое выражение, если верно, то происходит запрос данных из внешних источников и обновляется содержимое папок data/raw/ и data/raw_excel.
+#' @param transform логическое выражение, если верно, то на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/transform
+#'
 #' @export
 #'
 #' @examples
+#' # Обновить все доступные временные ряды
+#' download()
+#' # Обновить ИПЦ (тикер cpi)
+#' download(tickers = c("cpi"))
+#' # Обновить все ряды из OECD (тикер источника oecd)
+#' download(sources = c("oecd"))
+#' # Обновить только сырые значения и не трансформировать их
+#' download(transform = FALSE)
+#' #' Обновить только папку transform, не загружая ряды из внешних источников
+#' download(raw = FALSE)
 download <- function(tickers  = NULL,
                      sources=NULL,
-                     use_future=FALSE,
                      raw = TRUE,
                      transform = TRUE){
 
   if(raw){
-    fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='raw')
+    fill.folder(tickers=tickers, sources=sources, type='raw')
   }
 
   if(transform){
-    fill.folder(tickers=tickers, sources=sources, use_future=use_future, type='transform')
+    fill.folder(tickers=tickers, sources=sources, type='transform')
   }
 
 }

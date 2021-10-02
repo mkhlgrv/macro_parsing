@@ -1,3 +1,17 @@
+#' Variables dataframe
+#'
+#' Возвращает data.frame, отфильтрованный по указанным тикерам и источникам.
+#'
+#' @param tickers character, список допустимых тикеров, см. \link[macroparsing]{show.variables}
+#' @param sources character, список допустимых имен источников, см. \link[macroparsing]{sources}
+#'
+#' @return data.frame, tibble
+#' @export
+#' @keywords internal
+#'
+#' Если были указаны тикеры, принадлежащие к источнику internal (не скачиваемые напрямую, а рассчитываемые на основе других рядов), то
+#' сначала скачиваются все зависимые временные ряды, и только после их обновления происходит запись новых значений тикеров из источника internal.
+#'
 get.variables.df <- function(tickers=NULL, sources=NULL){
 
   failed_tickers <- tickers[which(!tickers %in%macroparsing::variables$ticker)]
@@ -9,6 +23,7 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
   if(length(failed_sources)!=0){
     message(paste0("Следующие источники не найдены: ",paste(failed_sources, collapse = " ")))
   }
+
   if(is.null(tickers)&is.null(sources)){
     out <- macroparsing::variables
   } else if(!is.null(tickers)&is.null(sources)){
@@ -81,8 +96,22 @@ download.rosstat.tables <- function(variables_df){
                   download.from.url()
               })
 }
+
+#' Update specified folder
+#'
+#' Обновляет файлы для указанных тикеров и источников в указанной папке type.
+#'
+#' @param tickers character, список допустимых тикеров см. \code{macroparsing::show.variables()}
+#' @param sources character, список допустимых имен источников см. \code{macroparsing::sources}
+#' @param type character: "raw", "transform"
+#'
+#' @return
+#' @export
+#' @keywords internal
+#'
+#' @examples
 fill.folder <- function(tickers  = NULL, sources=NULL,
-                     type=c("raw", "transform", "deseason")){
+                     type=c("raw", "transform")){
 
   check.files(type=type)
 
@@ -159,48 +188,17 @@ fill.folder <- function(tickers  = NULL, sources=NULL,
       })
 
 }
-
-
-
-#' download
+#' Update database
 #'
-#' Функция обновляет базу данных для определенных тикеров или источников. Если тикеры и источники не указаны, производится обновление всей базы данных, запись сырых данных в папку data/raw (файлы ticker.csv с тремя колонками: date, value, update_date),
-#' запись использованных excel-файлов из Росстата в папку data/raw_excel (файлы .xls, .xlsx в исходном виде).
-#'
-#' Обратите внимание: в папку raw происходит запись таких комбинаций (date, value),
-#'  которые до этого не встречались в таблице. Некоторые переменные, в частности индексы OECD и Индекс глобальной экономической активности, каждый месяц пересчитываются для всех значений.
-#'
-#'  Это означает, что соответствующие таблицы в папке raw будут полностью обновляться, однако старые значения удаляться не будут. Также следует учесть, что папка data/raw_excel
-#'   потенциально может занимать достаточно много места,
-#'  так как в ней хранятся все исходные excel-файлы, когда-либо использованные для скачивания данных с Росстата.
-#'
-#'  Папка raw состоит из нескольких подпапок, названных так же, как называются отдельные таблицы, которые можно получить с Росстата \code{macroparsing::rosstat_tables}.
-#'   В каждой из подпапок сохраняются версии исходных файлов, названные по датам обновления файла на сайте Росстата.
-#'
-#'  В папке transform для каждого тикера представлена трансформированная версия временного ряда (таблица date, value): во-первых, для каждой даты есть только одно значение, соответствующее
-#'  самому актуальном значению ряда. Во-вторых, дневные временные ряды переведены в среднее с начала месяца значение. В-третьих, те ряды, которые исходно представляются
-#'  отностельно прошлого месяца (в частности, ИПЦ), переведены в цепные индексы.
+#' Получает обновления данных для указанных временных рядов (ticker) или всех временных рядов из указанных источников (source) и записывает их в рабочую директорию пакета.
+#' Если тикеры и источники не указаны, производится обновление всей базы данных.
 #'
 #'
+#' @param tickers character список допустимых тикеров см. см. \link[macroparsing]{show.variables}
+#' @param sources character список допустимых имен источников см. \link[macroparsing]{sources}
+#' @param raw logical, при TRUE происходит запрос данных из внешних источников и обновляется содержимое папок data/raw/ и data/raw_excel
+#' @param transform logical, при TRUE на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/transformed
 #'
-#' @param tickers строковый вектор тикеров из таблицы \code{macroparsing::show.variables()}
-#' @param sources строковый вектор источников из таблицы \code{macroparsing::sources}
-#' @param raw логическое выражение, если верно, то происходит запрос данных из внешних источников и обновляется содержимое папок data/raw/ и data/raw_excel.
-#' @param transform логическое выражение, если верно, то на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/transform
-#'
-#' @export
-#'
-#' @examples
-#' # Обновить все доступные временные ряды
-#' download()
-#' # Обновить ИПЦ (тикер cpi)
-#' download(tickers = c("cpi"))
-#' # Обновить все ряды из OECD (тикер источника oecd)
-#' download(sources = c("oecd"))
-#' # Обновить только сырые значения и не трансформировать их
-#' download(transform = FALSE)
-#' #' Обновить только папку transform, не загружая ряды из внешних источников
-#' download(raw = FALSE)
 download <- function(tickers  = NULL,
                      sources=NULL,
                      raw = TRUE,

@@ -1,17 +1,3 @@
-
-
-#' Title
-#'
-#' @slot ticker character.
-#' @slot observation_start Date.
-#' @slot previous_date_till Date.
-#' @slot date_from Date.
-#' @slot ts data.frame.
-#'
-#' @return
-#' @export
-#'
-#' @examples
 setClass("parsed_ts",
          slots = list(
            ticker = "character",

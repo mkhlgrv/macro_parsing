@@ -1,11 +1,3 @@
-#' check.directory
-#'
-#' @param actual_directory
-#'
-#' @return
-#' @export
-#'
-#' @examples
 check.directory <- function(actual_directory = NULL){
   if(is.null(actual_directory)){
     actual_directory <- Sys.getenv('directory')
@@ -21,15 +13,15 @@ check.directory <- function(actual_directory = NULL){
 
 }
 
-#' Title
+#' Create database directory
 #'
-#' @param path character.
-#' @param fredr_api_key character.
+#' Создает по указанному адресу папку и необходимые подпапки для дальнейшей записи туда базы данных,
+#'  а также создает в домашней директории файл .Renviron с глобальными переменными окружения.
 #'
-#' @return
+#' @param path character путь к рабочей директории
+#' @param fredr_api_key character ключ FREDR API
+#'
 #' @export
-#'
-#' @examples
 set.environment <- function(path,
                             fredr_api_key){
   # create directories ----
@@ -143,12 +135,16 @@ add.href.to.column <- function(x, column){
   x
 }
 
-#' show.variables
+#' Show variables
 #'
-#' @return
+#' Возвращает data.frame со справочной информацией по переменным, которые доступны для скачивания в пакете.
+#'
+#' @param additional logical показывать дополнительные колонк
+#' @param russificate logical русифицировать названия источников и периодов
+#' @param url_as_href logical сделать url-ссылки кликабельными
+#'
+#' @return data.frame
 #' @export
-#'
-#' @examples
 show.variables <- function(additional=FALSE, russificate = FALSE, url_as_href=FALSE){
   out <- macroparsing::variables[, c("ticker","name_rus_short", "source", "freq", "observation_start")]
   if(additional){

@@ -2,13 +2,20 @@
 % Please edit documentation in R/utils.R
 \name{show.variables}
 \alias{show.variables}
-\title{show.variables}
+\title{Show variables}
 \usage{
 show.variables(additional = FALSE, russificate = FALSE, url_as_href = FALSE)
 }
-\value{
+\arguments{
+\item{additional}{logical показывать дополнительные колонк}
 
+\item{russificate}{logical русифицировать названия источников и периодов}
+
+\item{url_as_href}{logical сделать url-ссылки кликабельными}
+}
+\value{
+data.frame
 }
 \description{
-show.variables
+Возвращает data.frame со справочной информацией по переменным, которые доступны для скачивания в пакете.
 }

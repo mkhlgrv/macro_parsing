@@ -2,18 +2,16 @@
 % Please edit documentation in R/utils.R
 \name{set.environment}
 \alias{set.environment}
-\title{Title}
+\title{Create database directory}
 \usage{
 set.environment(path, fredr_api_key)
 }
 \arguments{
-\item{path}{character.}
+\item{path}{character путь к рабочей директории}
 
-\item{fredr_api_key}{character.}
-}
-\value{
-
+\item{fredr_api_key}{character ключ FREDR API}
 }
 \description{
-Title
+Создает по указанному адресу папку и необходимые подпапки для дальнейшей записи туда базы данных,
+а также создает в домашней директории файл .Renviron с глобальными переменными окружения.
 }

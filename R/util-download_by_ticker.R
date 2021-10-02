@@ -97,7 +97,6 @@ setMethod(
 setMethod(
   "download.by.ticker", "rosstat",
   function(object, .ticker) {
-    print(.ticker)
     object <-  object%>%
       ticker(.ticker) %>%
       observation.start %>%
@@ -105,12 +104,27 @@ setMethod(
       previous.date.till %>%
       date.from %>%
       table %>%
-      url %>%
-      ext %>%
-      pattern %>%
-      file.url %>%
+      file.path %>%
       sheet.info %>%
-      download.ts%>%
+      download.ts %>%
+      write.ts %>%
+      write.log
+    validObject(object)
+    return(object)
+  }
+)
+
+setMethod(
+  "download.by.ticker", "internal",
+  function(object, .ticker) {
+    object <-  object%>%
+      ticker(.ticker) %>%
+      use.archive %>%
+      observation.start %>%
+      previous.date.till %>%
+      date.from %>%
+      related.ticker %>%
+      download.ts %>%
       write.ts%>%
       write.log
     validObject(object)

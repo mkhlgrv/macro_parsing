@@ -2,10 +2,9 @@
 
 export("%>%")
 export(":=")
-export(check.directory)
-export(download)
+export(fill.folder)
+export(get.variables.df)
 export(set.environment)
 export(show.variables)
-exportClasses(parsed_ts)
 importFrom(data.table,":=")
 importFrom(magrittr,"%>%")

@@ -1,8 +1,5 @@
 rosstat_name_list - список тикеров с источником, то есть названием таблицы или раздела на сайте (stei, gdp_expenditure, gdp_income, li, ...)
 у одного тикера может быть несколько источников (но лучше называть тикеры отдельными именами)
-stei -  Short-Term Economic Indicators of the Russian Federation https://rosstat.gov.ru/compendium/document/50802
-li - leading indicators https://rosstat.gov.ru/leading_indicators
-
 
 примечания к файлу rosstat_stei_list
 файл ind04 содержит пример исходных данных (апрель 2021)

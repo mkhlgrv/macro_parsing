@@ -71,7 +71,9 @@ pattern <- function(object) {
 write.log <- function(object) {
   UseMethod("write.log")
 }
-
+related.ticker <- function(object) {
+  UseMethod("related.ticker")
+}
 
 setMethod(
   "ticker", "parsed_ts",
@@ -157,18 +159,21 @@ setMethod(
       )) %>%
         dplyr::arrange(
           date, update_date
-        )
+        ) %>%
+        data.table::as.data.table()
     }
-
-    file_name <- paste0(Sys.getenv('directory'), '/data/raw/',object@ticker,
-                        ".csv")
+    file_name <- paste0(Sys.getenv('directory'), '/data/raw/',object@ticker,".csv")
     ts_old <- data.table::fread(file= file_name, encoding = "UTF-8",
                                 colClasses = c("Date", "numeric", "Date"))
 
-    object@ts <- dplyr::anti_join(object@ts,
-                                  ts_old,
-                     by =c('date', 'value')
-                     )
+    object@ts$value <- round(object@ts$value, 5)
+    if(nrow(ts_old)!=0){
+      object@ts <- dplyr::anti_join(object@ts,
+                                    ts_old,
+                                    by =c('date', 'value')
+      )
+    }
+
 
     data.table::fwrite(object@ts,
                        file = file_name,
@@ -316,9 +321,10 @@ setMethod("write.deseason.ts", "parsed_ts",
 setMethod("write.log", "parsed_ts",
           function(object){
             if(nrow(object@ts)!=0){
-              log_info <- data.table::data.table(ticker = object@ticker,
+              log_info <- data.table::data.table(update_date = object@ts$update_date[1],
                                      n = nrow(object@ts),
-                                     update_date = object@ts$update_date[1])
+                                     ticker = object@ticker
+                                     )
               data.table::fwrite(log_info,
                                  file = paste0(Sys.getenv('directory'), "/data/info.csv"),
                                  append = TRUE)

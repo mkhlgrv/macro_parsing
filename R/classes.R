@@ -1,17 +1,3 @@
-
-
-#' Title
-#'
-#' @slot ticker character.
-#' @slot observation_start Date.
-#' @slot previous_date_till Date.
-#' @slot date_from Date.
-#' @slot ts data.frame.
-#'
-#' @return
-#' @export
-#'
-#' @examples
 setClass("parsed_ts",
          slots = list(
            ticker = "character",
@@ -159,11 +145,8 @@ setMethod("initialize", "oecd",
 
 setClass('rosstat',
          slots = list(table = 'character',
-                      url = 'character',
-                      ext = 'character',
-                      pattern = 'list',
-                      sheet_info = 'data.frame',
-                      file_url = 'character'),
+                      file_path = 'character',
+                      sheet_info = 'data.frame'),
          contains = 'parsed_ts')
 
 
@@ -183,3 +166,62 @@ setMethod("initialize", "rosstat",
             return(.Object)
           }
 )
+
+
+setClass('internal',
+         slots = list(related_ticker = 'character'),
+         contains = 'parsed_ts')
+
+
+setMethod("initialize", "internal",
+          function(.Object
+          ) {
+            .Object@observation_start <- lubridate::ymd()
+            .Object@previous_date_till <- lubridate::ymd()
+            .Object@date_from <- lubridate::ymd()
+            .Object@ts <- tibble::tibble(
+              date = lubridate::ymd(),
+              value = numeric(),
+              update_date = lubridate::ymd()
+            )
+            .Object@freq <- factor(levels = c('d', 'w', 'm', 'q'))
+            validObject(.Object)
+            return(.Object)
+          }
+)
+
+
+setClass("rosstat_table",
+         slots = list(table = "character",
+                      url = 'character',
+                      ext = "character",
+                      pattern = "list",
+                      file_url = "character",
+                      modified = "character")
+)
+
+setMethod("initialize","rosstat_table",
+          function(.Object, table){
+            .Object@table <-  table
+            .Object@url <- macroparsing::rosstat_tables %>%
+              .[which(.$table == .Object@table), ] %>%
+              .$url
+            .Object@ext <- macroparsing::rosstat_tables %>%
+              .[which(.$table == .Object@table), ] %>%
+              .$ext
+
+            .Object@pattern <- macroparsing::rosstat_table_patterns %>%
+              .[which(.$table == .Object@table), ] %>%
+              .[order(.$order)] %>%
+              .$pattern %>%
+              as.list()
+
+            .Object@pattern[length(.Object@pattern)] <- 'href=\\"(.*?)\\"'
+            .Object@modified <- ""
+
+
+
+
+            validObject(.Object)
+            return(.Object)
+          })

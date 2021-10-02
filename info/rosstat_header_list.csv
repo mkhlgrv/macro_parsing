@@ -1,15 +1,15 @@
 ticker,sheet,header_pattern,n_match,skip_after_header,freq,header_column,start_row,end_row_indicator
 gdp_nom,1.1,"GDP, bln rubles",1,1,q,1,2,empty_row
-gdp_real,1.1,"Volume index of produced GDP, percent",1,1,q,1,2,empty_row
+gdp_volume_index,1.1,"Volume index of produced GDP, percent",1,1,q,1,2,empty_row
 ipi,1.2,percent of previous period,1,1,m,1,2,empty_row
 ipi_mining,1.2,reporting month as percent of previous month,1,1,m,1,2,empty_row
 ipi_manufacturing,1.2,reporting month as percent of previous month,2,1,m,1,2,empty_row
 ipi_electricity,1.2,reporting month as percent of previous month,3,1,m,1,2,empty_row
 ipi_water,1.2,reporting month as percent of previous month,4,1,m,1,2,empty_row
 api,1.3,percent of corresponding period of previous year,1,1,m,1,2,empty_row
-animal_livestock,1.4, Livestock and poultry for slaughter,1,1,m,1,2,empty_row
-animal_milk,1.4,"Milk, thou tons",1,1,m,1,2,empty_row
-animal_eggs,1.4,"Eggs, mln pieces",1,1,m,1,2,empty_row
+livestock,1.4, Livestock and poultry for slaughter,1,1,m,1,2,empty_row
+milk,1.4,"Milk, thou tons",1,1,m,1,2,empty_row
+eggs,1.4,"Eggs, mln pieces",1,1,m,1,2,empty_row
 freight_turnover,1.5,"Freight turnover of transport, including commercial and noncommercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
 freight_turnover_commercial,1.5,"Commercial freight turnover, bln ton-km",1,1,m,1,2,empty_row
 freight_loading_railway,1.5,"Freight loading on railway transport, mln ton",1,1,m,1,2,empty_row
@@ -75,22 +75,19 @@ cpi_alcohol,3.5,alcoholic beverages,1,1,m,1,2,empty_row
 ppi_non_food,3.5,non-food products,1,1,m,1,2,empty_row
 ppi_services,3.5,services,1,1,m,1,2,empty_row
 employed_15_72,4.1,Number of employed population 15 to 72 years old,1,1,m,1,2,empty_row
-employed,4.1,Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
+employed_15,4.1,Total number of unemployed aged 15 years and over,1,1,m,1,2,empty_row
 unemployed_15_72,4.1,Total number of unemployed 15 to 72 years old,1,1,m,1,2,empty_row
-unemployed,4.1,Total number of unemployed aged 15 years and over,2,1,m,1,2,empty_row
+unemployed_15,4.1,Total number of unemployed aged 15 years and over,2,1,m,1,2,empty_row
 unemployment_15_72,4.1,"Unemployment rate 15 to 72 years old, percent",1,1,m,1,2,empty_row
-unemployment,4.1,Unemployment rate aged 15 years and over,1,1,m,1,2,empty_row
+unemployment_15,4.1,Unemployment rate aged 15 years and over,1,1,m,1,2,empty_row
 unemployment_registered,4.1,Number of unemployed registered at bodies of state employment services,1,1,m,1,2,empty_row
 non_labor,4.1,"Number of citizens not engaged in labor activities, registered   with bodies of  state employment services",1,1,m,1,2,empty_row
 employer_demands,4.1,"Employer demands for employees entered to bodies of state employment services, thou person",1,1,m,1,2,empty_row
 non_labor_to_employer_demands,4.1,Potential number of population not engaged in labor activities,1,1,m,1,2,empty_row
 wage_nom,4.2,Accrued average monthly nominal wages per employee,1,1,m,1,2,empty_row
 wage_real,4.2,percent of previous period,2,1,m,1,2,empty_row
-money_income_1996,4.4,in accordance with the methodology for calculating the balance of money incomes and expenditures of population,1,1,q,1,2,empty_row
 money_income,4.4,in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,1,1,q,1,2,empty_row
-income_real_1996,4.4,in accordance with the methodology for calculating the balance of money incomes and expenditures of population,5,1,q,1,2,empty_row
 income_real,4.4,in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,5,1,q,1,2,empty_row
-income_real_disp_1996,4.4,in accordance with the methodology for calculating the balance of money incomes and expenditures of population,7,1,q,1,2,empty_row
 income_real_disp,4.4,in accordance with the Methodological Provisions for calculation of indicators of money incomes and expenditures of population,7,1,q,1,2,empty_row
 li_electricity_1,1,2006,3,0,m_numeric,3,6,empty_row
 li_manufacturing_1,1,2006,2,0,m_numeric,3,6,next_serie
@@ -111,3 +108,4 @@ invest_fixed_capital_real,6,валовое накопление основног
 invest_fixed_capital_nom,2,валовое накопление основного капитала,1,0,q_horizontal,1,4,
 labor_income_nom,2,оплата труда наемных работников,1,0,q_horizontal,1,4,
 gross_profit_nom,2,валовая прибыль экономики,1,0,q_horizontal,1,4	,
+gdp_real,6,Валовой внутренний продукт,1,0,q_horizontal,1,4,

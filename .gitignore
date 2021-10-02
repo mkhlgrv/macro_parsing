@@ -40,3 +40,4 @@ vignettes/*.pdf
 *.html
 readme_app.Rmd
 readme_app.md
+inst/doc

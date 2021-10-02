@@ -2,22 +2,20 @@
 % Please edit documentation in R/utils-download.R
 \name{download}
 \alias{download}
-\title{Title}
+\title{Update database}
 \usage{
-download(
-  tickers = NULL,
-  sources = NULL,
-  use_future = FALSE,
-  raw = TRUE,
-  transform_and_deseason = TRUE
-)
+download(tickers = NULL, sources = NULL, raw = TRUE, transform = TRUE)
 }
 \arguments{
-\item{transform_and_deseason}{}
-}
-\value{
+\item{tickers}{character список допустимых тикеров см. см. \link[macroparsing]{show.variables}}
 
+\item{sources}{character список допустимых имен источников см. \link[macroparsing]{sources}}
+
+\item{raw}{logical, при TRUE происходит запрос данных из внешних источников и обновляется содержимое папок data/raw/ и data/raw_excel}
+
+\item{transform}{logical, при TRUE на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/transformed}
 }
 \description{
-Title
+Получает обновления данных для указанных временных рядов (ticker) или всех временных рядов из указанных источников (source) и записывает их в рабочую директорию пакета.
+Если тикеры и источники не указаны, производится обновление всей базы данных.
 }

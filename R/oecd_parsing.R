@@ -4,7 +4,7 @@
 setMethod("oecd.ticker", "oecd",
           function(object
           ) {
-            object@oecd_ticker <- macroparsing::oecd_names %>%
+            object@oecd_ticker <- rmedb::oecd_names %>%
               .[which(.$ticker==object@ticker),] %>%
               dplyr::mutate(oecd_ticker = paste0(index_name, '.', country_name)) %>%
               .$oecd_ticker

@@ -30,7 +30,7 @@ set.environment <- function(path,
   dir.create(path = paste0(path, '/data'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/raw_excel'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/raw'), showWarnings = FALSE)
-  dir.create(path = paste0(path, '/data/transform'), showWarnings = FALSE)
+  dir.create(path = paste0(path, '/data/tf'), showWarnings = FALSE)
   dir.create(path = paste0(path, '/data/log'), showWarnings = FALSE)
 
   if(file.exists(path)){
@@ -64,14 +64,18 @@ check.files <- function(actual_directory=NULL, type = c('raw', 'transform')){
     dir.create(paste0(actual_directory, '/data/raw_excel'),
                showWarnings = FALSE,
                recursive = TRUE)
-    for(table in macroparsing::rosstat_tables$table){
+    for(table in rmedb::rosstat_tables$table){
       dir.create(paste0(actual_directory, '/data/raw_excel/', table),
                  showWarnings = FALSE,
                  recursive = TRUE)
     }
   }
-  list_files <- list.files(paste0(actual_directory, '/data/',type,'/'))
-  macroparsing::variables %>%
+  folder_by_type <- type
+  if(folder_by_type=="transform"){
+    folder_by_type == "tf"
+  }
+  list_files <- list.files(paste0(actual_directory, '/data/',folder_by_type,'/'))
+  rmedb::variables %>%
     .$ticker %>%
     paste0(".csv") %>%
     .[which(!.%in% list_files)] %>%
@@ -79,7 +83,7 @@ check.files <- function(actual_directory=NULL, type = c('raw', 'transform')){
       data.table::fwrite(tibble::tibble(date = character(),
                                         value = numeric(),
                                         update_date = character()),
-                         file = (paste0(actual_directory,  '/data/',type,'/',
+                         file = (paste0(actual_directory,  '/data/',folder_by_type,'/',
                                         filei))
       )
     })
@@ -146,10 +150,10 @@ add.href.to.column <- function(x, column){
 #' @return data.frame
 #' @export
 show.variables <- function(additional=FALSE, russificate = FALSE, url_as_href=FALSE){
-  out <- macroparsing::variables[, c("ticker","name_rus_short", "source", "freq", "observation_start")]
+  out <- rmedb::variables[, c("ticker","name_rus_short", "source", "freq", "observation_start")]
   if(additional){
     out <- out %>%
-      dplyr::left_join(macroparsing::additional_info, by = 'ticker')
+      dplyr::left_join(rmedb::additional_info, by = 'ticker')
 
     if(url_as_href){
       out <- add.href.to.column(out, 'url')

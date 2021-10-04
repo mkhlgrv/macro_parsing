@@ -1,3 +1,4 @@
+#' @include common.R
 setClass("rosstat_table",
          slots = list(table = "character",
                       url = 'character',
@@ -11,14 +12,14 @@ setClass("rosstat_table",
 setMethod("initialize","rosstat_table",
           function(.Object, table){
             .Object@table <-  table
-            .Object@url <- macroparsing::rosstat_tables %>%
+            .Object@url <- rmedb::rosstat_tables %>%
               .[which(.$table == .Object@table), ] %>%
               .$url
-            .Object@ext <- macroparsing::rosstat_tables %>%
+            .Object@ext <- rmedb::rosstat_tables %>%
               .[which(.$table == .Object@table), ] %>%
               .$ext
 
-            .Object@pattern <- macroparsing::rosstat_table_patterns %>%
+            .Object@pattern <- rmedb::rosstat_table_patterns %>%
               .[which(.$table == .Object@table), ] %>%
               .[order(.$order)] %>%
               .$pattern %>%
@@ -76,8 +77,8 @@ setMethod("modified","rosstat_table",
 setMethod("source.modified","rosstat_table",
           function(.Object){
             try({
-              pattern_name <- macroparsing::rosstat_xls_patterns[which(
-                macroparsing::rosstat_xls_patterns$table==.Object@table
+              pattern_name <- rmedb::rosstat_xls_patterns[which(
+                rmedb::rosstat_xls_patterns$table==.Object@table
               )] %>%
                 .$pattern
 

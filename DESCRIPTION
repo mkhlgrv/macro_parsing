@@ -1,8 +1,8 @@
-Package: macroparsing
-Title: Real-time parsing mixed frequency data for russian economy
+Package: rmedb
+Title: Russian Macroeconomic Database
 Version: 0.0.0.9000
 Author: Mikhail Gareev
-Description: Real-time parsing mixed frequency data for russian economy.
+Description: Downloads and updates database of russian macroeconomic indicators 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -22,7 +22,6 @@ Collate:
     'rosstat_parsing.R'
     'run.R'
     'run_internal_data.R'
-    'util-deseason_by_ticker.R'
     'util-download_by_ticker.R'
     'util-save_excel.R'
     'util-transform_by_ticker.R'

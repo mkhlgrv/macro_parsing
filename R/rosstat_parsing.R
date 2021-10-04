@@ -13,7 +13,7 @@ file.path <- function(object){
 
 setMethod("table","rosstat",
           function(object){
-            object@table <- macroparsing::rosstat_ticker_tables %>%
+            object@table <- rmedb::rosstat_ticker_tables %>%
               .[which(.$ticker == object@ticker), ] %>%
               .$table
             validObject(object)
@@ -23,7 +23,7 @@ setMethod("table","rosstat",
 
 setMethod("sheet.info","rosstat",
           function(object){
-            object@sheet_info <-  macroparsing::rosstat_headers %>%
+            object@sheet_info <-  rmedb::rosstat_headers %>%
               .[which(.$ticker  == object@ticker), ]
             validObject(object)
             return(object)

@@ -4,7 +4,7 @@
 setMethod(
   "related.ticker", "internal",
   function(object) {
-    object@related_ticker <- macroparsing::internal_tickers %>%
+    object@related_ticker <- rmedb::internal_tickers %>%
       .[which(.$ticker == object@ticker), ] %>%
       .$related_ticker
     validObject(object)

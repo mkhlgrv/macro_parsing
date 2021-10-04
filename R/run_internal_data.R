@@ -4,7 +4,7 @@
 #   mutate(date = as.Date(date),
 #          update_date = lubridate::today()) %>%
 #   rename(value = sp500)
-# # eval(parse(text = 'macroparsing:::archive_SP500'))
+# # eval(parse(text = 'rmedb:::archive_SP500'))
 # # usd
 # archive_usd <- rio::import('C:/Users/mkhlgrv/Documents/forecast/database/binded/binded d.xlsx')[,c('date',"usd")] %>%
 #     mutate(date = as.Date(date),
@@ -131,22 +131,22 @@
 #     rename(value = ppi) %>%
 #   na.omit
 # # money_income
-# archive_money_income = data.table::fread('C:/Users/mkhlgrv/Documents/macroparsing/info/archive/money_income_1996.csv',
+# archive_money_income = data.table::fread('C:/Users/mkhlgrv/Documents/rmedb/info/archive/money_income_1996.csv',
 #                                          colClasses = c("Date", "numeric", "Date")) %>% na.omit
 # # income_real
-# archive_income_real = data.table::fread('C:/Users/mkhlgrv/Documents/macroparsing/info/archive/income_real_1996.csv',
+# archive_income_real = data.table::fread('C:/Users/mkhlgrv/Documents/rmedb/info/archive/income_real_1996.csv',
 #                                         colClasses = c("Date", "numeric", "Date")) %>% na.omit
 # # # income_real_disp
-# archive_income_real_disp = data.table::fread('C:/Users/mkhlgrv/Documents/macroparsing/info/archive/income_real_disp_1996.csv',
+# archive_income_real_disp = data.table::fread('C:/Users/mkhlgrv/Documents/rmedb/info/archive/income_real_disp_1996.csv',
 #                                              colClasses = c("Date", "numeric", "Date")) %>% na.omit
 # # # employed
-# archive_employed = data.table::fread('C:/Users/mkhlgrv/Documents/macroparsing/info/archive/employed_15_72.csv',
+# archive_employed = data.table::fread('C:/Users/mkhlgrv/Documents/rmedb/info/archive/employed_15_72.csv',
 #                                      colClasses = c("Date", "numeric", "Date"))[1:216,] %>% na.omit
 # # # unemployed
-# archive_unemployed = data.table::fread('C:/Users/mkhlgrv/Documents/macroparsing/info/archive/unemployed_15_72.csv',
+# archive_unemployed = data.table::fread('C:/Users/mkhlgrv/Documents/rmedb/info/archive/unemployed_15_72.csv',
 #                                        colClasses = c("Date", "numeric", "Date"))[1:216,] %>% na.omit
 # # # unemployment
-# archive_unemployment = data.table::fread('C:/Users/mkhlgrv/Documents/macroparsing/info/archive/unemployment_15_72.csv',
+# archive_unemployment = data.table::fread('C:/Users/mkhlgrv/Documents/rmedb/info/archive/unemployment_15_72.csv',
 #                                          colClasses = c("Date", "numeric", "Date"))[1:216,] %>% na.omit
 # # ppi
 # archive_ppi <- rio::import('C:/Users/mkhlgrv/Documents/forecast/database/binded/binded m.xlsx')[,c('date',"ppi")] %>%

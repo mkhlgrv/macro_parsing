@@ -7,13 +7,13 @@
 download(tickers = NULL, sources = NULL, raw = TRUE, transform = TRUE)
 }
 \arguments{
-\item{tickers}{character список допустимых тикеров см. см. \link[macroparsing]{show.variables}}
+\item{tickers}{character список допустимых тикеров см. см. \link[rmedb]{show.variables}}
 
-\item{sources}{character список допустимых имен источников см. \link[macroparsing]{sources}}
+\item{sources}{character список допустимых имен источников см. \link[rmedb]{sources}}
 
 \item{raw}{logical, при TRUE происходит запрос данных из внешних источников и обновляется содержимое папок data/raw/ и data/raw_excel}
 
-\item{transform}{logical, при TRUE на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/transformed}
+\item{transform}{logical, при TRUE на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/tf}
 }
 \description{
 Получает обновления данных для указанных временных рядов (ticker) или всех временных рядов из указанных источников (source) и записывает их в рабочую директорию пакета.

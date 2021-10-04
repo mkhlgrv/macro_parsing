@@ -33,7 +33,7 @@ setMethod("date.from", "cbr",
 setMethod("cbr.ticker", "cbr",
           function(object
           ) {
-            object@cbr_ticker <- macroparsing::cbr_names %>%
+            object@cbr_ticker <- rmedb::cbr_names %>%
               .[which(.$ticker==object@ticker),] %>%
               .$cbr_ticker
             validObject(object)

@@ -203,14 +203,14 @@ setClass("rosstat_table",
 setMethod("initialize","rosstat_table",
           function(.Object, table){
             .Object@table <-  table
-            .Object@url <- macroparsing::rosstat_tables %>%
+            .Object@url <- rmedb::rosstat_tables %>%
               .[which(.$table == .Object@table), ] %>%
               .$url
-            .Object@ext <- macroparsing::rosstat_tables %>%
+            .Object@ext <- rmedb::rosstat_tables %>%
               .[which(.$table == .Object@table), ] %>%
               .$ext
 
-            .Object@pattern <- macroparsing::rosstat_table_patterns %>%
+            .Object@pattern <- rmedb::rosstat_table_patterns %>%
               .[which(.$table == .Object@table), ] %>%
               .[order(.$order)] %>%
               .$pattern %>%

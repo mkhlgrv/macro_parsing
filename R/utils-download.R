@@ -2,8 +2,8 @@
 #'
 #' Возвращает data.frame, отфильтрованный по указанным тикерам и источникам.
 #'
-#' @param tickers character, список допустимых тикеров, см. \link[macroparsing]{show.variables}
-#' @param sources character, список допустимых имен источников, см. \link[macroparsing]{sources}
+#' @param tickers character, список допустимых тикеров, см. \link[rmedb]{show.variables}
+#' @param sources character, список допустимых имен источников, см. \link[rmedb]{sources}
 #'
 #' @return data.frame, tibble
 #' @export
@@ -14,8 +14,8 @@
 #'
 get.variables.df <- function(tickers=NULL, sources=NULL){
 
-  failed_tickers <- tickers[which(!tickers %in%macroparsing::variables$ticker)]
-  failed_sources <- sources[which(!sources %in%macroparsing::variables$source)]
+  failed_tickers <- tickers[which(!tickers %in%rmedb::variables$ticker)]
+  failed_sources <- sources[which(!sources %in%rmedb::variables$source)]
 
   if(length(failed_tickers)!=0){
     message(paste0("Следующие тикеры не найдены: ",paste(failed_tickers, collapse = " ")))
@@ -25,26 +25,26 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
   }
 
   if(is.null(tickers)&is.null(sources)){
-    out <- macroparsing::variables
+    out <- rmedb::variables
   } else if(!is.null(tickers)&is.null(sources)){
-    out <- macroparsing::variables %>%
+    out <- rmedb::variables %>%
       dplyr::inner_join(
         tibble::tibble(ticker = tickers),
         by = 'ticker')
   } else if(is.null(tickers)&!is.null(sources)){
-   out <-  macroparsing::variables %>%
+   out <-  rmedb::variables %>%
       dplyr::inner_join(
         tibble::tibble(source = sources),
         by = 'source'
       )
   } else if(!is.null(tickers)&!is.null(sources)){
 
-    out <- rbind(macroparsing::variables %>%
+    out <- rbind(rmedb::variables %>%
             dplyr::inner_join(
               tibble::tibble(source = sources),
               by = 'source'
             ),
-          macroparsing::variables %>%
+          rmedb::variables %>%
             dplyr::inner_join(
               tibble::tibble(ticker = tickers),
               by = 'ticker'
@@ -54,10 +54,10 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
 
     if(length(which(out$source=='internal'))>0){
 
-    dependecies <- macroparsing::internal_tickers %>%
+    dependecies <- rmedb::internal_tickers %>%
       dplyr::inner_join(out, by = "ticker") %>%
       .$related_ticker
-    dependecies_df <- macroparsing::variables %>%
+    dependecies_df <- rmedb::variables %>%
       dplyr::inner_join(
         tibble::tibble(ticker = dependecies),
         by = 'ticker'
@@ -78,7 +78,7 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
     }
 }
 download.rosstat.tables <- function(variables_df){
-  rosstat_tables <- dplyr::inner_join(macroparsing::rosstat_ticker_tables,
+  rosstat_tables <- dplyr::inner_join(rmedb::rosstat_ticker_tables,
                                       variables_df, by = "ticker") %>%
     .$table %>%
     unique
@@ -101,15 +101,13 @@ download.rosstat.tables <- function(variables_df){
 #'
 #' Обновляет файлы для указанных тикеров и источников в указанной папке type.
 #'
-#' @param tickers character, список допустимых тикеров см. \code{macroparsing::show.variables()}
-#' @param sources character, список допустимых имен источников см. \code{macroparsing::sources}
+#' @param tickers character, список допустимых тикеров см. \code{rmedb::show.variables()}
+#' @param sources character, список допустимых имен источников см. \code{rmedb::sources}
 #' @param type character: "raw", "transform"
 #'
 #' @return
 #' @export
 #' @keywords internal
-#'
-#' @examples
 fill.folder <- function(tickers  = NULL, sources=NULL,
                      type=c("raw", "transform")){
 
@@ -194,10 +192,10 @@ fill.folder <- function(tickers  = NULL, sources=NULL,
 #' Если тикеры и источники не указаны, производится обновление всей базы данных.
 #'
 #'
-#' @param tickers character список допустимых тикеров см. см. \link[macroparsing]{show.variables}
-#' @param sources character список допустимых имен источников см. \link[macroparsing]{sources}
+#' @param tickers character список допустимых тикеров см. см. \link[rmedb]{show.variables}
+#' @param sources character список допустимых имен источников см. \link[rmedb]{sources}
 #' @param raw logical, при TRUE происходит запрос данных из внешних источников и обновляется содержимое папок data/raw/ и data/raw_excel
-#' @param transform logical, при TRUE на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/transformed
+#' @param transform logical, при TRUE на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/tf
 #'
 download <- function(tickers  = NULL,
                      sources=NULL,

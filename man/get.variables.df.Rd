@@ -7,9 +7,9 @@
 get.variables.df(tickers = NULL, sources = NULL)
 }
 \arguments{
-\item{tickers}{character, список допустимых тикеров, см. \link[macroparsing]{show.variables}}
+\item{tickers}{character, список допустимых тикеров, см. \link[rmedb]{show.variables}}
 
-\item{sources}{character, список допустимых имен источников, см. \link[macroparsing]{sources}}
+\item{sources}{character, список допустимых имен источников, см. \link[rmedb]{sources}}
 }
 \value{
 data.frame, tibble

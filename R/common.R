@@ -88,7 +88,7 @@ setMethod(
 setMethod(
   "observation.start", "parsed_ts",
   function(object) {
-    object@observation_start <- macroparsing::variables %>%
+    object@observation_start <- rmedb::variables %>%
       .[which(.$ticker == object@ticker), ] %>%
       .$observation_start %>%
       lubridate::ymd()
@@ -100,7 +100,7 @@ setMethod(
 setMethod(
   "use.archive", "parsed_ts",
   function(object) {
-    object@use_archive <- macroparsing::variables %>%
+    object@use_archive <- rmedb::variables %>%
       .[which(.$ticker == object@ticker), ] %>%
       .$use_archive
     validObject(object)
@@ -111,7 +111,7 @@ setMethod(
 setMethod(
   "transform", "parsed_ts",
   function(object) {
-    object@transform <- macroparsing::variables %>%
+    object@transform <- rmedb::variables %>%
       .[which(.$ticker == object@ticker), ] %>%
       .$transform
     validObject(object)
@@ -123,7 +123,7 @@ setMethod(
 setMethod(
   "deseason", "parsed_ts",
   function(object) {
-    object@deseason <- macroparsing::variables %>%
+    object@deseason <- rmedb::variables %>%
       .[which(.$ticker == object@ticker), ] %>%
       .$deseason
     validObject(object)
@@ -154,7 +154,7 @@ setMethod(
   function(object) {
     if(object@use_archive&object@observation_start==object@date_from){
       object@ts <- data.table::rbindlist(list(
-        eval(parse(text = paste0('macroparsing:::archive_',object@ticker))),
+        eval(parse(text = paste0('rmedb:::archive_',object@ticker))),
         object@ts
       )) %>%
         dplyr::arrange(
@@ -213,7 +213,7 @@ setMethod("date.from", "parsed_ts",
 setMethod("freq", "parsed_ts",
           function(object
           ) {
-            object@freq <- macroparsing::variables %>%
+            object@freq <- rmedb::variables %>%
               .[which(.$ticker==object@ticker),] %>%
               .$freq %>%
               factor(levels = c('d', 'w', 'm', 'q'))
@@ -255,7 +255,7 @@ setMethod("deseason.ts", "parsed_ts",
           ) {
 
             object@deseason.ts <- data.table::fread(file = paste0(Sys.getenv('directory'),
-                                                                   '/data/transform/',
+                                                                   '/data/tf/',
                                                                    object@ticker,
                                                                    '.csv'))
                 deseason_fun <- function(value, value_lag){
@@ -294,7 +294,7 @@ setMethod("write.transform.ts", "parsed_ts",
           function(object) {
 
             data.table::fwrite(object@transform.ts,
-                               file = paste0(Sys.getenv('directory'), '/data/transform/',
+                               file = paste0(Sys.getenv('directory'), '/data/tf/',
                                              object@ticker,
                                              ".csv"),
                                append = FALSE)

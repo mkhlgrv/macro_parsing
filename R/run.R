@@ -51,20 +51,20 @@
 
 
 # # download all data ----
-# library(macroparsing)
+# library(rmedb)
 # check.files()
 # st <- Sys.time()
 # download(source='cbr', use_future = F)
 # Sys.time() - st
 # do.call(file.remove,
-#         list(list.files("C:/Users/mkhlgrv/Documents/macroparsing_usage/data/raw/",
+#         list(list.files("C:/Users/mkhlgrv/Documents/rmedb_usage/data/raw/",
 #                         full.names = TRUE)))
 # check.files()
 # st <- Sys.time()
 # download(source='cbr', use_future = TRUE)
 # Sys.time() - st
 # download(sources = 'moex')
-# macroparsing::download(ticker ='cli_RUS')
+# rmedb::download(ticker ='cli_RUS')
 # download(ticker='SP500')
 # devtools::load_all()
 # options(java.parameters = "- Xmx1024m")
@@ -94,7 +94,6 @@
 
 
 # devtools::build()
-# devtools::install_local(path = "C:/Users/mkhlgrv/Documents/macroparsing_0.0.0.9000.tar.gz")#, dependencies = TRUE,force=TRUE)
+# devtools::install_local(path = "C:/Users/mkhlgrv/Documents/rmedb_0.0.0.9000.tar.gz")#, dependencies = TRUE,force=TRUE)
 # update.log.file()
 
-# shiny::runApp('app/macroparsing')

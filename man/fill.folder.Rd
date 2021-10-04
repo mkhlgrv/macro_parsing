@@ -7,9 +7,9 @@
 fill.folder(tickers = NULL, sources = NULL, type = c("raw", "transform"))
 }
 \arguments{
-\item{tickers}{character, список допустимых тикеров см. \code{macroparsing::show.variables()}}
+\item{tickers}{character, список допустимых тикеров см. \code{rmedb::show.variables()}}
 
-\item{sources}{character, список допустимых имен источников см. \code{macroparsing::sources}}
+\item{sources}{character, список допустимых имен источников см. \code{rmedb::sources}}
 
 \item{type}{character: "raw", "transform"}
 }

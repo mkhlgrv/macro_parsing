@@ -5,7 +5,7 @@
 \alias{sources}
 \title{Sources}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 6 rows and 4 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 7 rows and 4 columns.
 }
 \usage{
 sources

@@ -197,6 +197,7 @@ fill.folder <- function(tickers  = NULL, sources=NULL,
 #' @param raw logical, при TRUE происходит запрос данных из внешних источников и обновляется содержимое папок data/raw/ и data/raw_excel
 #' @param transform logical, при TRUE на основе содержмого папки data/raw/ данные трансформируются и заполняется содержимое папки data/tf
 #'
+#' @export
 download <- function(tickers  = NULL,
                      sources=NULL,
                      raw = TRUE,

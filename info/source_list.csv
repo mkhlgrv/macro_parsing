@@ -5,3 +5,4 @@ oecd,https://data.oecd.org/,OECD Data,OECD Data
 dallasfed,https://www.dallasfed.org/research/igrea,Federal Reserve Bank of Dallas,Federal Reserve Bank of Dallas
 cbr,https://www.cbr.ru/eng/,Central Bank of Russia,Банк России
 rosstat,https://eng.rosstat.gov.ru/,Federal State Statistics Service,Росстат
+internal,,Internal computations,Внутренние рассчеты

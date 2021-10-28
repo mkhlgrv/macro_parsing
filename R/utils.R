@@ -72,7 +72,7 @@ check.files <- function(actual_directory=NULL, type = c('raw', 'transform')){
   }
   folder_by_type <- type
   if(folder_by_type=="transform"){
-    folder_by_type == "tf"
+    folder_by_type <-  "tf"
   }
   list_files <- list.files(paste0(actual_directory, '/data/',folder_by_type,'/'))
   rmedb::variables %>%
@@ -150,7 +150,7 @@ add.href.to.column <- function(x, column){
 #' @return data.frame
 #' @export
 show.variables <- function(additional=FALSE, russificate = FALSE, url_as_href=FALSE){
-  out <- rmedb::variables[, c("ticker","name_rus_short", "source", "freq", "observation_start")]
+  out <- rmedb::variables[, c("ticker","name_rus_tf", "source", "freq", "observation_start")]
   if(additional){
     out <- out %>%
       dplyr::left_join(rmedb::additional_info, by = 'ticker')

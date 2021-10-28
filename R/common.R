@@ -154,7 +154,7 @@ setMethod(
   function(object) {
     if(object@use_archive&object@observation_start==object@date_from){
       object@ts <- data.table::rbindlist(list(
-        eval(parse(text = paste0('rmedb:::archive_',object@ticker))),
+        rmedb:::archive[[object@ticker]],
         object@ts
       )) %>%
         dplyr::arrange(
@@ -242,8 +242,11 @@ setMethod("transform.ts", "parsed_ts",
                     dplyr::ungroup() %>%
                     dplyr::select(date, value, update_date)
 
-                } else{ .}
-              }
+                } else if(object@transform=='base'){
+                  dplyr::mutate(.data = .,value = cumprod(value/100)/value[1]*100)
+                } else { .}
+              } %>%
+              dplyr::mutate(.data = .,value = round(value, 5))
             validObject(object)
             return(object)
           }

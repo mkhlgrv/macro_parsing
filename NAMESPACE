@@ -2,6 +2,7 @@
 
 export("%>%")
 export(":=")
+export(download)
 export(fill.folder)
 export(get.variables.df)
 export(set.environment)

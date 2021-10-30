@@ -77,25 +77,8 @@ get.variables.df <- function(tickers=NULL, sources=NULL){
       out
     }
 }
-download.rosstat.tables <- function(variables_df){
-  rosstat_tables <- dplyr::inner_join(rmedb::rosstat_ticker_tables,
-                                      variables_df, by = "ticker") %>%
-    .$table %>%
-    unique
 
 
-  pb <- progress::progress_bar$new(total = length(rosstat_tables),
-                                   format = "[:bar] :percent :eta")
-  purrr::walk(rosstat_tables,
-              function(table){
-                pb$tick()
-                new("rosstat_table", table) %>%
-                  modified()%>%
-                  source.modified() %>%
-                  find.url() %>%
-                  download.from.url()
-              })
-}
 
 #' Update specified folder
 #'
@@ -109,29 +92,19 @@ download.rosstat.tables <- function(variables_df){
 #' @export
 #' @keywords internal
 fill.folder <- function(tickers  = NULL, sources=NULL,
-                     type=c("raw", "transform")){
+                     folder = c("raw", "tf")){
 
-  check.files(type=type)
 
   variables_df <- get.variables.df(tickers=tickers, sources=sources)
 
 
 
-  by_tiker_fun <- switch(type,
-                         raw = download.by.ticker,
-                         transform = transform.by.ticker,
-                         deseason = deseason.by.ticker)
 
 
 
-  if(type == "raw"){
+  if(folder == "raw"){
 
-
-
-    log_file <- paste0(Sys.getenv('directory'),'/data/log/',format(Sys.time(), '%Y_%m_%d_%H_%M_%S'),'.log')
-    file.create(log_file)
-
-    download.rosstat.tables(variables_df)
+   download.rosstat.tables(variables_df)
 
 
   }
@@ -146,43 +119,12 @@ fill.folder <- function(tickers  = NULL, sources=NULL,
         x %>%
           split(.$ticker) %>%
           names %>%
-        purrr::walk(function(ticker, source){
-          pb$tick()
-          tryCatch({
-            result <- new(source) %>%
-              by_tiker_fun(ticker)
-            if(type == "raw"){
-              n = nrow(result@ts)
-
-            write(c(paste(ticker,
-                          ": ",
-                          n,
-                          " rows downloaded"
-                          )),
-                  file=log_file,
-                  sep ="",
-                  append=TRUE)
-            }
-          }
-            ,
-            error= function(cond){
-
-              if(type == "raw"){
-              write(c(paste(ticker,
-                            ": ",
-                            cond)),
-                    file=log_file,
-                    sep ="",
-                    append=TRUE)
-              }
-
-              return(NULL)
-            }
-
-
-          )
-
-          }, source = source)
+        purrr::walk(process.by.ticker,
+                    source = source,
+                    download = folder=="raw",
+                    transform = folder=="tf",
+                    pb = pb
+                    )
       })
 
 }
@@ -203,12 +145,94 @@ download <- function(tickers  = NULL,
                      raw = TRUE,
                      transform = TRUE){
 
+  check.log.file()
+
   if(raw){
-    fill.folder(tickers=tickers, sources=sources, type='raw')
+    fill.folder(tickers=tickers, sources=sources, folder='raw')
   }
 
   if(transform){
-    fill.folder(tickers=tickers, sources=sources, type='transform')
+    fill.folder(tickers=tickers, sources=sources, folder='tf')
   }
 
+}
+
+
+
+process.by.ticker <- function(ticker,source, download= TRUE, transform = TRUE, pb = NULL){
+  if(!is.null(pb)){
+    pb$tick()
+  }
+
+  out <- tryCatch({
+    object <- new(source, ticker)
+    if(download){
+      object <- object %>%
+        download.ts() %>%
+        write.ts()
+    }
+    if(transform){
+      object <- object %>%
+        transform.ts() %>%
+        write.ts.tf()
+    }
+    log.by.ticker(object)
+  },
+  error = function(e){
+    paste0(Sys.time(),
+           " ",ticker,": ",gsub("\n","",e))
+  },
+  warning=function(w){
+    paste0(Sys.time(),
+           " ",ticker,": ",gsub("\n","",w))
+  },
+  finally =  "")
+
+  write(out,file=Sys.getenv("log_file"),append=TRUE, sep = "")
+}
+
+
+
+
+process.by.table <- function(table, pb = NULL){
+  if(!is.null(pb)){
+    pb$tick()
+  }
+
+
+
+  out <- tryCatch({
+
+    object <- new("rosstat_table", table) %>%
+      modified()%>%
+      source.modified() %>%
+      find.url() %>%
+      download.from.url()
+    log.by.table(object)
+  },
+  error = function(e){
+    paste0(Sys.time(),
+           " ",table,": ",gsub("\n","",e))
+  },
+  warning=function(w){
+    paste0(Sys.time(),
+           " ",table,": ",gsub("\n","",w))
+  },
+  finally =  "")
+
+  write(out,file=Sys.getenv("log_file"),append=TRUE, sep = "")
+}
+
+download.rosstat.tables <- function(variables_df){
+
+  rosstat_tables <- dplyr::inner_join(rmedb::rosstat_ticker_tables,
+                                      variables_df, by = "ticker") %>%
+    .$table %>%
+    unique
+
+
+  pb <- progress::progress_bar$new(total = length(rosstat_tables),
+                                   format = "[:bar] :percent :eta")
+
+  purrr::walk(rosstat_tables,process.by.table, pb)
 }

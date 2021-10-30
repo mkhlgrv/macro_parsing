@@ -1,17 +1,6 @@
 #' @include common.R
 #' @include classes.R
 
-setMethod(
-  "related.ticker", "internal",
-  function(object) {
-    object@related_ticker <- rmedb::internal_tickers %>%
-      .[which(.$ticker == object@ticker), ] %>%
-      .$related_ticker
-    validObject(object)
-    return(object)
-  }
-)
-
 
 setMethod(
   "download.ts", "internal",

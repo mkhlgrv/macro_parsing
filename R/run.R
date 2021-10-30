@@ -97,3 +97,18 @@
 # devtools::install_local(path = "C:/Users/mkhlgrv/Documents/rmedb_0.0.0.9000.tar.gz")#, dependencies = TRUE,force=TRUE)
 # update.log.file()
 
+# Sys.setenv("directory"="tests/temp")
+# Sys.setenv("log_file"="tests/temp/current_log.log")
+
+### для теста
+
+#
+# input <- list(c("source"="rosstat", "ticker"="gdp_real"),
+#               c("source"="moex", "ticker"="RGBITR"),
+#               c("source"="fff", "ticker"="hf"))
+#
+#
+#
+# # purrr::walk(input, process.by.ticker, download=TRUE, transform=TRUE)
+#
+# process.by.table("gdp_income")

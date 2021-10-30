@@ -30,17 +30,6 @@ setMethod("date.from", "cbr",
           }
 )
 
-setMethod("cbr.ticker", "cbr",
-          function(object
-          ) {
-            object@cbr_ticker <- rmedb::cbr_names %>%
-              .[which(.$ticker==object@ticker),] %>%
-              .$cbr_ticker
-            validObject(object)
-            return(object)
-          }
-)
-
 
 
 setMethod("url", "cbr",

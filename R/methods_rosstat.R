@@ -1,43 +1,6 @@
 #' @include utils.R
 
 
-table <- function(object) {
-  UseMethod("")
-}
-sheet.info <-  function(object) {
-  UseMethod("")
-}
-file.path <- function(object){
-  UseMethod("")
-}
-
-setMethod("table","rosstat",
-          function(object){
-            object@table <- rmedb::rosstat_ticker_tables %>%
-              .[which(.$ticker == object@ticker), ] %>%
-              .$table
-            validObject(object)
-            return(object)
-          })
-
-
-setMethod("sheet.info","rosstat",
-          function(object){
-            object@sheet_info <-  rmedb::rosstat_headers %>%
-              .[which(.$ticker  == object@ticker), ]
-            validObject(object)
-            return(object)
-          })
-setMethod("file.path","rosstat",
-          function(object){
-            lf <- list.files(paste0(Sys.getenv("directory"), "/data/raw_excel/", object@table),full.names = TRUE)
-            object@file_path <-  lf[length(lf)]
-
-            validObject(object)
-            return(object)
-          })
-
-
 setMethod("download.ts","rosstat",
           function(object){
 

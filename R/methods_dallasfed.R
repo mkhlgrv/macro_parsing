@@ -17,10 +17,16 @@ setMethod("download.ts", "dallasfed",
           function(object
           ) {
             try({
+              temp_file <-
+                tempfile(fileext = ".xlsx")
 
-                httr::GET(object@url,
-                          httr::write_disk(temp_file <-
-                                             tempfile(fileext = ".xlsx")))
+
+
+              download.file(object@url,
+                            temp_file,
+                            mode="wb",
+                            quiet = TRUE)
+
               object@ts <- readxl::read_xlsx(temp_file,
                                 sheet = 1,
                                 skip = 1,
@@ -29,7 +35,10 @@ setMethod("download.ts", "dallasfed",
                 dplyr::mutate(date = lubridate::ymd(date),
                               update_date = as.Date(Sys.Date())) %>%
                 dplyr::arrange(date, update_date)
-            }, silent = TRUE)
+
+              file.remove(temp_file)
+              gc()
+            })
             validObject(object)
             return(object)
 

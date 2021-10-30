@@ -3,7 +3,7 @@ title: "Руководство пользователя"
 output: 
   rmarkdown::html_vignette
 params:
-  archive_name: "ml_nowcasting_2021-10-04"
+  archive_name: "ml_nowcasting_2021-10-29"
   tar_gz_archive_name: "rmedb_0.0.0.9000.tar.gz"
 vignette: >
   %\VignetteIndexEntry{User Guide}

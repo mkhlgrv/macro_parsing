@@ -4,7 +4,7 @@
 \alias{fill.folder}
 \title{Update specified folder}
 \usage{
-fill.folder(tickers = NULL, sources = NULL, type = c("raw", "transform"))
+fill.folder(tickers = NULL, sources = NULL, folder = c("raw", "tf"))
 }
 \arguments{
 \item{tickers}{character, список допустимых тикеров см. \code{rmedb::show.variables()}}

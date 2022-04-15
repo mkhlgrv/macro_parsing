@@ -201,7 +201,7 @@ process.by.table <- function(table, pb = NULL){
 
 
 
-  out <- tryCatch({
+  out <- tryCatch({f
 
     object <- new("rosstat_table", table) %>%
       modified()%>%

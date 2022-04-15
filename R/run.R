@@ -47,7 +47,7 @@
 # usethis::use_data(additional_info, overwrite = TRUE)
 
 # test ----
-# testthat::test_local()
+testthat::test_local()
 
 
 # # download all data ----
@@ -90,11 +90,11 @@
 # usethis::use_package("future")
 
 
-# roxygen2::roxygenise()
+roxygen2::roxygenise()
 
 
-# devtools::build()
-# devtools::install_local(path = "C:/Users/mkhlgrv/Documents/rmedb_0.0.0.9000.tar.gz")#, dependencies = TRUE,force=TRUE)
+devtools::build()
+devtools::install_local(path = "C:/Users/mkhlgrv/Documents/rmedb_0.0.0.9001.tar.gz")#, dependencies = TRUE,force=TRUE)
 # update.log.file()
 
 # Sys.setenv("directory"="tests/temp")

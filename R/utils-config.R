@@ -62,8 +62,9 @@ check.table <- function(table){
   }
 }
 
-check.log.file <- function(){
-  Sys.setenv("log_file"=
+check.log.file <- function(log_file){
+
+    Sys.setenv("log_file"=
                paste0(Sys.getenv('directory'),
                       '/data/log/',
                       format(Sys.time(),

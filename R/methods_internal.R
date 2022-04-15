@@ -5,9 +5,15 @@
 setMethod(
   "download.ts", "internal",
   function(object) {
-    if(object@ticker=='construction_real'){
-      file_name_numenator <- paste0(Sys.getenv('directory'), "/data/raw/", 'construction_nom', ".csv")
-      file_name_denominator <- paste0(Sys.getenv('directory'), "/data/raw/", 'ppi_construction', ".csv")
+    if(object@ticker=='construction_real'|object@ticker=='services_real'){
+      numenator_ts <- switch(object@ticker,
+                          'construction_real' = 'construction_nom',
+                          'services_real' = 'services_market')
+      denominator_ts <- switch(object@ticker,
+                          'construction_real' = 'ppi_construction',
+                          'services_real' = 'ppi_services')
+      file_name_numenator <- paste0(Sys.getenv('directory'), "/data/raw/", numenator_ts, ".csv")
+      file_name_denominator <- paste0(Sys.getenv('directory'), "/data/raw/", denominator_ts, ".csv")
       numenator <- data.table::fread(file_name_numenator, colClasses = c("Date", "numeric", "Date")) %>%
         dplyr::group_by(date) %>%
         dplyr::filter(update_date == max(update_date)) %>%

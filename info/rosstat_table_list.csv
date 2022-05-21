@@ -1,8 +1,8 @@
 table,url,ext
 stei,https://rosstat.gov.ru/compendium/document/50802,.xlsx
 li_month,https://rosstat.gov.ru/leading_indicators,.xls
-gdp_expenditure,https://rosstat.gov.ru/accounts,.xls
-gdp_income,https://rosstat.gov.ru/accounts,.xls
+gdp_expenditure,https://rosstat.gov.ru/statistics/accounts,.xls
+gdp_income,https://rosstat.gov.ru/statistics/accounts,.xls
 li_consumer,https://rosstat.gov.ru/leading_indicators,.xls
 li_building,https://rosstat.gov.ru/leading_indicators,.xls
 li_retail,https://rosstat.gov.ru/leading_indicators,.xls

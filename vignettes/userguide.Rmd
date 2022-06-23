@@ -98,7 +98,6 @@ devtools::install_local(path = "C:/PATH/TO/TAR.GZ")
 После установки пакета и получения ключа выполните команду, указав адрес рабочей директории `path` (в ней будут сохраняться все скачанные файлы) и ключ `fredr_api_key`:
 ```{r, eval=FALSE}
 rmedb::set.environment(path = "C:/PATH/TO/WORKING/DIR", fredr_api_key = "YourFredrAPIKey")
-# пробный ключ: b3253be67e9b6d9dfc03967a568b820f
 ```
 
 > &#9888; **Избегайте кириллических символов при выборе директории** 

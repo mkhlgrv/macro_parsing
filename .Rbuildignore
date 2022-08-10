@@ -9,7 +9,7 @@ LICENSE
 ^.Renviron$
 ^R\run.R$
 ^app$
-^vignettes$
+^vignettes
 ^\.Renviron$
 ^readme_app.html$
 ^ach$

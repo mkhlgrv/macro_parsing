@@ -1,0 +1,389 @@
+2022-07-24 10:27:40 li_month: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 li_consumer: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 li_retail: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 li_building: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 stei: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 gdp_expenditure: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 gdp_income: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 : Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 li_services: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-24 10:27:40 api: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 cons_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 cons_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 construction_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 cpi: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 cpi_alcohol: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 cpi_food: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 deficit: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:41 eggs: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:42 employed_15: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:43 employed_15_72: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:43 employer_demands: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:43 export_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:45 export_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:45 freight_loading_railway: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:45 freight_turnover: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:46 freight_turnover_commercial: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:47 gdp_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:48 gdp_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:48 gdp_volume_index: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:48 gross_profit_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:48 import_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:48 import_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:49 income_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:49 income_real_disp: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:49 indebtedness_cred: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:49 indebtedness_cred_budget: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:50 indebtedness_cred_overdue: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:50 indebtedness_cred_suppliers: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 indebtedness_debt: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 indebtedness_debt_customer: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 indebtedness_debt_overdue: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 invest_fixed_capital_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 invest_fixed_capital_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 invest_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 invest_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 investment_fc: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 investment_fc_budget_funds: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 investment_fc_external_funds: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 investment_fc_federal_budget: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 investment_fc_own_funds: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 ipi: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:51 ipi_electricity: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 ipi_manufacturing: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 ipi_mining: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 ipi_water: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 labor_income_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 li_building_1: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 li_consumer: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 li_electricity_1: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 li_manufacturing_1: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 li_mining_1: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:52 li_retail_1: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:54 li_services: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:54 livestock: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:54 loss_making_construction: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:54 loss_making_electricity: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:54 loss_making_manufacturing: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:54 loss_making_mining: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 loss_making_transport: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 milk: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 money_income: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 net_result_construction: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 net_result_electricity: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 net_result_manufacturing: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 net_result_mining: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 net_result_transport: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 non_labor: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 non_labor_to_employer_demands: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 ppi: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:56 ppi_animal: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_cattle: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_construction: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_diesel: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_eggs: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_electricity: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_freight: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_gas: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_gasoline: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_investment: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_manufacturing: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_milk: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_mining: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:57 ppi_non_food: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 ppi_oil: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 ppi_poultry: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 ppi_resid: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 ppi_services: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 ppi_water: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 ppil_coal: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 residential: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:58 retail_catering_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:59 retail_catering_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:59 retail_food_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:59 retail_food_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:59 retail_inventory_days: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:59 retail_inventory_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:59 retail_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:27:59 retail_non_food_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 retail_non_food_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 retail_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 services_market: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 unemployed_15: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 unemployed_15_72: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 unemployment_15: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 unemployment_15_72: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 unemployment_registered: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 wage_nom: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 wage_overdue: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:00 wage_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-24 10:28:01 bci_CHN: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:03 bci_EA19: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:03 bci_G7: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:04 bci_OECD: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:05 bci_OECDE: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:06 bci_RUS: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:07 bci_USA: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:08 cgi_CHN: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:09 cgi_EA19: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:10 cgi_G7: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:10 cgi_OECD: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:11 cgi_OECDE: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:13 cgi_RUS: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:14 cgi_USA: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:14 cli_CHN: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:15 cli_EA19: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:16 cli_G7: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:17 cli_OECD: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:18 cli_OECDE: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:18 cli_RUS: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:20 cli_USA: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': Failure when receiving data from the peer
+2022-07-24 10:28:21 DCOILBRENTEU: success! downloaded: 9174
+2022-07-24 10:28:23 NBRUBIS: success! downloaded: 302
+2022-07-24 10:28:24 PALLFNFINDEXM: success! downloaded: 364
+2022-07-24 10:28:24 PALUMUSDM: success! downloaded: 383
+2022-07-24 10:28:26 PFOODINDEXM: success! downloaded: 364
+2022-07-24 10:28:26 PINDUINDEXM: success! downloaded: 364
+2022-07-24 10:28:27 PMETAINDEXM: success! downloaded: 364
+2022-07-24 10:28:28 PNICKUSDM: success! downloaded: 383
+2022-07-24 10:28:29 PNRGINDEXM: success! downloaded: 364
+2022-07-24 10:28:29 PWHEAMTUSDM: success! downloaded: 383
+2022-07-24 10:28:30 PZINCUSDM: success! downloaded: 383
+2022-07-24 10:28:31 RBRUBIS: success! downloaded: 342
+2022-07-24 10:28:32 SP500: success! downloaded: 6742
+2022-07-24 10:28:33 STLFSI2: success! downloaded: 1463
+2022-07-24 10:28:44 depo: success! downloaded: 4388
+2022-07-24 10:28:45 export_usd: success! downloaded: 113
+2022-07-24 10:28:45 fer: success! downloaded: 133
+2022-07-24 10:28:47 import_usd: success! downloaded: 113
+2022-07-24 10:28:47 m2: success! downloaded: 354
+2022-07-24 10:29:41 miacr: success! downloaded: 5443
+2022-07-24 10:29:42 monetary_base: success! downloaded: 1
+2022-07-24 10:29:43 monetary_base_weekly: success! downloaded: 54
+2022-07-24 10:29:44 mosprime: success! downloaded: 5
+2022-07-24 10:29:53 ostat: success! downloaded: 6151
+2022-07-24 10:29:53 repo: success! downloaded: 6
+2022-07-24 10:29:54 saldo: success! downloaded: 6
+2022-07-24 10:30:00 usd: success! downloaded: 7997
+2022-07-24 10:30:02 igrea: success! downloaded: 654
+2022-07-24 10:30:09 IMOEX: success! downloaded: 6291
+2022-07-24 10:30:16 MOEX10: success! downloaded: 6213
+2022-07-24 10:30:21 RGBI: success! downloaded: 4946
+2022-07-24 10:30:26 RGBITR: success! downloaded: 4947
+2022-07-24 10:30:34 RTSI: success! downloaded: 6814
+2022-07-24 10:30:41 RTSOG: success! downloaded: 5712
+2022-07-24 10:30:41 investment_nom: Error in getClass(Class, where = topenv(parent.frame())): “user” is not a defined class
+2022-07-24 10:30:41 investment_real: Error in getClass(Class, where = topenv(parent.frame())): “user” is not a defined class
+2022-07-24 10:30:41 urals_monthly: Error in getClass(Class, where = topenv(parent.frame())): “user” is not a defined class
+2022-07-24 10:30:42 construction_real: simpleWarning in max.default(structure(numeric(0), class = "Date"), na.rm = FALSE): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:42 DCOILBRENTEU_monthly: success! downloaded: 9174
+2022-07-24 10:30:42 depo_monthly: success! downloaded: 4388
+2022-07-24 10:30:42 employed: success! downloaded: 216
+2022-07-24 10:30:42 fer_monthly: success! downloaded: 133
+2022-07-24 10:30:43 IMOEX_monthly: success! downloaded: 6291
+2022-07-24 10:30:43 miacr_monthly: success! downloaded: 5443
+2022-07-24 10:30:43 MOEX10_monthly: success! downloaded: 6213
+2022-07-24 10:30:43 mosprime_monthly: success! downloaded: 5
+2022-07-24 10:30:43 ostat_monthly: success! downloaded: 6151
+2022-07-24 10:30:44 repo_monthly: success! downloaded: 6
+2022-07-24 10:30:44 RGBI_monthly: success! downloaded: 4946
+2022-07-24 10:30:44 RGBITR_monthly: success! downloaded: 4947
+2022-07-24 10:30:44 RTSI_monthly: success! downloaded: 6814
+2022-07-24 10:30:45 RTSOG_monthly: success! downloaded: 5712
+2022-07-24 10:30:45 saldo_monthly: success! downloaded: 6
+2022-07-24 10:30:45 services_real: simpleWarning in max.default(structure(numeric(0), class = "Date"), na.rm = FALSE): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:45 SP500_monthly: success! downloaded: 6742
+2022-07-24 10:30:45 STLFSI2_monthly: success! downloaded: 1463
+2022-07-24 10:30:45 unemployed: success! downloaded: 216
+2022-07-24 10:30:45 unemployment: success! downloaded: 216
+2022-07-24 10:30:46 usd_monthly: success! downloaded: 7997
+2022-07-24 10:30:46 api: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 cons_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 cons_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 construction_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 cpi: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 cpi_alcohol: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 cpi_food: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 deficit: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 eggs: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:46 employed_15: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 employed_15_72: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 employer_demands: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 export_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 export_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 freight_loading_railway: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 freight_turnover: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 freight_turnover_commercial: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 gdp_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 gdp_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 gdp_volume_index: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:47 gross_profit_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:48 import_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:48 import_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:48 income_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:48 income_real_disp: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:48 indebtedness_cred: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:49 indebtedness_cred_budget: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:49 indebtedness_cred_overdue: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:49 indebtedness_cred_suppliers: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:49 indebtedness_debt: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:50 indebtedness_debt_customer: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:50 indebtedness_debt_overdue: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:50 invest_fixed_capital_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:50 invest_fixed_capital_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:51 invest_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:51 invest_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:51 investment_fc: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:51 investment_fc_budget_funds: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:52 investment_fc_external_funds: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:52 investment_fc_federal_budget: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:52 investment_fc_own_funds: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:52 ipi: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 ipi_electricity: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 ipi_manufacturing: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 ipi_mining: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 ipi_water: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 labor_income_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 li_building_1: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 li_consumer: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:53 li_electricity_1: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 li_manufacturing_1: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 li_mining_1: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 li_retail_1: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 li_services: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 livestock: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 loss_making_construction: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 loss_making_electricity: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:54 loss_making_manufacturing: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 loss_making_mining: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 loss_making_transport: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 milk: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 money_income: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 net_result_construction: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 net_result_electricity: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 net_result_manufacturing: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 net_result_mining: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 net_result_transport: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 non_labor: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:55 non_labor_to_employer_demands: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:56 ppi: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:56 ppi_animal: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:56 ppi_cattle: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:57 ppi_construction: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:57 ppi_diesel: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_eggs: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_electricity: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_freight: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_gas: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_gasoline: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_investment: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_manufacturing: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:58 ppi_milk: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppi_mining: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppi_non_food: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppi_oil: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppi_poultry: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppi_resid: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppi_services: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppi_water: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 ppil_coal: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 residential: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 retail_catering_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:30:59 retail_catering_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:00 retail_food_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:00 retail_food_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:00 retail_inventory_days: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:00 retail_inventory_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:00 retail_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:01 retail_non_food_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:01 retail_non_food_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:01 retail_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:01 services_market: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:01 unemployed_15: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:01 unemployed_15_72: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 unemployment_15: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 unemployment_15_72: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 unemployment_registered: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 wage_nom: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 wage_overdue: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 wage_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 bci_CHN: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:02 bci_EA19: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:03 bci_G7: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:03 bci_OECD: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:03 bci_OECDE: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:03 bci_RUS: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:04 bci_USA: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:04 cgi_CHN: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:04 cgi_EA19: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:05 cgi_G7: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:05 cgi_OECD: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:05 cgi_OECDE: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:05 cgi_RUS: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:06 cgi_USA: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:06 cli_CHN: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:06 cli_EA19: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:06 cli_G7: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:07 cli_OECD: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:07 cli_OECDE: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:07 cli_RUS: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:07 cli_USA: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:08 DCOILBRENTEU: success! transformed: 8926
+2022-07-24 10:31:08 NBRUBIS: success! transformed: 302
+2022-07-24 10:31:08 PALLFNFINDEXM: success! transformed: 232
+2022-07-24 10:31:08 PALUMUSDM: success! transformed: 383
+2022-07-24 10:31:08 PFOODINDEXM: success! transformed: 364
+2022-07-24 10:31:10 PINDUINDEXM: success! transformed: 364
+2022-07-24 10:31:10 PMETAINDEXM: success! transformed: 364
+2022-07-24 10:31:10 PNICKUSDM: success! transformed: 383
+2022-07-24 10:31:10 PNRGINDEXM: success! transformed: 364
+2022-07-24 10:31:10 PWHEAMTUSDM: success! transformed: 383
+2022-07-24 10:31:10 PZINCUSDM: success! transformed: 383
+2022-07-24 10:31:11 RBRUBIS: success! transformed: 342
+2022-07-24 10:31:11 SP500: success! transformed: 6649
+2022-07-24 10:31:11 STLFSI2: success! transformed: 1463
+2022-07-24 10:31:12 depo: success! transformed: 4388
+2022-07-24 10:31:12 export_usd: success! transformed: 113
+2022-07-24 10:31:12 fer: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:12 import_usd: success! transformed: 113
+2022-07-24 10:31:13 m2: success! transformed: 354
+2022-07-24 10:31:14 miacr: success! transformed: 5443
+2022-07-24 10:31:14 monetary_base: success! transformed: 1
+2022-07-24 10:31:14 monetary_base_weekly: success! transformed: 54
+2022-07-24 10:31:14 mosprime: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:15 ostat: success! transformed: 6151
+2022-07-24 10:31:15 repo: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:15 saldo: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:16 usd: success! transformed: 6639
+2022-07-24 10:31:16 igrea: success! transformed: 654
+2022-07-24 10:31:17 IMOEX: success! transformed: 6198
+2022-07-24 10:31:18 MOEX10: success! transformed: 6121
+2022-07-24 10:31:19 RGBI: success! transformed: 4873
+2022-07-24 10:31:20 RGBITR: success! transformed: 4874
+2022-07-24 10:31:21 RTSI: success! transformed: 6714
+2022-07-24 10:31:21 RTSOG: success! transformed: 5628
+2022-07-24 10:31:21 investment_nom: Error in getClass(Class, where = topenv(parent.frame())): “user” is not a defined class
+2022-07-24 10:31:21 investment_real: Error in getClass(Class, where = topenv(parent.frame())): “user” is not a defined class
+2022-07-24 10:31:21 urals_monthly: Error in getClass(Class, where = topenv(parent.frame())): “user” is not a defined class
+2022-07-24 10:31:21 construction_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:22 DCOILBRENTEU_monthly: success! transformed: 8926
+2022-07-24 10:31:23 depo_monthly: success! transformed: 4388
+2022-07-24 10:31:23 employed: success! transformed: 216
+2022-07-24 10:31:23 fer_monthly: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:24 IMOEX_monthly: success! transformed: 6198
+2022-07-24 10:31:25 miacr_monthly: success! transformed: 5443
+2022-07-24 10:31:26 MOEX10_monthly: success! transformed: 6121
+2022-07-24 10:31:26 mosprime_monthly: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:27 ostat_monthly: success! transformed: 6151
+2022-07-24 10:31:27 repo_monthly: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:27 RGBI_monthly: success! transformed: 4873
+2022-07-24 10:31:28 RGBITR_monthly: success! transformed: 4874
+2022-07-24 10:31:28 RTSI_monthly: success! transformed: 6714
+2022-07-24 10:31:29 RTSOG_monthly: success! transformed: 5628
+2022-07-24 10:31:29 saldo_monthly: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:30 services_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-24 10:31:31 SP500_monthly: success! transformed: 6649
+2022-07-24 10:31:31 STLFSI2_monthly: success! transformed: 1463
+2022-07-24 10:31:31 unemployed: success! transformed: 216
+2022-07-24 10:31:32 unemployment: success! transformed: 216
+2022-07-24 10:31:33 usd_monthly: success! transformed: 6639

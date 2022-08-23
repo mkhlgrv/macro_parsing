@@ -46,8 +46,8 @@
 # usethis::use_data(internal_tickers, overwrite = TRUE)
 # usethis::use_data(additional_info, overwrite = TRUE)
 
-# test ----
-testthat::test_local()
+# # test ----
+# testthat::test_local()
 
 
 # # download all data ----
@@ -90,11 +90,11 @@ testthat::test_local()
 # usethis::use_package("future")
 
 
-roxygen2::roxygenise()
-
-
-devtools::build()
-devtools::install_local(path = "C:/Users/mkhlgrv/Documents/rmedb_0.0.0.9001.tar.gz")#, dependencies = TRUE,force=TRUE)
+# roxygen2::roxygenise()
+#
+#
+# devtools::build()
+# devtools::install_local(path = "C:/Users/migareev/Documents/rmedb_0.0.0.9002.tar.gz")#, dependencies = TRUE,force=TRUE)
 # update.log.file()
 
 # Sys.setenv("directory"="tests/temp")
@@ -112,3 +112,7 @@ devtools::install_local(path = "C:/Users/mkhlgrv/Documents/rmedb_0.0.0.9001.tar.
 # # purrr::walk(input, process.by.ticker, download=TRUE, transform=TRUE)
 #
 # process.by.table("gdp_income")
+# TODO mosprime перестал обновляться
+# TODO li_retail перестал обновляться
+# services_real не обновляется почему то
+

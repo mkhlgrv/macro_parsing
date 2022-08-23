@@ -1,0 +1,7 @@
+2022-07-20 20:29:39 gdp_expenditure: Error in doTryCatch(return(expr), name, parentenv, handler): object 'f' not found
+2022-07-20 20:29:39 igrea: success! downloaded: 654
+2022-07-20 20:29:39 gdp_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-20 20:29:39 import_real: Error in h(simpleError(msg, call)): ошибка при оценке аргумента 'object' при выборе метода для функции 'write.ts': `path` must be a string
+2022-07-20 20:29:40 igrea: success! transformed: 654
+2022-07-20 20:29:40 gdp_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf
+2022-07-20 20:29:40 import_real: simpleWarning in max(dplyr::row_number()): no non-missing arguments to max; returning -Inf

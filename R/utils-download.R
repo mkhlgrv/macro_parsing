@@ -194,7 +194,7 @@ process.by.ticker <- function(ticker,source, download= TRUE, transform = TRUE, p
 
 
 
-process.by.table <- function(table, pb = NULL){
+process.by.table <- function(tab, pb = NULL){
   if(!is.null(pb)){
     pb$tick()
   }
@@ -203,7 +203,7 @@ process.by.table <- function(table, pb = NULL){
 
   out <- tryCatch({f
 
-    object <- new("rosstat_table", table) %>%
+    object <- new("rosstat_table", tab) %>%
       modified()%>%
       source.modified() %>%
       find.url() %>%
@@ -212,11 +212,11 @@ process.by.table <- function(table, pb = NULL){
   },
   error = function(e){
     paste0(Sys.time(),
-           " ",table,": ",gsub("\n","",e))
+           " ",tab,": ",gsub("\n","",e))
   },
   warning=function(w){
     paste0(Sys.time(),
-           " ",table,": ",gsub("\n","",w))
+           " ",tab,": ",gsub("\n","",w))
   },
   finally =  "")
 
@@ -225,14 +225,14 @@ process.by.table <- function(table, pb = NULL){
 
 download.rosstat.tables <- function(variables_df){
 
-  rosstat_tables <- dplyr::inner_join(rmedb::rosstat_ticker_tables,
+  rosstat_tabs <- dplyr::inner_join(rmedb::rosstat_ticker_tables,
                                       variables_df, by = "ticker") %>%
     .$table %>%
     unique
 
 
-  pb <- progress::progress_bar$new(total = length(rosstat_tables),
+  pb <- progress::progress_bar$new(total = length(rosstat_tabs),
                                    format = "[:bar] :percent :eta")
 
-  purrr::walk(rosstat_tables,process.by.table, pb)
+  purrr::walk(rosstat_tabs,process.by.table, pb)
 }

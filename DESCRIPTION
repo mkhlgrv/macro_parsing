@@ -13,7 +13,6 @@ Collate:
     'common.R'
     'dataset_documentation.R'
     'define_internal_data.R'
-    'methods_cbr.R'
     'methods_dallasfed.R'
     'methods_fred.R'
     'methods_internal.R'

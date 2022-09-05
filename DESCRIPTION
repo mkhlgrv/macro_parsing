@@ -1,6 +1,6 @@
 Package: rmedb
 Title: Russian Macroeconomic Database
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Author: Mikhail Gareev
 Description: Downloads and updates database of russian macroeconomic indicators 
 License: MIT + file LICENSE

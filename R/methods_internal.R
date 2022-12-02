@@ -32,7 +32,8 @@ setMethod(
       if(grepl("_montly",object@ticker)){
         agg_fun <- function(x, ticker){
           if(ticker=='fer_montly'){
-            x
+            dplyr::arrange(x, date) %>%
+              dplyr::mutate(x, value = last(value,na.rm=TRUE))
           } else{
             dplyr::mutate(x, value = mean(value,na.rm=TRUE))
           }

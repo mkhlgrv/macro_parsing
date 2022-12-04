@@ -155,7 +155,7 @@ download <- function(tickers  = NULL,
     fill.folder(tickers=tickers, sources=sources, folder='tf')
   }
   # метаданные
-  write.csv(rmedb::get.variables.df(), file=paste0(Sys.getenv('directory'), '/data/metadata.csv'),fileEncoding = "UTF-8")
+  write.csv(rmedb::get.variables.df(), file=paste0(Sys.getenv('directory'), '/data/metadata.csv'),fileEncoding = "UTF-8",  row.names = FALSE)
 
 }
 
